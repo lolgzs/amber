@@ -39,11 +39,11 @@ selector: unescape('id'),
 category: 'accessing',
 fn: function (){
 var self=this;
-smalltalk.send(self, "_subclassResponsibility", []);
+return smalltalk.send(smalltalk.send(self, "_class", []), "_name", []);
 return self;},
 args: [],
-source: unescape('id%0A%09self%20subclassResponsibility'),
-messageSends: ["subclassResponsibility"],
+source: unescape('id%0A%09%5E%20self%20class%20name'),
+messageSends: ["name", "class"],
 referencedClasses: []
 }),
 smalltalk.Slide);
@@ -1772,12 +1772,15 @@ selector: unescape('reload'),
 category: 'callbacks',
 fn: function (){
 var self=this;
+var slideIndex=nil;
+(slideIndex=smalltalk.send(smalltalk.send(self, "_currentPresentation", []), "_currentSlideIndex", []));
 smalltalk.send(self, "_currentPresentation_", [smalltalk.send(smalltalk.send(smalltalk.send(self, "_currentPresentation", []), "_class", []), "_new", [])]);
 smalltalk.send(self, "_renderCurrentPresentation", []);
+smalltalk.send(self, "_selectSlideAt_", [slideIndex]);
 return self;},
 args: [],
-source: unescape('reload%0A%09self%20currentPresentation%3A%20self%20currentPresentation%20class%20new.%0A%09self%20renderCurrentPresentation.'),
-messageSends: ["currentPresentation:", "new", "class", "currentPresentation", "renderCurrentPresentation"],
+source: unescape('reload%0A%09%7CslideIndex%7C%0A%09slideIndex%20%3A%3D%20self%20currentPresentation%20currentSlideIndex.%0A%09self%20currentPresentation%3A%20self%20currentPresentation%20class%20new.%0A%09self%20renderCurrentPresentation.%0A%09self%20selectSlideAt%3A%20slideIndex.'),
+messageSends: ["currentSlideIndex", "currentPresentation", "currentPresentation:", "new", "class", "renderCurrentPresentation", "selectSlideAt:"],
 referencedClasses: []
 }),
 smalltalk.PresentationNavigator);
