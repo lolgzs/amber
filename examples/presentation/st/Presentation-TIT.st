@@ -376,7 +376,8 @@ slideClasses
 	IAEAmber.
 	IAECara74.
 	TITUnaryMessageSyntax.
-	TITBinaryMessageSyntax}
+	TITBinaryMessageSyntax.
+	TITBouncingAtomsMorphVideo}
 ! !
 
 !TITManipulatingObjects class methodsFor: 'accessing'!
@@ -448,5 +449,27 @@ renderReceiver: aReceiver message: aMessage argument: anArgument on: html
 		html span class: 'green'; with: anArgument.
 		html span class: 'blue'; with: '.'.
 		html br;br
+! !
+
+Slide subclass: #TITBouncingAtomsMorphVideo
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITBouncingAtomsMorphVideo methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide black'
+! !
+
+!TITBouncingAtomsMorphVideo methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h3
+		class: 'center';
+		with: 'BouncingAtomsMorph'.
+	html iframe 
+		width:640;
+		height:480;
+		src:'http://player.vimeo.com/video/34810463?title=0&amp;byline=0&amp;portrait=0'.
 ! !
 

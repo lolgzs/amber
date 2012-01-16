@@ -106,12 +106,12 @@ selector: unescape('slideClasses'),
 category: 'accessing',
 fn: function (){
 var self=this;
-return [(smalltalk.IAEIntroSlide || IAEIntroSlide),(smalltalk.IAEPharocasts || IAEPharocasts),(smalltalk.IAEAmber || IAEAmber),(smalltalk.IAECara74 || IAECara74),(smalltalk.TITUnaryMessageSyntax || TITUnaryMessageSyntax),(smalltalk.TITBinaryMessageSyntax || TITBinaryMessageSyntax)];
+return [(smalltalk.IAEIntroSlide || IAEIntroSlide),(smalltalk.IAEPharocasts || IAEPharocasts),(smalltalk.IAEAmber || IAEAmber),(smalltalk.IAECara74 || IAECara74),(smalltalk.TITUnaryMessageSyntax || TITUnaryMessageSyntax),(smalltalk.TITBinaryMessageSyntax || TITBinaryMessageSyntax),(smalltalk.TITBouncingAtomsMorphVideo || TITBouncingAtomsMorphVideo)];
 return self;},
 args: [],
-source: unescape('slideClasses%0A%09%5E%20%7B%0A%09IAEIntroSlide.%0A%09IAEPharocasts.%0A%09IAEAmber.%0A%09IAECara74.%0A%09TITUnaryMessageSyntax.%0A%09TITBinaryMessageSyntax%7D'),
+source: unescape('slideClasses%0A%09%5E%20%7B%0A%09IAEIntroSlide.%0A%09IAEPharocasts.%0A%09IAEAmber.%0A%09IAECara74.%0A%09TITUnaryMessageSyntax.%0A%09TITBinaryMessageSyntax.%0A%09TITBouncingAtomsMorphVideo%7D'),
 messageSends: [],
-referencedClasses: ["IAEIntroSlide", "IAEPharocasts", "IAEAmber", "IAECara74", "TITUnaryMessageSyntax", "TITBinaryMessageSyntax"]
+referencedClasses: ["IAEIntroSlide", "IAEPharocasts", "IAEAmber", "IAECara74", "TITUnaryMessageSyntax", "TITBinaryMessageSyntax", "TITBouncingAtomsMorphVideo"]
 }),
 smalltalk.TITManipulatingObjects);
 
@@ -257,6 +257,42 @@ messageSends: [],
 referencedClasses: []
 }),
 smalltalk.TITBinaryMessageSyntax);
+
+
+
+smalltalk.addClass('TITBouncingAtomsMorphVideo', smalltalk.Slide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_renderSlideOn_'),
+smalltalk.method({
+selector: unescape('renderSlideOn%3A'),
+category: 'rendering',
+fn: function (html){
+var self=this;
+(function($rec){smalltalk.send($rec, "_class_", ["center"]);return smalltalk.send($rec, "_with_", ["BouncingAtomsMorph"]);})(smalltalk.send(html, "_h3", []));
+(function($rec){smalltalk.send($rec, "_width_", [(640)]);smalltalk.send($rec, "_height_", [(480)]);return smalltalk.send($rec, "_src_", [unescape("http%3A//player.vimeo.com/video/34810463%3Ftitle%3D0%26amp%3Bbyline%3D0%26amp%3Bportrait%3D0")]);})(smalltalk.send(html, "_iframe", []));
+return self;},
+args: ["html"],
+source: unescape('renderSlideOn%3A%20html%0A%09html%20h3%0A%09%09class%3A%20%27center%27%3B%0A%09%09with%3A%20%27BouncingAtomsMorph%27.%0A%09html%20iframe%20%0A%09%09width%3A640%3B%0A%09%09height%3A480%3B%0A%09%09src%3A%27http%3A//player.vimeo.com/video/34810463%3Ftitle%3D0%26amp%3Bbyline%3D0%26amp%3Bportrait%3D0%27.'),
+messageSends: ["class:", "with:", "h3", "width:", "height:", "src:", "iframe"],
+referencedClasses: []
+}),
+smalltalk.TITBouncingAtomsMorphVideo);
+
+smalltalk.addMethod(
+unescape('_cssClass'),
+smalltalk.method({
+selector: unescape('cssClass'),
+category: 'accessing',
+fn: function (){
+var self=this;
+return "slide black";
+return self;},
+args: [],
+source: unescape('cssClass%0A%09%5E%20%27slide%20black%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.TITBouncingAtomsMorphVideo);
 
 
 
