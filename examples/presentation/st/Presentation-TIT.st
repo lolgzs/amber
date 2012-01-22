@@ -1,4 +1,80 @@
 Smalltalk current createPackage: 'Presentation-TIT' properties: #{}!
+Slide subclass: #TITSlide
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITSlide methodsFor: 'rendering'!
+
+renderSmalltalk: aString on: html
+	|aTextArea|
+	aTextArea := html textarea element.
+	aTextArea value: aString.
+        
+	< CodeMirror.fromTextArea( aTextArea, {
+                lineNumbers: false,
+		theme: 'jtalk',
+                enterMode: 'flat',
+		theme: 'neat',
+  		width: '700px',
+		lineWrapping: true,
+                matchBrackets: true,
+                electricChars: false }) >
+!
+
+renderImage: filename on: html
+	html div 
+		class: 'center';
+		with: [	html img
+					width: '700px';
+					src: 'tit/images/', filename]
+! !
+
+TITSlide subclass: #TITUnaryMessageSyntax
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITUnaryMessageSyntax methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide blue3d'
+! !
+
+!TITUnaryMessageSyntax methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1: 'Unary messages'.
+	html div 
+		class: 'center big';
+		with: [ self 
+				renderReceiver: 'receiver ' message: 'message' on: html;		
+				renderReceiver: '3 ' message: 'squared' on: html;
+				renderReceiver: '''TETRAS'' ' message: 'asLowercase' on: html. ].
+!
+
+renderReceiver: aString message: anotherString on: html
+		html span class: 'blue'; with: aString.
+		html span class: 'red';	with: anotherString.
+		html span class: 'blue'; with: '.'.
+		html br;br
+! !
+
+TITSlide subclass: #TITPharoHelp
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITPharoHelp methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide black'
+! !
+
+!TITPharoHelp methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1: 'Help in Pharo'.
+	self renderImage: 'pharo_help.png' on: html.
+! !
+
 Presentation subclass: #TITPresentation
 	instanceVariableNames: ''
 	category: 'Presentation-TIT'!
@@ -344,6 +420,14 @@ body {
 }
 
 
+.slide .codemirror {
+	border: 5px solid rgba(50, 50, 50, 0.8);
+	border-radius: 5px;
+	background: white;
+	width: 100%;
+}
+
+
 #IAEPharocasts {
 	background-color: rgb(28,32, 35);
 }
@@ -377,7 +461,13 @@ slideClasses
 	IAECara74.
 	TITUnaryMessageSyntax.
 	TITBinaryMessageSyntax.
-	TITBouncingAtomsMorphVideo}
+	TITBouncingAtomsMorphVideo.
+	TITBasicCodeSnippets.
+	TITPharoHelp.
+	TITProfStefHelp.
+	TITProfStef.
+	IAESectionExercises.
+	TITBouncingAtomMorphsExercise}
 ! !
 
 !TITManipulatingObjects class methodsFor: 'accessing'!
@@ -392,36 +482,112 @@ isConcrete
 	^ true
 ! !
 
-Slide subclass: #TITUnaryMessageSyntax
+TITSlide subclass: #TITProfStefHelp
 	instanceVariableNames: ''
 	category: 'Presentation-TIT'!
 
-!TITUnaryMessageSyntax methodsFor: 'accessing'!
+!TITProfStefHelp methodsFor: 'accessing'!
 
 cssClass
 	^ 'slide blue3d'
 ! !
 
-!TITUnaryMessageSyntax methodsFor: 'rendering'!
+!TITProfStefHelp methodsFor: 'rendering'!
 
 renderSlideOn: html
-	html h1: 'Unary messages'.
-	html div 
-		class: 'center big';
-		with: [ self 
-				renderReceiver: 'receiver ' message: 'message' on: html;		
-				renderReceiver: '3 ' message: 'squared' on: html;
-				renderReceiver: '''TETRAS'' ' message: 'asLowercase' on: html. ].
-!
-
-renderReceiver: aString message: anotherString on: html
-		html span class: 'blue'; with: aString.
-		html span class: 'red';	with: anotherString.
-		html span class: 'blue'; with: '.'.
-		html br;br
+	html h1: 'ProfStef tutorials'.
+	self renderImage: 'profstef.png' on: html.
 ! !
 
-Slide subclass: #TITBinaryMessageSyntax
+TITSlide subclass: #TITBouncingAtomMorphsExercise
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITBouncingAtomMorphsExercise methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html ol: [
+		html li: 'Make the BouncingAtomsMorph change color at every step'.
+		html li: 'Make the BouncingAtomsMorph change color every 2 seconds (but animated at full speed)'.
+		html li: 'Every second the BouncingAtomsMorph remove an atom. When reach 0, add one every second. When reach 30, remove one every second'.
+	].
+
+	html with: 'Do ProfStef go then:'.
+	html ol: [
+		html li: 'Create a button in a window that opens a new BouncingAtomsMorph'.
+		html li: 'A button that pops up a window displaying the number of red AtomMorph of latest BouncingAtomsMorph instance'.
+	].
+	self renderSmalltalk: '(StringMorph contents: ''Hello !!'') openInWindow.' on: html.
+! !
+
+TITSlide subclass: #TITBasicCodeSnippets
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITBasicCodeSnippets methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide red3d'
+! !
+
+!TITBasicCodeSnippets methodsFor: 'code'!
+
+snippet
+	^ 
+'Morph new 
+	setColor: Color red;
+	openInWorld.
+
+10 atRandom.
+
+{''one''.  ''two''} at: 1.
+
+{Color red. Color blue. Color yellow} atRandom.
+'
+! !
+
+!TITBasicCodeSnippets methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1: 'Code examples'.
+	self renderSmalltalk: self snippet on: html
+! !
+
+TITSlide subclass: #TITProfStef
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITProfStef methodsFor: 'rendering'!
+
+renderSlideOn: html
+	TrySmalltalkWidget new renderOn: html.
+! !
+
+TITSlide subclass: #TITBouncingAtomsMorphVideo
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITBouncingAtomsMorphVideo methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide black'
+! !
+
+!TITBouncingAtomsMorphVideo methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h3
+		class: 'center';
+		with: [html a 
+				href: 'http://www.pharocasts.com/2012/01/manipulating-objects.html'; 
+				with:'BouncingAtomsMorph'].
+	html iframe 
+		width:640;
+		height:480;
+		src:'http://player.vimeo.com/video/34810463?title=0&amp;byline=0&amp;portrait=0'.
+! !
+
+TITSlide subclass: #TITBinaryMessageSyntax
 	instanceVariableNames: ''
 	category: 'Presentation-TIT'!
 
@@ -449,27 +615,5 @@ renderReceiver: aReceiver message: aMessage argument: anArgument on: html
 		html span class: 'green'; with: anArgument.
 		html span class: 'blue'; with: '.'.
 		html br;br
-! !
-
-Slide subclass: #TITBouncingAtomsMorphVideo
-	instanceVariableNames: ''
-	category: 'Presentation-TIT'!
-
-!TITBouncingAtomsMorphVideo methodsFor: 'accessing'!
-
-cssClass
-	^ 'slide black'
-! !
-
-!TITBouncingAtomsMorphVideo methodsFor: 'rendering'!
-
-renderSlideOn: html
-	html h3
-		class: 'center';
-		with: 'BouncingAtomsMorph'.
-	html iframe 
-		width:640;
-		height:480;
-		src:'http://player.vimeo.com/video/34810463?title=0&amp;byline=0&amp;portrait=0'.
 ! !
 
