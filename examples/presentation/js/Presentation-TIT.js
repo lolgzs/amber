@@ -451,10 +451,10 @@ selector: unescape('title'),
 category: 'accessing',
 fn: function (){
 var self=this;
-return "Manipulating Objects";
+return unescape("TIT%20-%20Manipulating%20Objects");
 return self;},
 args: [],
-source: unescape('title%0A%09%5E%20%27Manipulating%20Objects%27'),
+source: unescape('title%0A%09%5E%20%27TIT%20-%20Manipulating%20Objects%27'),
 messageSends: [],
 referencedClasses: []
 }),

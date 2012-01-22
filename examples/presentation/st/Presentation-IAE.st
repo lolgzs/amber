@@ -1,4 +1,93 @@
 Smalltalk current createPackage: 'Presentation-IAE' properties: #{}!
+Slide subclass: #IAESlide
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAESlide methodsFor: 'accessing'!
+
+id
+	^ self class name
+! !
+
+!IAESlide methodsFor: 'rendering'!
+
+renderJava: aString on: html
+	|aTextArea|
+	aTextArea := html textarea element.
+	aTextArea value: aString.
+        
+	< CodeMirror.fromTextArea( aTextArea, {
+                lineNumbers: true,
+		mode: 'text/x-java',
+                enterMode: 'classic',
+		theme: 'neat',
+                matchBrackets: true,
+                electricChars: false }) >
+! !
+
+IAESlide subclass: #IAETDDBookBeck
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAETDDBookBeck methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide green3d'
+! !
+
+!IAETDDBookBeck methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1: 'TDD By Example - Kent Beck'.
+	html div
+		class: 'center';
+		with: [ html img: 'iae/images/beck_tdd_book.jpg' ]
+! !
+
+IAESlide subclass: #IAEAgileResources
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEAgileResources methodsFor: 'not yet classified'!
+
+renderSlideOn: html
+	html h1: 'Resources'.
+	html  ul: [
+          html li: [html a
+			href: 'http://www.crisp.se/henrik.kniberg/presentations/agile-tour-grenoble-2009-keynote-what-is-agile.pdf';
+			with: 'What is agile'].
+
+	  html li: [html a
+			href: 'http://henrik-kniberg.developpez.com/livre/scrum-xp/';
+			with: 'Scrum et XP depuis les tranchées'].
+          
+	  html li: [html a
+			href: 'http://agilemanifesto.org/iso/fr/';
+			with: 'Manifeste agile'].
+          
+         ]
+! !
+
+IAESlide subclass: #IAETDDBookThomas
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAETDDBookThomas methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide blue3d'
+! !
+
+!IAETDDBookThomas methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html div
+		class: 'center';
+		with: [ 
+			html h1: 'Pragmatic Unit Testing - Dave Thomas'.
+                 	 html img: 'iae/images/prag_unit_test_book.jpg' ]
+! !
+
 Presentation subclass: #IAEPresentation
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
@@ -420,81 +509,33 @@ isConcrete
 	^ false
 ! !
 
-Slide subclass: #IAESlide
+IAEPresentation subclass: #IAEMovieApplicationPresentation
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAESlide methodsFor: 'accessing'!
-
-id
-	^ self class name
-! !
-
-!IAESlide methodsFor: 'rendering'!
-
-renderJava: aString on: html
-	|aTextArea|
-	aTextArea := html textarea element.
-	aTextArea value: aString.
-        
-	< CodeMirror.fromTextArea( aTextArea, {
-                lineNumbers: true,
-		mode: 'text/x-java',
-                enterMode: 'classic',
-		theme: 'neat',
-                matchBrackets: true,
-                electricChars: false }) >
-! !
-
-IAEPresentation subclass: #IAESoftwareDevPresentation
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAESoftwareDevPresentation methodsFor: 'accessing'!
+!IAEMovieApplicationPresentation methodsFor: 'accessing'!
 
 description
-	^'IAE - M1 MTI - 2011. Software development tools and practices overview'
+	^'IAE - M1 MTI - 2011. Swing application with TDD'
 !
 
 slideClasses
 	^ {
-	IAEIntroSlide. 
-	IAEParcours.
-	IAEPharocasts.
-	IAEAmber.
-	IAECara74.
-	IAECourseContent.
-	IAEAgileGrenoble.
-	IAEWhatIsSoftwareDevelopment.
-	IAEProject.
-	IAEProgramming.
-	IAETeamWork.
-	IAETools.
-	IAEToolMisused.
-	IAEPractices.
-	IAETracker.
-	IAEVCS.
-	IAEGitHub.
-	IAETDDCycle.
-	IAEContinuousIntegration.
-	IAEContinuousDelivery.
-	IAEExtremeProgramming.
-	IAEScrum.
-	IAESummary.
-	IAELearn
+		IAEIntroSlide.
+		IAEMovieApplication.
+		IAEMVC.
+		IAEMovieList
 }
 ! !
 
-!IAESoftwareDevPresentation class methodsFor: 'accessing'!
-
-title
-	^'Software Development'
-! !
-
-!IAESoftwareDevPresentation class methodsFor: 'testing'!
+!IAEMovieApplicationPresentation class methodsFor: 'accessing'!
 
 isConcrete
 	^true
+!
+
+title
+	^ 'IAE - Movie application'
 ! !
 
 IAESlide subclass: #IAEIntroSlide
@@ -520,20 +561,22 @@ renderSlideOn: html
 				href: 'mailto:', self presentation email]].
 ! !
 
-IAESlide subclass: #IAEParcours
+IAESlide subclass: #IAEMovieApplication
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAEParcours methodsFor: 'accessing'!
+!IAEMovieApplication methodsFor: 'accessing'!
 
-backgroundColor
-	^ '#dfd'
+cssClass
+	^ 'slide black'
 ! !
 
-!IAEParcours methodsFor: 'rendering'!
+!IAEMovieApplication methodsFor: 'rendering'!
 
 renderSlideOn: html
-	html img src: 'iae/images/parcours.png'
+	html div
+		class: 'center';
+		with: [ html img: 'iae/images/MoviesEditor.png' ]
 ! !
 
 IAESlide subclass: #IAEPharocasts
@@ -557,18 +600,26 @@ renderSlideOn: html
 			with: [html img src: 'iae/images/pharocasts.png'] ]
 ! !
 
-IAESlide subclass: #IAEAmber
+IAESlide subclass: #IAETDDStackExerciseVideo
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAEAmber methodsFor: 'rendering'!
+!IAETDDStackExerciseVideo methodsFor: 'accessing'!
+
+cssClass
+	^'slide black'
+! !
+
+!IAETDDStackExerciseVideo methodsFor: 'rendering'!
 
 renderSlideOn: html
-	html div 
-		class: 'section center';
-		with: [	html a
-					href: 'http://www.amber-lang.net';
-					with: [html img: 'iae/images/amber.png']]
+	html h3
+		class: 'center';
+		with: 'Stack exercise'.
+	html iframe 
+		width:400;
+		height:300;
+		src:'http://player.vimeo.com/video/29788542?title=0&amp;byline=0&amp;portrait=0'
 ! !
 
 IAESlide subclass: #IAEWhatIsSoftwareDevelopment
@@ -593,24 +644,24 @@ backgroundColor
 	^ '#ddf'
 ! !
 
-IAESlide subclass: #IAEProgramming
+IAESlide subclass: #IAEMVC
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAEProgramming methodsFor: 'accessing'!
+!IAEMVC methodsFor: 'accessing'!
 
 backgroundColor
-	^ '#333'
+	^ 'black'
 ! !
 
-!IAEProgramming methodsFor: 'rendering'!
+!IAEMVC methodsFor: 'rendering'!
 
 renderSlideOn: html
-	html 
-		h1 
-			class: 'center big';
-			with: 'Programming'.
-	html img: 'iae/images/human_evolution.jpg'
+	html style: '
+#IAEMVC {
+  background: url(iae/images/mvc.jpg)  no-repeat center center;
+  background-color: #333; 
+}'
 ! !
 
 IAESlide subclass: #IAECourseContent
@@ -630,22 +681,33 @@ renderSlideOn: html
        ]
 ! !
 
-IAESlide subclass: #IAEAgileGrenoble
+IAESlide subclass: #IAEMovieList
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAEAgileGrenoble methodsFor: 'rendering'!
+!IAEMovieList methodsFor: 'accessing'!
+
+slideClass
+	^ 'slide blue3d'
+! !
+
+!IAEMovieList methodsFor: 'rendering'!
 
 renderSlideOn: html
-	html div
-		class: 'section center';
-		with: [	html a 
-					href:  'http://agile-grenoble.org/'; 
-					with: [html img: 'iae/images/ag2011.png'].
-                      		
-                                html div 
-                                         class: 'right'; 
-                                         with: 'jeudi 24 novembre']
+	html h1: 'Classes MovieList et Movie'.
+	html ol: [
+          html 
+          	li: 'un film a un titre';
+          	li: 'on peut rajouter et retirer un film de la liste';
+          	li: 'on peut renommer le titre d''un film.';
+          	li: 'le titre ne peut etre (null) ou une chaîne vide - IllegalArgumentException';
+          	li: 'on ne peut pas ajouter deux films avec le même titre dans la liste - DuplicateMovieException (note : ArrayList.contains appelle Movie.equals)'
+        ].
+
+	html a
+		class: 'right';
+		href: 'http://lolgzs.free.fr/iae-course/iae/tp1/iMovies.zip';
+		with: 'Télécharger la correction'
 ! !
 
 IAESlide subclass: #IAECara74
@@ -672,18 +734,57 @@ renderSlideOn: html
           				with: [html img: 'iae/images/cara74.png' ] ]
 ! !
 
-IAESlide subclass: #IAEGitHub
+IAEPresentation subclass: #IAEJavaSwing
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAEGitHub methodsFor: 'rendering'!
+!IAEJavaSwing methodsFor: 'accessing'!
 
-renderSlideOn: html
-          html a 
-          	href: 'http://www.github.com'; 
-          	with: 'github' .
-          
-	 html img: 'iae/images/github_network.png'.
+description
+	^'IAE - M1 MTI - 2011'
+!
+
+slideClasses
+	^ {
+IAEIntroSlide.
+IAEJFrame.
+IAEJFrameSnapshot.
+IAEJLabel.
+IAEJLabelSnapshot.
+IAEJFramePack.
+IAEJFramePackSnapshot.
+IAEGridLayout.
+IAEGridLayoutSnapshot.
+IAEFlowLayoutSnapshot.
+IAEActionListener.
+IAEActionListenerGetSource.
+IAEMouseListener.
+IAEJTextField.
+IAETextFieldSnapshot.
+IAEJComboBox.
+IAEComboBoxSnapshot.
+IAEJList.
+IAEJListSnapshot.
+IAEModelView.
+IAEJListModelSnapshot.
+IAEUISpec.
+IAEJavaSwingResources.
+IAESectionExercises.
+IAEFrameTPSnapshot.
+IAEUISpecVideo
+}
+! !
+
+!IAEJavaSwing class methodsFor: 'accessing'!
+
+title
+	^ 'IAE - Java Swing'
+! !
+
+!IAEJavaSwing class methodsFor: 'testing'!
+
+isConcrete
+	^true
 ! !
 
 IAESlide subclass: #IAETeamWork
@@ -707,27 +808,27 @@ renderSlideOn: html
 		with: [html img: 'iae/images/team.JPG'].
 ! !
 
-IAESlide subclass: #IAETools
+IAESlide subclass: #IAEAbstractCodeSnippetSlide
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAETools methodsFor: 'accessing'!
+!IAEAbstractCodeSnippetSlide methodsFor: 'accessing'!
 
-backgroundColor
-	^ 'rgb(150, 60, 60)'
+title
+	^ nil
+! !
+
+!IAEAbstractCodeSnippetSlide methodsFor: 'rendering'!
+
+renderSlideOn: html
+	self title ifNotNil: [html h1: self title].
+	html div
+		class: 'center';
+		with: [ self renderJava: self snippet on: html ].
 !
 
 cssClass
-	^'slide black'
-! !
-
-!IAETools methodsFor: 'rendering'!
-
-renderSlideOn: html
-	html div
-		class: 'section center';
-		with: [	html img: 'iae/images/tools.jpg'.
-                      		html h1: 'TOOLS'				]
+	^'slide blue3d'
 ! !
 
 IAESlide subclass: #IAEProject
@@ -754,16 +855,32 @@ renderSlideOn: html
                       			img: 'iae/images/project.jpg']
 ! !
 
-IAESlide subclass: #IAEPractices
+IAEAbstractCodeSnippetSlide subclass: #IAEJFrame
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAEPractices methodsFor: 'rendering'!
+!IAEJFrame methodsFor: 'accessing'!
 
-renderSlideOn: html
-	html h1 
-		class: 'big';
-		with: 'Practices'.
+snippet
+	^ 
+'import javax.swing.*;
+
+    public class MyFirstFrame extends JFrame {
+      public MyFirstFrame(){
+        setTitle("My first GUI application");
+        setSize(200, 200);
+      }
+      
+      
+      public static void main(String[] args) {
+        MyFirstFrame f = new MyFirstFrame();
+        f.setVisible(true);
+      }
+    }'
+!
+
+title
+	^ 'A simple window'
 ! !
 
 IAESlide subclass: #IAELearn
@@ -784,16 +901,27 @@ renderSlideOn: html
 		with: 'LEARN'.
 ! !
 
-IAESlide subclass: #IAEToolMisused
+IAEAbstractCodeSnippetSlide subclass: #IAEJLabel
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAEToolMisused methodsFor: 'not yet classified'!
+!IAEJLabel methodsFor: 'not yet classified'!
 
-renderSlideOn: html
-	html div
-		class: 'center section';
-		with: [html img: 'iae/images/blame_tool.png']
+snippet
+	^
+'public class MyFirstFrame extends JFrame {
+      public MyFirstFrame(){
+        setTitle("My first GUI application");
+        setSize(200, 200);
+        
+        JLabel lblHello = new JLabel("Hello world !!");
+        getContentPane().add(lblHello);
+      }
+    }'
+!
+
+title
+	^ 'Add a label inside'
 ! !
 
 IAESlide subclass: #IAEContinuousIntegration
@@ -822,26 +950,28 @@ renderSlideOn: html
                 	]
 ! !
 
-IAESlide subclass: #IAEExtremeProgramming
+IAEAbstractCodeSnippetSlide subclass: #IAEJFramePack
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAEExtremeProgramming methodsFor: 'accessing'!
+!IAEJFramePack methodsFor: 'not yet classified'!
 
-cssClass
-	^'slide black'
-! !
+snippet
+	^
+' public class MyFirstFrame extends JFrame {
+      public MyFirstFrame(){
+        setTitle("My first GUI application");
+        
+        JLabel lblHello = new JLabel("Hello world !!");
+        getContentPane().add(lblHello);
 
-!IAEExtremeProgramming methodsFor: 'rendering'!
+        pack();
+      }
+    }'
+!
 
-renderSlideOn: html
-	html h3
-		class: 'center';
-		with: 'eXtreme Programming'.
-	html iframe 
-		width:560;
-		height:315;
-		src:'http://www.youtube.com/embed/Ytu1Hxzr_Bs'
+title
+	^ ' Resize container automatically with pack()'
 ! !
 
 IAESlide subclass: #IAETracker
@@ -856,30 +986,38 @@ renderSlideOn: html
 	html img: 'iae/images/issues.png'.
 ! !
 
-IAESlide subclass: #IAEVCS
+IAEAbstractCodeSnippetSlide subclass: #IAEGridLayout
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAEVCS methodsFor: 'accessing'!
+!IAEGridLayout methodsFor: 'not yet classified'!
 
-cssClass
-	^ 'slide black'
+snippet
+	^
+'public class MySecondFrame extends JFrame {
+    public MySecondFrame(){
+      initLayout();
+      initWidgets();
+      pack();
+    }
+    
+    private void initLayout(){
+      // 3 rows, 2 colums
+      setLayout(new GridLayout(3,2)); 
+    }
+    
+    private void initWidgets(){
+      for (int i=0; i<5; i++) {
+        JButton btn = new JButton("Button n" + 
+                                Integer.toString(i));
+        getContentPane().add(btn);
+      }
+    }
+}'
 !
 
-backgroundColor
-	^ 'rgb(234, 242, 245)'
-! !
-
-!IAEVCS methodsFor: 'rendering'!
-
-renderSlideOn: html
-	html div
-		class: 'section center';
-		with: [
-			html
-				h1: 'Version Control System';
-				img: 'iae/images/vcs.png'.
-                 ]
+title
+	^ 'Arrange widgets'
 ! !
 
 IAESlide subclass: #IAEContinuousDelivery
@@ -898,24 +1036,38 @@ renderSlideOn: html
 		with: [ html img: 'iae/images/continuousDelivery.jpg' ].
 ! !
 
-IAESlide subclass: #IAETDDCycle
+IAEAbstractCodeSnippetSlide subclass: #IAEActionListener
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAETDDCycle methodsFor: 'accessing'!
+!IAEActionListener methodsFor: 'not yet classified'!
 
-backgroundColor
-	^ 'rgb(3, 146, 187)'
-! !
+snippet
+	^ 
+'import javax.swing.*;
+import java.awt.event.*;
 
-!IAETDDCycle methodsFor: 'rendering'!
+public class MyThirdFrame extends JFrame 
+	                  implements ActionListener {
+  JButton sayHelloButton;
+      
+  public MyThirdFrame(){
+        sayHelloButton = new JButton("Hello!!");
+        getContentPane().add(sayHelloButton);
+        
+        sayHelloButton.addActionListener(this);
+        pack();
+  }
 
-renderSlideOn: html
-	html div
-		class: 'section center';
-		with: [	html 
-                       			img: 'iae/images/tdd_cycle.gif'
-                    ]
+  @Override
+  public void actionPerformed(ActionEvent event) {
+        System.out.println("Hello !!!!!!");
+   }
+}'
+!
+
+title
+	^ 'Generic event handling'
 ! !
 
 IAESlide subclass: #IAEScrum
@@ -934,33 +1086,39 @@ renderSlideOn: html
 	html h1: 'SCRUM'.
 ! !
 
-IAESlide subclass: #IAESummary
+IAEAbstractCodeSnippetSlide subclass: #IAEActionListenerGetSource
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAESummary methodsFor: 'rendering'!
+!IAEActionListenerGetSource methodsFor: 'not yet classified'!
 
-renderSlideOn: html
-        html h1
-		class: 'blue';
-		with: 'Summary'.
-	html div
-		class: 'center big red';
-		with: [
-			html ul
-				class: 'left-column nobullet';
-				with: [	html 
-        	        	      			li: 'Tracker';
-	                      				li: 'VCS';
-                	      				li: 'Manager';
-                      					li: 'TDD'	].
-			html ul
-				class: 'right-column nobullet';
-				with: [	html 
-                                       			li: 'XP';
-                      					li: 'CI';
-                      					li: 'CD';
-                      					li: 'Scrum'	] ].
+snippet
+	^
+'public class MyThirdFrame extends JFrame 
+                        implements ActionListener {
+  public MyThirdFrame(){
+    setLayout(new FlowLayout());
+    addButton("Hello !!");
+    addButton("Good Bye !!");
+    pack();
+  }
+      
+  public void addButton(String label) {
+    JButton buttonToAdd = new JButton(label);
+    getContentPane().add(buttonToAdd);
+    buttonToAdd.addActionListener(this);
+  }
+
+  @Override
+  public void actionPerformed(ActionEvent event) {
+    JButton clickedButton = (JButton)event.getSource();
+    System.out.println(clickedButton.getText());
+  }
+}'
+!
+
+title
+	^ 'Get source of event'
 ! !
 
 IAEPresentation subclass: #IAETDDIntroduction
@@ -1002,7 +1160,7 @@ description
 !IAETDDIntroduction class methodsFor: 'accessing'!
 
 title
-	^'TDD Introduction'
+	^'IAE - TDD Introduction'
 ! !
 
 !IAETDDIntroduction class methodsFor: 'testing'!
@@ -1011,36 +1169,35 @@ isConcrete
 	^true
 ! !
 
-IAESlide subclass: #IAECalculatorTest
+IAEAbstractCodeSnippetSlide subclass: #IAEMouseListener
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAECalculatorTest methodsFor: 'accessing'!
+!IAEMouseListener methodsFor: 'not yet classified'!
 
 snippet
-	^  
-'import junit.framework.TestCase;
+	^ 
+'public class AnotherFrame implements MouseListener {
+      public AnotheFrame(){
+        ...
+        aComponent.addMouseListener(this);
+        ...
+      }
 
-public class TestCalculator extends TestCase { 
-  public void testTwoPowerTwoEqualsFour (){
-    Calculator calc = new Calculator (); 
-    assertEquals(4, calc.power(2, 2));
-  }
-}'
+      public void mousePressed(MouseEvent e) {...}
+
+      public void mouseReleased(MouseEvent e) {...}
+
+      public void mouseEntered(MouseEvent e) {...}
+
+      public void mouseExited(MouseEvent e) {...}
+
+      public void mouseClicked(MouseEvent e) {...}
+    }'
 !
 
-cssClass
-	^'slide red3d'
-! !
-
-!IAECalculatorTest methodsFor: 'rendering'!
-
-renderSlideOn: html
-	html h1: 'Write a test'.
-	html div
-		class: 'center';
-		with: [	
-                  		self renderJava: self snippet on: html ].
+title
+	^ 'Handling mouse events'
 ! !
 
 IAESlide subclass: #IAECalculatorFirstImplementation
@@ -1071,40 +1228,36 @@ renderSlideOn: html
 		with: [ self renderJava: self snippet on: html ].
 ! !
 
-IAESlide subclass: #IAECalculatorSecondTest
+IAEAbstractCodeSnippetSlide subclass: #IAEJTextField
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAECalculatorSecondTest methodsFor: 'accessing'!
-
-cssClass
-	^'slide red3d'
-!
+!IAEJTextField methodsFor: 'not yet classified'!
 
 snippet
-	^  
-'import junit.framework.TestCase;
+	^
+'public class FrameWithTextField extends JFrame 
+                              implements KeyListener {
+      JTextField nameInput; 
 
-public class TestCalculator extends TestCase { 
-  public void testTwoPowerTwoEqualsFour (){
-    Calculator calc = new Calculator (); 
-    assertEquals(4, calc.power(2, 2));
-  }
+      public FrameWithTextField(){
+        nameInput = new JTextField(20);
+        nameInput.addKeyListener(this);
+        getContentPane().add(nameInput);
+        pack();
+      }
 
-  public void testThreePowerFourEqualsEightyOne() { 
-    Calculator calc = new Calculator ();
-    assertEquals(81, calc.power(3, 4));
-  }
-}'
-! !
+      @Override
+      public void keyPressed(KeyEvent event) {
+        if (event.getKeyCode() == KeyEvent.VK_ENTER) {
+          System.out.println(nameInput.getText());
+        }
+      }
+    }'
+!
 
-!IAECalculatorSecondTest methodsFor: 'rendering'!
-
-renderSlideOn: html
-	html h1: 'Write another test'.
-	html div
-		class: 'center';
-		with: [  self renderJava: self snippet on: html ].
+title
+	^ 'Keyboard events'
 ! !
 
 IAESlide subclass: #IAECalculatorSecondImplementation
@@ -1136,44 +1289,39 @@ renderSlideOn: html
 		with: [	self renderJava: self snippet on: html ].
 ! !
 
-IAESlide subclass: #IAECalculatorRefactor
+IAEAbstractCodeSnippetSlide subclass: #IAEJComboBox
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAECalculatorRefactor methodsFor: 'accessing'!
-
-cssClass
-	^ 'slide blue3d'
-!
+!IAEJComboBox methodsFor: 'not yet classified'!
 
 snippet
-	^  
-'import junit.framework.TestCase;
-
-public class TestCalculator extends TestCase { 
-  protected Calculator calc;
-
-  public void setUp() {
-    this.calc = new Calculator (); 
+	^
+'public class FrameWithComboBox extends JFrame 
+                           implements ActionListener {
+  JComboBox movieSelect;       
+  public FrameWithComboBox(){
+    movieSelect = new JComboBox();
+    movieSelect.addItem("Dr No");
+    movieSelect.addItem("Goldfinger");
+    movieSelect.addItem("Die another day");
+    movieSelect.addActionListener(this);
+        
+    getContentPane().add(movieSelect);
+    pack();
   }
 
-  public void testTwoPowerTwoEqualsFour (){
-    assertEquals(4, this.calc.power(2, 2));
-  }
-
-  public void testThreePowerFourEqualsEightyOne() { 
-    assertEquals(81, this.calc.power(3, 4));
+  @Override
+  public void actionPerformed(ActionEvent e) {
+    String selectedMovie = 
+               (String)movieSelect.getSelectedItem();
+    System.out.println(selectedMovie);
   }
 }'
-! !
+!
 
-!IAECalculatorRefactor methodsFor: 'rendering'!
-
-renderSlideOn: html
-	html h1: 'Refactor'.
-       	html div
-		class: 'center';
-		with: [	self renderJava: self snippet on: html ].
+title
+	^ 'JComboBox'
 ! !
 
 IAESlide subclass: #IAECalculatorTestJUnit4
@@ -1217,42 +1365,37 @@ renderSlideOn: html
 		with: [  self renderJava: self snippet on: html ].
 ! !
 
-IAESlide subclass: #IAETDDLargestExercise
+IAEAbstractCodeSnippetSlide subclass: #IAEJList
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAETDDLargestExercise methodsFor: 'accessing'!
+!IAEJList methodsFor: 'not yet classified'!
 
 snippet
 	^
-'public class Largest {
-  public static int largest(int [] list ) {
-    int index, max = Integer.MAX_VALUE;
+'public class Hero {
+    String name;
+    public Hero(String name) { this.name = name; }
+}
 
-    for (index = 0; index < list.length−1; index++) {
-      if (list[index]>max) {
-        max= list[index];
-      }
-      return max; 
-    }
-  } 
+public class FrameWithList extends JFrame {
+  JList namesList;
+  DefaultListModel heroes;
+      
+  public FrameWithList(){
+    heroes = new DefaultListModel();
+    heroes.addElement(new Hero("Spiderman"));
+    heroes.addElement(new Hero("Batman"));
+    
+    namesList = new JList(heroes);
+    getContentPane().add(namesList);
+    pack();
+  }
 }'
 !
 
-cssClass
-	^ 'slide blue3d'
-! !
-
-!IAETDDLargestExercise methodsFor: 'rendering'!
-
-renderSlideOn: html
-	html div 
-		class: 'center';
-		with: [	html h1: 'Largest number in a list'.
-                       		self renderJava: self snippet on: html.
-                      		html h1
-                       			class: 'red'; 
-                       			with: 'fix it !!'].
+title
+	^ 'JList with Objects'
 ! !
 
 IAESlide subclass: #IAESectionExercises
@@ -1275,34 +1418,29 @@ renderSlideOn: html
                        			with: 'EXERCICES'	].
 ! !
 
-IAESlide subclass: #IAETDDLargestExerciseFirstTest
+IAEAbstractCodeSnippetSlide subclass: #IAEModelView
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAETDDLargestExerciseFirstTest methodsFor: 'accessing'!
+!IAEModelView methodsFor: 'not yet classified'!
 
 snippet
 	^
-'public class TestLargest  { 
-  @Test
-  public void testOrder () {
-    assertEquals(9, 
-                 Largest.largest(new int[] {8,9,7})); 
-  }
-￼￼￼￼￼￼}'
+' public class Hero {
+      String name;
+      
+      public Hero(String name){
+        this.name = name;
+      }
+      
+      public String toString(){
+        return "I''m" + this.name;
+      }
+    }'
 !
 
-cssClass
-	^ 'slide red3d'
-! !
-
-!IAETDDLargestExerciseFirstTest methodsFor: 'rendering'!
-
-renderSlideOn: html
-	html h1: 'First test'.
-	html div
-		class: 'center';
-		with: [	self renderJava: self snippet on: html	].
+title
+	^ 'Defining object string representation'
 ! !
 
 IAESlide subclass: #IAETDDStackExercise
@@ -1355,24 +1493,20 @@ renderSlideOn: html
 		with: [	self renderJava: self snippet on: html  ].
 ! !
 
-IAEPresentation subclass: #IAEAllSlides
+IAESlide subclass: #IAEAbstractImageSlide
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAEAllSlides methodsFor: 'accessing'!
+!IAEAbstractImageSlide methodsFor: 'not yet classified'!
 
-description
-	^ 'Used to browse all slides'
+renderSlideOn: html
+	html div 
+		class: 'section center';
+		with: [	html img: 'iae/images/', self imageFile]
 !
 
-slideClasses
-	^ (IAESlide allSubclasses select: [:aSlideClass| aSlideClass subclasses isEmpty]) sort: [:a :b | a name < b name].
-! !
-
-!IAEAllSlides class methodsFor: 'accessing'!
-
-isConcrete
-	^ true
+cssClass
+	^'slide green3d'
 ! !
 
 IAESlide subclass: #IAETDDLargestVideo
@@ -1397,22 +1531,14 @@ renderSlideOn: html
 		src:'http://player.vimeo.com/video/29681165?title=0&amp;byline=0&amp;portrait=0'
 ! !
 
-IAESlide subclass: #IAETDDStackFixtures
+IAEAbstractImageSlide subclass: #IAEJFrameSnapshot
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAETDDStackFixtures methodsFor: 'rendering'!
+!IAEJFrameSnapshot methodsFor: 'not yet classified'!
 
-renderSlideOn: html
-	html h1: 'One class per context / fixture'.
-	html div
-		class: '';
-		with: [	html ul: [
-          				html 
-          					li: 'EmptyStackTest';
-          					li: 'StackWithStringMilesTest';
-          					li: 'StackWithStringsMilesMarcusHerbieTest'	 ]
-                       ]
+imageFile
+	^ 'swing/first_frame.png'
 ! !
 
 IAESlide subclass: #IAETDDTestExceptionThrown
@@ -1447,6 +1573,679 @@ renderSlideOn: html
 		class: 'center';
 		with: [	html h1: 'Test exception is thrown'.
                        		self renderJava: self snippet on: html 	]
+! !
+
+IAEAbstractImageSlide subclass: #IAEJLabelSnapshot
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEJLabelSnapshot methodsFor: 'not yet classified'!
+
+imageFile
+	^ 'swing/frame_label.png'
+! !
+
+IAESlide subclass: #IAETDDBookAstels
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAETDDBookAstels methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide black'
+! !
+
+!IAETDDBookAstels methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1: 'TDD: A practical guide - Dave Astels'.
+	html div
+		class: 'center';
+		with: [ html img: 'iae/images/astels_tdd_book.jpg' ]
+! !
+
+IAEAbstractImageSlide subclass: #IAEJFramePackSnapshot
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEJFramePackSnapshot methodsFor: 'not yet classified'!
+
+imageFile
+	^ 'swing/frame_pack.png'
+! !
+
+IAESlide subclass: #IAEParcours
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEParcours methodsFor: 'accessing'!
+
+backgroundColor
+	^ '#dfd'
+! !
+
+!IAEParcours methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html img src: 'iae/images/parcours.png'
+! !
+
+IAEAbstractImageSlide subclass: #IAEGridLayoutSnapshot
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEGridLayoutSnapshot methodsFor: 'not yet classified'!
+
+imageFile
+	^ 'swing/grid_layout_3_2.png'
+! !
+
+IAESlide subclass: #IAEProgramming
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEProgramming methodsFor: 'accessing'!
+
+backgroundColor
+	^ '#333'
+! !
+
+!IAEProgramming methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html 
+		h1 
+			class: 'center big';
+			with: 'Programming'.
+	html img: 'iae/images/human_evolution.jpg'
+! !
+
+IAESlide subclass: #IAEFlowLayoutSnapshot
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEFlowLayoutSnapshot methodsFor: 'not yet classified'!
+
+renderSlideOn: html
+	html div 
+		class: 'section center';
+		with: [	
+				html h1: 'Flow layout'.
+                  		html 
+                       			p: [  html img: 'iae/images/swing/flow_layout1.png' ];
+                       			p: [  html img: 'iae/images/swing/flow_layout2.png'] ]
+! !
+
+IAESlide subclass: #IAEGitHub
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEGitHub methodsFor: 'rendering'!
+
+renderSlideOn: html
+          html a 
+          	href: 'http://www.github.com'; 
+          	with: 'github' .
+          
+	 html img: 'iae/images/github_network.png'.
+! !
+
+IAEAbstractImageSlide subclass: #IAETextFieldSnapshot
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAETextFieldSnapshot methodsFor: 'not yet classified'!
+
+imageFile
+	^ 'swing/text_field.png'
+! !
+
+IAESlide subclass: #IAEPractices
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEPractices methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1 
+		class: 'big';
+		with: 'Practices'.
+! !
+
+IAEAbstractImageSlide subclass: #IAEComboBoxSnapshot
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEComboBoxSnapshot methodsFor: 'not yet classified'!
+
+imageFile
+	^ 'swing/combo_box.png'
+! !
+
+IAESlide subclass: #IAEExtremeProgramming
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEExtremeProgramming methodsFor: 'accessing'!
+
+cssClass
+	^'slide black'
+! !
+
+!IAEExtremeProgramming methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h3
+		class: 'center';
+		with: 'eXtreme Programming'.
+	html iframe 
+		width:560;
+		height:315;
+		src:'http://www.youtube.com/embed/Ytu1Hxzr_Bs'
+! !
+
+IAEAbstractImageSlide subclass: #IAEJListSnapshot
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEJListSnapshot methodsFor: 'not yet classified'!
+
+imageFile
+	^ 'swing/jlist1.png'
+! !
+
+IAESlide subclass: #IAETDDCycle
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAETDDCycle methodsFor: 'accessing'!
+
+backgroundColor
+	^ 'rgb(3, 146, 187)'
+! !
+
+!IAETDDCycle methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html div
+		class: 'section center';
+		with: [	html 
+                       			img: 'iae/images/tdd_cycle.gif'
+                    ]
+! !
+
+IAEAbstractImageSlide subclass: #IAEJListModelSnapshot
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEJListModelSnapshot methodsFor: 'not yet classified'!
+
+imageFile
+	^ 'swing/jlist2.png'
+! !
+
+IAESlide subclass: #IAECalculatorTest
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAECalculatorTest methodsFor: 'accessing'!
+
+snippet
+	^  
+'import junit.framework.TestCase;
+
+public class TestCalculator extends TestCase { 
+  public void testTwoPowerTwoEqualsFour (){
+    Calculator calc = new Calculator (); 
+    assertEquals(4, calc.power(2, 2));
+  }
+}'
+!
+
+cssClass
+	^'slide red3d'
+! !
+
+!IAECalculatorTest methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1: 'Write a test'.
+	html div
+		class: 'center';
+		with: [	
+                  		self renderJava: self snippet on: html ].
+! !
+
+IAEAbstractImageSlide subclass: #IAEFrameTPSnapshot
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEFrameTPSnapshot methodsFor: 'not yet classified'!
+
+imageFile
+	^ 'swing/tp_gui.png'
+! !
+
+IAESlide subclass: #IAECalculatorRefactor
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAECalculatorRefactor methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide blue3d'
+!
+
+snippet
+	^  
+'import junit.framework.TestCase;
+
+public class TestCalculator extends TestCase { 
+  protected Calculator calc;
+
+  public void setUp() {
+    this.calc = new Calculator (); 
+  }
+
+  public void testTwoPowerTwoEqualsFour (){
+    assertEquals(4, this.calc.power(2, 2));
+  }
+
+  public void testThreePowerFourEqualsEightyOne() { 
+    assertEquals(81, this.calc.power(3, 4));
+  }
+}'
+! !
+
+!IAECalculatorRefactor methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1: 'Refactor'.
+       	html div
+		class: 'center';
+		with: [	self renderJava: self snippet on: html ].
+! !
+
+IAESlide subclass: #IAEJavaSwingResources
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEJavaSwingResources methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1: 'Resources'.
+	html  ul: [
+          html li: [html a
+			href: 'http://download.oracle.com/javase/tutorial/uiswing/';
+			with: 'Trail: Creating a GUI With JFC/Swing'].
+
+	  html li: [html a
+			href: 'http://www.uispec4j.org/';
+			with: 'Testing GUI with UISpec4J'].
+          
+          html li: [	html a
+			href: 'http://lolgzs.free.fr/iae-course/iae/tp2/ToDoList.zip';
+			with: 'Download correction on Swing Exercise'].
+
+	html li: [	html a
+			href: 'http://lolgzs.free.fr/iae-course/iae/tp2/ToDoList_Correction.zip';
+			with: 'Download correction on UISpec Exercise'].
+         ]
+! !
+
+IAESlide subclass: #IAETDDLargestExerciseFirstTest
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAETDDLargestExerciseFirstTest methodsFor: 'accessing'!
+
+snippet
+	^
+'public class TestLargest  { 
+  @Test
+  public void testOrder () {
+    assertEquals(9, 
+                 Largest.largest(new int[] {8,9,7})); 
+  }
+￼￼￼￼￼￼}'
+!
+
+cssClass
+	^ 'slide red3d'
+! !
+
+!IAETDDLargestExerciseFirstTest methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1: 'First test'.
+	html div
+		class: 'center';
+		with: [	self renderJava: self snippet on: html	].
+! !
+
+IAEAbstractCodeSnippetSlide subclass: #IAEUISpec
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEUISpec methodsFor: 'not yet classified'!
+
+title
+	^ 'Test with UISpec'
+!
+
+snippet
+	^
+'public class EmptyToDoEditor {
+  protected ToDoEditor editor;
+  protected Window editorSpec;
+
+  @Before
+  public void setUpEditor() {
+    this.editor = new ToDoEditor();
+    this.editorSpec = new Window(this.editor);
+  }
+	
+  @Test
+  public void listBoxShouldBeEmpty() {
+    assertThat(this.editorSpec.getListBox().isEmpty());
+  }
+'
+! !
+
+IAESlide subclass: #IAETDDStackFixtures
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAETDDStackFixtures methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1: 'One class per context / fixture'.
+	html div
+		class: '';
+		with: [	html ul: [
+          				html 
+          					li: 'EmptyStackTest';
+          					li: 'StackWithStringMilesTest';
+          					li: 'StackWithStringsMilesMarcusHerbieTest'	 ]
+                       ]
+! !
+
+IAESlide subclass: #IAEUISpecVideo
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEUISpecVideo methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h3
+		class: 'center';
+		with: 'TDD with UISpec'.
+	html iframe 
+		width:400;
+		height:300;
+		src:'http://player.vimeo.com/video/30958504?title=0&amp;byline=0&amp;portrait=0'
+! !
+
+IAEPresentation subclass: #IAESoftwareDevPresentation
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAESoftwareDevPresentation methodsFor: 'accessing'!
+
+description
+	^'IAE - M1 MTI - 2011. Software development tools and practices overview'
+!
+
+slideClasses
+	^ {
+	IAEIntroSlide. 
+	IAEParcours.
+	IAEPharocasts.
+	IAEAmber.
+	IAECara74.
+	IAECourseContent.
+	IAEAgileGrenoble.
+	IAEWhatIsSoftwareDevelopment.
+	IAEProject.
+	IAEProgramming.
+	IAETeamWork.
+	IAETools.
+	IAEToolMisused.
+	IAEPractices.
+	IAETracker.
+	IAEVCS.
+	IAEGitHub.
+	IAETDDCycle.
+	IAEContinuousIntegration.
+	IAEContinuousDelivery.
+	IAEExtremeProgramming.
+	IAEScrum.
+	IAESummary.
+	IAELearn
+}
+! !
+
+!IAESoftwareDevPresentation class methodsFor: 'accessing'!
+
+title
+	^'IAE - Software Development'
+! !
+
+!IAESoftwareDevPresentation class methodsFor: 'testing'!
+
+isConcrete
+	^true
+! !
+
+IAEPresentation subclass: #IAEMocks
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEMocks methodsFor: 'not yet classified'!
+
+description
+	^ 'IAE - M1 MTI - 2011. How to isolate tested objects with Mocks'
+!
+
+slideClasses
+	^ {
+	IAEIntroSlide.
+	IAETestDependencies.
+	IAEMockMovieEditor.
+	IAEEasyMockVideo.
+	IAEMockResources.
+	IAESectionExercises.
+	IAEMovieApplication.
+	IAEMovieApplicationMVC
+}
+! !
+
+!IAEMocks class methodsFor: 'accessing'!
+
+title
+	^ 'IAE - Mocks'
+! !
+
+!IAEMocks class methodsFor: 'testing'!
+
+isConcrete
+	^ true
+! !
+
+IAESlide subclass: #IAEAgileGrenoble
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEAgileGrenoble methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html div
+		class: 'section center';
+		with: [	html a 
+					href:  'http://agile-grenoble.org/'; 
+					with: [html img: 'iae/images/ag2011.png'].
+                      		
+                                html div 
+                                         class: 'right'; 
+                                         with: 'jeudi 24 novembre']
+! !
+
+IAEAbstractImageSlide subclass: #IAETestDependencies
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAETestDependencies methodsFor: 'accessing'!
+
+title
+	^ 'Isolate objects'
+!
+
+imageFile
+	^ 'test_dependencies.png'
+! !
+
+IAESlide subclass: #IAEToolMisused
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEToolMisused methodsFor: 'not yet classified'!
+
+renderSlideOn: html
+	html div
+		class: 'center section';
+		with: [html img: 'iae/images/blame_tool.png']
+! !
+
+IAEAbstractImageSlide subclass: #IAEMockMovieEditor
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEMockMovieEditor methodsFor: 'accessing'!
+
+title
+	^ 'Mock MovieEditor object'
+!
+
+imageFile
+	^ 'mock_movies.png'
+!
+
+cssClass
+	^'slide blue3d'
+! !
+
+IAESlide subclass: #IAESummary
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAESummary methodsFor: 'rendering'!
+
+renderSlideOn: html
+        html h1
+		class: 'blue';
+		with: 'Summary'.
+	html div
+		class: 'center big red';
+		with: [
+			html ul
+				class: 'left-column nobullet';
+				with: [	html 
+        	        	      			li: 'Tracker';
+	                      				li: 'VCS';
+                	      				li: 'Manager';
+                      					li: 'TDD'	].
+			html ul
+				class: 'right-column nobullet';
+				with: [	html 
+                                       			li: 'XP';
+                      					li: 'CI';
+                      					li: 'CD';
+                      					li: 'Scrum'	] ].
+! !
+
+IAESlide subclass: #IAEEasyMockVideo
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEEasyMockVideo methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h3
+		class: 'center';
+		with: 'EasyMock'.
+	html iframe 
+		width:400;
+		height:300;
+		src:'http://player.vimeo.com/video/31692069?title=0&amp;byline=0&amp;portrait=0'
+! !
+
+IAESlide subclass: #IAETDDLargestExercise
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAETDDLargestExercise methodsFor: 'accessing'!
+
+snippet
+	^
+'public class Largest {
+  public static int largest(int [] list ) {
+    int index, max = Integer.MAX_VALUE;
+
+    for (index = 0; index < list.length−1; index++) {
+      if (list[index]>max) {
+        max= list[index];
+      }
+      return max; 
+    }
+  } 
+}'
+!
+
+cssClass
+	^ 'slide blue3d'
+! !
+
+!IAETDDLargestExercise methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html div 
+		class: 'center';
+		with: [	html h1: 'Largest number in a list'.
+                       		self renderJava: self snippet on: html.
+                      		html h1
+                       			class: 'red'; 
+                       			with: 'fix it !!'].
+! !
+
+IAESlide subclass: #IAEMockResources
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEMockResources methodsFor: 'not yet classified'!
+
+renderSlideOn: html
+	html h1: 'Resources'.
+	html  ul: [
+          html li: [html a
+			href: 'http://www.easymock.org/';
+			with: 'EasyMock'].
+
+	  html li: [html a
+			href: 'http://code.google.com/p/mockito/';
+			with: 'Mockito'].
+          
+          html li: [	html a
+			href: 'http://code.google.com/p/powermock/';
+			with: 'PowerMock'].
+
+	html li: [	html a
+			href: 'http://lolgzs.free.fr/iae-course/iae/tp3/ToDoListEasyMock.zip';
+			with: 'Download correction on MVC + EasyMock Exercise'].
+         ]
+!
+
+cssClass
+	^'slide blue3d'
 ! !
 
 IAESlide subclass: #IAETDDTestExceptionNotThrown
@@ -1485,926 +2284,85 @@ renderSlideOn: html
 		with: [ self renderJava: self snippet on: html 	]
 ! !
 
-IAESlide subclass: #IAETDDBookAstels
+IAESlide subclass: #IAETools
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAETDDBookAstels methodsFor: 'accessing'!
+!IAETools methodsFor: 'accessing'!
 
-cssClass
-	^ 'slide black'
-! !
-
-!IAETDDBookAstels methodsFor: 'rendering'!
-
-renderSlideOn: html
-	html h1: 'TDD: A practical guide - Dave Astels'.
-	html div
-		class: 'center';
-		with: [ html img: 'iae/images/astels_tdd_book.jpg' ]
-! !
-
-IAESlide subclass: #IAETDDBookBeck
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAETDDBookBeck methodsFor: 'accessing'!
-
-cssClass
-	^ 'slide green3d'
-! !
-
-!IAETDDBookBeck methodsFor: 'rendering'!
-
-renderSlideOn: html
-	html h1: 'TDD By Example - Kent Beck'.
-	html div
-		class: 'center';
-		with: [ html img: 'iae/images/beck_tdd_book.jpg' ]
-! !
-
-IAESlide subclass: #IAETDDBookThomas
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAETDDBookThomas methodsFor: 'accessing'!
-
-cssClass
-	^ 'slide blue3d'
-! !
-
-!IAETDDBookThomas methodsFor: 'rendering'!
-
-renderSlideOn: html
-	html div
-		class: 'center';
-		with: [ 
-			html h1: 'Pragmatic Unit Testing - Dave Thomas'.
-                 	 html img: 'iae/images/prag_unit_test_book.jpg' ]
-! !
-
-IAEPresentation subclass: #IAEMovieApplicationPresentation
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEMovieApplicationPresentation methodsFor: 'accessing'!
-
-description
-	^'IAE - M1 MTI - 2011. Swing application with TDD'
+backgroundColor
+	^ 'rgb(150, 60, 60)'
 !
-
-slideClasses
-	^ {
-		IAEIntroSlide.
-		IAEMovieApplication.
-		IAEMVC.
-		IAEMovieList
-}
-! !
-
-!IAEMovieApplicationPresentation class methodsFor: 'accessing'!
-
-isConcrete
-	^true
-!
-
-title
-	^ 'Movie application'
-! !
-
-IAESlide subclass: #IAEMovieApplication
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEMovieApplication methodsFor: 'accessing'!
-
-cssClass
-	^ 'slide black'
-! !
-
-!IAEMovieApplication methodsFor: 'rendering'!
-
-renderSlideOn: html
-	html div
-		class: 'center';
-		with: [ html img: 'iae/images/MoviesEditor.png' ]
-! !
-
-IAESlide subclass: #IAETDDStackExerciseVideo
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAETDDStackExerciseVideo methodsFor: 'accessing'!
 
 cssClass
 	^'slide black'
 ! !
 
-!IAETDDStackExerciseVideo methodsFor: 'rendering'!
+!IAETools methodsFor: 'rendering'!
 
 renderSlideOn: html
-	html h3
-		class: 'center';
-		with: 'Stack exercise'.
-	html iframe 
-		width:400;
-		height:300;
-		src:'http://player.vimeo.com/video/29788542?title=0&amp;byline=0&amp;portrait=0'
-! !
-
-IAESlide subclass: #IAEMVC
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEMVC methodsFor: 'accessing'!
-
-backgroundColor
-	^ 'black'
-! !
-
-!IAEMVC methodsFor: 'rendering'!
-
-renderSlideOn: html
-	html style: '
-#IAEMVC {
-  background: url(iae/images/mvc.jpg)  no-repeat center center;
-  background-color: #333; 
-}'
-! !
-
-IAESlide subclass: #IAEMovieList
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEMovieList methodsFor: 'accessing'!
-
-slideClass
-	^ 'slide blue3d'
-! !
-
-!IAEMovieList methodsFor: 'rendering'!
-
-renderSlideOn: html
-	html h1: 'Classes MovieList et Movie'.
-	html ol: [
-          html 
-          	li: 'un film a un titre';
-          	li: 'on peut rajouter et retirer un film de la liste';
-          	li: 'on peut renommer le titre d''un film.';
-          	li: 'le titre ne peut etre (null) ou une chaîne vide - IllegalArgumentException';
-          	li: 'on ne peut pas ajouter deux films avec le même titre dans la liste - DuplicateMovieException (note : ArrayList.contains appelle Movie.equals)'
-        ].
-
-	html a
-		class: 'right';
-		href: 'http://lolgzs.free.fr/iae-course/iae/tp1/iMovies.zip';
-		with: 'Télécharger la correction'
-! !
-
-IAEPresentation subclass: #IAEJavaSwing
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEJavaSwing methodsFor: 'accessing'!
-
-description
-	^'IAE - M1 MTI - 2011'
-!
-
-slideClasses
-	^ {
-IAEIntroSlide.
-IAEJFrame.
-IAEJFrameSnapshot.
-IAEJLabel.
-IAEJLabelSnapshot.
-IAEJFramePack.
-IAEJFramePackSnapshot.
-IAEGridLayout.
-IAEGridLayoutSnapshot.
-IAEFlowLayoutSnapshot.
-IAEActionListener.
-IAEActionListenerGetSource.
-IAEMouseListener.
-IAEJTextField.
-IAETextFieldSnapshot.
-IAEJComboBox.
-IAEComboBoxSnapshot.
-IAEJList.
-IAEJListSnapshot.
-IAEModelView.
-IAEJListModelSnapshot.
-IAEUISpec.
-IAEJavaSwingResources.
-IAESectionExercises.
-IAEFrameTPSnapshot.
-IAEUISpecVideo
-}
-! !
-
-!IAEJavaSwing class methodsFor: 'accessing'!
-
-title
-	^ 'Java Swing'
-! !
-
-!IAEJavaSwing class methodsFor: 'testing'!
-
-isConcrete
-	^true
-! !
-
-IAESlide subclass: #IAEAbstractCodeSnippetSlide
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEAbstractCodeSnippetSlide methodsFor: 'accessing'!
-
-title
-	^ nil
-! !
-
-!IAEAbstractCodeSnippetSlide methodsFor: 'rendering'!
-
-renderSlideOn: html
-	self title ifNotNil: [html h1: self title].
 	html div
-		class: 'center';
-		with: [ self renderJava: self snippet on: html ].
-!
-
-cssClass
-	^'slide blue3d'
-! !
-
-IAEAbstractCodeSnippetSlide subclass: #IAEJFrame
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEJFrame methodsFor: 'accessing'!
-
-snippet
-	^ 
-'import javax.swing.*;
-
-    public class MyFirstFrame extends JFrame {
-      public MyFirstFrame(){
-        setTitle("My first GUI application");
-        setSize(200, 200);
-      }
-      
-      
-      public static void main(String[] args) {
-        MyFirstFrame f = new MyFirstFrame();
-        f.setVisible(true);
-      }
-    }'
-!
-
-title
-	^ 'A simple window'
-! !
-
-IAEAbstractCodeSnippetSlide subclass: #IAEJLabel
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEJLabel methodsFor: 'not yet classified'!
-
-snippet
-	^
-'public class MyFirstFrame extends JFrame {
-      public MyFirstFrame(){
-        setTitle("My first GUI application");
-        setSize(200, 200);
-        
-        JLabel lblHello = new JLabel("Hello world !!");
-        getContentPane().add(lblHello);
-      }
-    }'
-!
-
-title
-	^ 'Add a label inside'
-! !
-
-IAEAbstractCodeSnippetSlide subclass: #IAEJFramePack
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEJFramePack methodsFor: 'not yet classified'!
-
-snippet
-	^
-' public class MyFirstFrame extends JFrame {
-      public MyFirstFrame(){
-        setTitle("My first GUI application");
-        
-        JLabel lblHello = new JLabel("Hello world !!");
-        getContentPane().add(lblHello);
-
-        pack();
-      }
-    }'
-!
-
-title
-	^ ' Resize container automatically with pack()'
-! !
-
-IAEAbstractCodeSnippetSlide subclass: #IAEGridLayout
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEGridLayout methodsFor: 'not yet classified'!
-
-snippet
-	^
-'public class MySecondFrame extends JFrame {
-    public MySecondFrame(){
-      initLayout();
-      initWidgets();
-      pack();
-    }
-    
-    private void initLayout(){
-      // 3 rows, 2 colums
-      setLayout(new GridLayout(3,2)); 
-    }
-    
-    private void initWidgets(){
-      for (int i=0; i<5; i++) {
-        JButton btn = new JButton("Button n" + 
-                                Integer.toString(i));
-        getContentPane().add(btn);
-      }
-    }
-}'
-!
-
-title
-	^ 'Arrange widgets'
-! !
-
-IAEAbstractCodeSnippetSlide subclass: #IAEActionListener
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEActionListener methodsFor: 'not yet classified'!
-
-snippet
-	^ 
-'import javax.swing.*;
-import java.awt.event.*;
-
-public class MyThirdFrame extends JFrame 
-	                  implements ActionListener {
-  JButton sayHelloButton;
-      
-  public MyThirdFrame(){
-        sayHelloButton = new JButton("Hello!!");
-        getContentPane().add(sayHelloButton);
-        
-        sayHelloButton.addActionListener(this);
-        pack();
-  }
-
-  @Override
-  public void actionPerformed(ActionEvent event) {
-        System.out.println("Hello !!!!!!");
-   }
-}'
-!
-
-title
-	^ 'Generic event handling'
-! !
-
-IAEAbstractCodeSnippetSlide subclass: #IAEActionListenerGetSource
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEActionListenerGetSource methodsFor: 'not yet classified'!
-
-snippet
-	^
-'public class MyThirdFrame extends JFrame 
-                        implements ActionListener {
-  public MyThirdFrame(){
-    setLayout(new FlowLayout());
-    addButton("Hello !!");
-    addButton("Good Bye !!");
-    pack();
-  }
-      
-  public void addButton(String label) {
-    JButton buttonToAdd = new JButton(label);
-    getContentPane().add(buttonToAdd);
-    buttonToAdd.addActionListener(this);
-  }
-
-  @Override
-  public void actionPerformed(ActionEvent event) {
-    JButton clickedButton = (JButton)event.getSource();
-    System.out.println(clickedButton.getText());
-  }
-}'
-!
-
-title
-	^ 'Get source of event'
-! !
-
-IAEAbstractCodeSnippetSlide subclass: #IAEMouseListener
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEMouseListener methodsFor: 'not yet classified'!
-
-snippet
-	^ 
-'public class AnotherFrame implements MouseListener {
-      public AnotheFrame(){
-        ...
-        aComponent.addMouseListener(this);
-        ...
-      }
-
-      public void mousePressed(MouseEvent e) {...}
-
-      public void mouseReleased(MouseEvent e) {...}
-
-      public void mouseEntered(MouseEvent e) {...}
-
-      public void mouseExited(MouseEvent e) {...}
-
-      public void mouseClicked(MouseEvent e) {...}
-    }'
-!
-
-title
-	^ 'Handling mouse events'
-! !
-
-IAEAbstractCodeSnippetSlide subclass: #IAEJTextField
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEJTextField methodsFor: 'not yet classified'!
-
-snippet
-	^
-'public class FrameWithTextField extends JFrame 
-                              implements KeyListener {
-      JTextField nameInput; 
-
-      public FrameWithTextField(){
-        nameInput = new JTextField(20);
-        nameInput.addKeyListener(this);
-        getContentPane().add(nameInput);
-        pack();
-      }
-
-      @Override
-      public void keyPressed(KeyEvent event) {
-        if (event.getKeyCode() == KeyEvent.VK_ENTER) {
-          System.out.println(nameInput.getText());
-        }
-      }
-    }'
-!
-
-title
-	^ 'Keyboard events'
-! !
-
-IAEAbstractCodeSnippetSlide subclass: #IAEJComboBox
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEJComboBox methodsFor: 'not yet classified'!
-
-snippet
-	^
-'public class FrameWithComboBox extends JFrame 
-                           implements ActionListener {
-  JComboBox movieSelect;       
-  public FrameWithComboBox(){
-    movieSelect = new JComboBox();
-    movieSelect.addItem("Dr No");
-    movieSelect.addItem("Goldfinger");
-    movieSelect.addItem("Die another day");
-    movieSelect.addActionListener(this);
-        
-    getContentPane().add(movieSelect);
-    pack();
-  }
-
-  @Override
-  public void actionPerformed(ActionEvent e) {
-    String selectedMovie = 
-               (String)movieSelect.getSelectedItem();
-    System.out.println(selectedMovie);
-  }
-}'
-!
-
-title
-	^ 'JComboBox'
-! !
-
-IAEAbstractCodeSnippetSlide subclass: #IAEJList
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEJList methodsFor: 'not yet classified'!
-
-snippet
-	^
-'public class Hero {
-    String name;
-    public Hero(String name) { this.name = name; }
-}
-
-public class FrameWithList extends JFrame {
-  JList namesList;
-  DefaultListModel heroes;
-      
-  public FrameWithList(){
-    heroes = new DefaultListModel();
-    heroes.addElement(new Hero("Spiderman"));
-    heroes.addElement(new Hero("Batman"));
-    
-    namesList = new JList(heroes);
-    getContentPane().add(namesList);
-    pack();
-  }
-}'
-!
-
-title
-	^ 'JList with Objects'
-! !
-
-IAEAbstractCodeSnippetSlide subclass: #IAEModelView
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEModelView methodsFor: 'not yet classified'!
-
-snippet
-	^
-' public class Hero {
-      String name;
-      
-      public Hero(String name){
-        this.name = name;
-      }
-      
-      public String toString(){
-        return "I''m" + this.name;
-      }
-    }'
-!
-
-title
-	^ 'Defining object string representation'
-! !
-
-IAESlide subclass: #IAEAbstractImageSlide
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEAbstractImageSlide methodsFor: 'not yet classified'!
-
-renderSlideOn: html
-	html div 
 		class: 'section center';
-		with: [	html img: 'iae/images/', self imageFile]
-!
-
-cssClass
-	^'slide green3d'
+		with: [	html img: 'iae/images/tools.jpg'.
+                      		html h1: 'TOOLS'				]
 ! !
 
-IAEAbstractImageSlide subclass: #IAEJFrameSnapshot
+IAEPresentation subclass: #IAEAgileIntro
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAEJFrameSnapshot methodsFor: 'not yet classified'!
-
-imageFile
-	^ 'swing/first_frame.png'
-! !
-
-IAEAbstractImageSlide subclass: #IAEJLabelSnapshot
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEJLabelSnapshot methodsFor: 'not yet classified'!
-
-imageFile
-	^ 'swing/frame_label.png'
-! !
-
-IAEAbstractImageSlide subclass: #IAEJFramePackSnapshot
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEJFramePackSnapshot methodsFor: 'not yet classified'!
-
-imageFile
-	^ 'swing/frame_pack.png'
-! !
-
-IAEAbstractImageSlide subclass: #IAEGridLayoutSnapshot
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEGridLayoutSnapshot methodsFor: 'not yet classified'!
-
-imageFile
-	^ 'swing/grid_layout_3_2.png'
-! !
-
-IAESlide subclass: #IAEFlowLayoutSnapshot
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEFlowLayoutSnapshot methodsFor: 'not yet classified'!
-
-renderSlideOn: html
-	html div 
-		class: 'section center';
-		with: [	
-				html h1: 'Flow layout'.
-                  		html 
-                       			p: [  html img: 'iae/images/swing/flow_layout1.png' ];
-                       			p: [  html img: 'iae/images/swing/flow_layout2.png'] ]
-! !
-
-IAEAbstractImageSlide subclass: #IAETextFieldSnapshot
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAETextFieldSnapshot methodsFor: 'not yet classified'!
-
-imageFile
-	^ 'swing/text_field.png'
-! !
-
-IAEAbstractImageSlide subclass: #IAEComboBoxSnapshot
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEComboBoxSnapshot methodsFor: 'not yet classified'!
-
-imageFile
-	^ 'swing/combo_box.png'
-! !
-
-IAEAbstractImageSlide subclass: #IAEJListSnapshot
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEJListSnapshot methodsFor: 'not yet classified'!
-
-imageFile
-	^ 'swing/jlist1.png'
-! !
-
-IAEAbstractImageSlide subclass: #IAEJListModelSnapshot
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEJListModelSnapshot methodsFor: 'not yet classified'!
-
-imageFile
-	^ 'swing/jlist2.png'
-! !
-
-IAEAbstractImageSlide subclass: #IAEFrameTPSnapshot
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEFrameTPSnapshot methodsFor: 'not yet classified'!
-
-imageFile
-	^ 'swing/tp_gui.png'
-! !
-
-IAESlide subclass: #IAEJavaSwingResources
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEJavaSwingResources methodsFor: 'rendering'!
-
-renderSlideOn: html
-	html h1: 'Resources'.
-	html  ul: [
-          html li: [html a
-			href: 'http://download.oracle.com/javase/tutorial/uiswing/';
-			with: 'Trail: Creating a GUI With JFC/Swing'].
-
-	  html li: [html a
-			href: 'http://www.uispec4j.org/';
-			with: 'Testing GUI with UISpec4J'].
-          
-          html li: [	html a
-			href: 'http://lolgzs.free.fr/iae-course/iae/tp2/ToDoList.zip';
-			with: 'Download correction on Swing Exercise'].
-
-	html li: [	html a
-			href: 'http://lolgzs.free.fr/iae-course/iae/tp2/ToDoList_Correction.zip';
-			with: 'Download correction on UISpec Exercise'].
-         ]
-! !
-
-IAEAbstractCodeSnippetSlide subclass: #IAEUISpec
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEUISpec methodsFor: 'not yet classified'!
-
-title
-	^ 'Test with UISpec'
-!
-
-snippet
-	^
-'public class EmptyToDoEditor {
-  protected ToDoEditor editor;
-  protected Window editorSpec;
-
-  @Before
-  public void setUpEditor() {
-    this.editor = new ToDoEditor();
-    this.editorSpec = new Window(this.editor);
-  }
-	
-  @Test
-  public void listBoxShouldBeEmpty() {
-    assertThat(this.editorSpec.getListBox().isEmpty());
-  }
-'
-! !
-
-IAESlide subclass: #IAEUISpecVideo
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEUISpecVideo methodsFor: 'rendering'!
-
-renderSlideOn: html
-	html h3
-		class: 'center';
-		with: 'TDD with UISpec'.
-	html iframe 
-		width:400;
-		height:300;
-		src:'http://player.vimeo.com/video/30958504?title=0&amp;byline=0&amp;portrait=0'
-! !
-
-IAEPresentation subclass: #IAEMocks
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEMocks methodsFor: 'not yet classified'!
+!IAEAgileIntro methodsFor: 'accessing'!
 
 description
-	^ 'IAE - M1 MTI - 2011. How to isolate tested objects with Mocks'
+	^ 'Agile practices introduction'
 !
 
 slideClasses
-	^ {
-	IAEIntroSlide.
-	IAETestDependencies.
-	IAEMockMovieEditor.
-	IAEEasyMockVideo.
-	IAEMockResources.
-	IAESectionExercises.
-	IAEMovieApplication.
-	IAEMovieApplicationMVC
-}
+	^ {IAEIntroSlide. IAEAgileResources}
 ! !
 
-!IAEMocks class methodsFor: 'accessing'!
-
-title
-	^ 'Mocks'
-! !
-
-!IAEMocks class methodsFor: 'testing'!
+!IAEAgileIntro class methodsFor: 'not yet classified'!
 
 isConcrete
 	^ true
-! !
-
-IAEAbstractImageSlide subclass: #IAETestDependencies
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAETestDependencies methodsFor: 'accessing'!
+!
 
 title
-	^ 'Isolate objects'
+	^ 'IAE - Agile practices'
+! !
+
+IAEAbstractImageSlide subclass: #IAECustomImageSlide
+	instanceVariableNames: 'imageFile title'
+	category: 'Presentation-IAE'!
+
+!IAECustomImageSlide methodsFor: 'not yet classified'!
+
+imageFile: aString
+	imageFile := aString
 !
 
 imageFile
-	^ 'test_dependencies.png'
-! !
-
-IAEAbstractImageSlide subclass: #IAEMockMovieEditor
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEMockMovieEditor methodsFor: 'accessing'!
+	^ imageFile
+!
 
 title
-	^ 'Mock MovieEditor object'
+	^ title
 !
 
-imageFile
-	^ 'mock_movies.png'
+title: aString
+	title := aString
 !
 
-cssClass
-	^'slide blue3d'
-! !
-
-IAESlide subclass: #IAEEasyMockVideo
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEEasyMockVideo methodsFor: 'rendering'!
+id
+	^ title
+!
 
 renderSlideOn: html
-	html h3
-		class: 'center';
-		with: 'EasyMock'.
-	html iframe 
-		width:400;
-		height:300;
-		src:'http://player.vimeo.com/video/31692069?title=0&amp;byline=0&amp;portrait=0'
-! !
-
-IAESlide subclass: #IAEMockResources
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEMockResources methodsFor: 'not yet classified'!
-
-renderSlideOn: html
-	html h1: 'Resources'.
-	html  ul: [
-          html li: [html a
-			href: 'http://www.easymock.org/';
-			with: 'EasyMock'].
-
-	  html li: [html a
-			href: 'http://code.google.com/p/mockito/';
-			with: 'Mockito'].
-          
-          html li: [	html a
-			href: 'http://code.google.com/p/powermock/';
-			with: 'PowerMock'].
-
-	html li: [	html a
-			href: 'http://lolgzs.free.fr/iae-course/iae/tp3/ToDoListEasyMock.zip';
-			with: 'Download correction on MVC + EasyMock Exercise'].
-         ]
-!
-
-cssClass
-	^'slide blue3d'
-! !
-
-IAESlide subclass: #IAEMovieApplicationMVC
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEMovieApplicationMVC methodsFor: 'not yet classified'!
-
-renderSlideOn: html
-	html h1: 'iMovies, MVC, TDD, Mocks'.
-
-	html ol: [	html 
-				li: [html a
-					href: 'http://lolgzs.free.fr/iae-course/iae/tp1/iMovies.zip';
-					with: 'Download iMovies (model)'] ;
-				li: [ html 
-						with: 'Develop "Add a Movie"';
-					 	ul: [ html 
-							  li: 'use TDD and mocking techniques';
-							  li: 'first controller';
-							  li: 'then view' ] ];
-				li: 'Delete a Movie';
-				li: 'Modify a Movie';
-				li: 'A movie has a note' ].
-!
-
-cssClass
-	^'slide green3d'
+	html div 
+		class: 'section center';
+		with: [	html img
+					style: 'height: 500px';
+					src: 'iae/images/', self imageFile]
 ! !
 
 IAEPresentation subclass: #IAEPomodoro
@@ -2456,88 +2414,130 @@ isConcrete
 !
 
 title
-	^ 'The Pomodoro Technique'
+	^ 'IAE - The Pomodoro Technique'
 ! !
 
-IAEAbstractImageSlide subclass: #IAECustomImageSlide
-	instanceVariableNames: 'imageFile title'
+IAESlide subclass: #IAEMovieApplicationMVC
+	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAECustomImageSlide methodsFor: 'not yet classified'!
+!IAEMovieApplicationMVC methodsFor: 'not yet classified'!
 
-imageFile: aString
-	imageFile := aString
+renderSlideOn: html
+	html h1: 'iMovies, MVC, TDD, Mocks'.
+
+	html ol: [	html 
+				li: [html a
+					href: 'http://lolgzs.free.fr/iae-course/iae/tp1/iMovies.zip';
+					with: 'Download iMovies (model)'] ;
+				li: [ html 
+						with: 'Develop "Add a Movie"';
+					 	ul: [ html 
+							  li: 'use TDD and mocking techniques';
+							  li: 'first controller';
+							  li: 'then view' ] ];
+				li: 'Delete a Movie';
+				li: 'Modify a Movie';
+				li: 'A movie has a note' ].
 !
 
-imageFile
-	^ imageFile
+cssClass
+	^'slide green3d'
+! !
+
+IAESlide subclass: #IAEVCS
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEVCS methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide black'
 !
 
-title
-	^ title
-!
+backgroundColor
+	^ 'rgb(234, 242, 245)'
+! !
 
-title: aString
-	title := aString
-!
+!IAEVCS methodsFor: 'rendering'!
 
-id
-	^ title
-!
+renderSlideOn: html
+	html div
+		class: 'section center';
+		with: [
+			html
+				h1: 'Version Control System';
+				img: 'iae/images/vcs.png'.
+                 ]
+! !
+
+IAESlide subclass: #IAEAmber
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEAmber methodsFor: 'rendering'!
 
 renderSlideOn: html
 	html div 
 		class: 'section center';
-		with: [	html img
-					style: 'height: 500px';
-					src: 'iae/images/', self imageFile]
+		with: [	html a
+					href: 'http://www.amber-lang.net';
+					with: [html img: 'iae/images/amber.png']]
 ! !
 
-IAEPresentation subclass: #IAEAgileIntro
+IAEPresentation subclass: #IAEAllSlides
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAEAgileIntro methodsFor: 'accessing'!
+!IAEAllSlides methodsFor: 'accessing'!
 
 description
-	^ 'Agile practices introduction'
+	^ 'Used to browse all slides'
 !
 
 slideClasses
-	^ {IAEIntroSlide. IAEAgileResources}
+	^ (IAESlide allSubclasses select: [:aSlideClass| aSlideClass subclasses isEmpty]) sort: [:a :b | a name < b name].
 ! !
 
-!IAEAgileIntro class methodsFor: 'not yet classified'!
+!IAEAllSlides class methodsFor: 'accessing'!
 
 isConcrete
 	^ true
-!
-
-title
-	^ 'Agile practices'
 ! !
 
-IAESlide subclass: #IAEAgileResources
+IAESlide subclass: #IAECalculatorSecondTest
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAEAgileResources methodsFor: 'not yet classified'!
+!IAECalculatorSecondTest methodsFor: 'accessing'!
+
+cssClass
+	^'slide red3d'
+!
+
+snippet
+	^  
+'import junit.framework.TestCase;
+
+public class TestCalculator extends TestCase { 
+  public void testTwoPowerTwoEqualsFour (){
+    Calculator calc = new Calculator (); 
+    assertEquals(4, calc.power(2, 2));
+  }
+
+  public void testThreePowerFourEqualsEightyOne() { 
+    Calculator calc = new Calculator ();
+    assertEquals(81, calc.power(3, 4));
+  }
+}'
+! !
+
+!IAECalculatorSecondTest methodsFor: 'rendering'!
 
 renderSlideOn: html
-	html h1: 'Resources'.
-	html  ul: [
-          html li: [html a
-			href: 'http://www.crisp.se/henrik.kniberg/presentations/agile-tour-grenoble-2009-keynote-what-is-agile.pdf';
-			with: 'What is agile'].
-
-	  html li: [html a
-			href: 'http://henrik-kniberg.developpez.com/livre/scrum-xp/';
-			with: 'Scrum et XP depuis les tranchées'].
-          
-	  html li: [html a
-			href: 'http://agilemanifesto.org/iso/fr/';
-			with: 'Manifeste agile'].
-          
-         ]
+	html h1: 'Write another test'.
+	html div
+		class: 'center';
+		with: [  self renderJava: self snippet on: html ].
 ! !
 

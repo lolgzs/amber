@@ -565,7 +565,7 @@ slideClasses
 !TITManipulatingObjects class methodsFor: 'accessing'!
 
 title
-	^ 'Manipulating Objects'
+	^ 'TIT - Manipulating Objects'
 ! !
 
 !TITManipulatingObjects class methodsFor: 'testing'!

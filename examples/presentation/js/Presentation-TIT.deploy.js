@@ -325,7 +325,7 @@ smalltalk.method({
 selector: unescape('title'),
 fn: function (){
 var self=this;
-return "Manipulating Objects";
+return unescape("TIT%20-%20Manipulating%20Objects");
 return self;}
 }),
 smalltalk.TITManipulatingObjects.klass);
