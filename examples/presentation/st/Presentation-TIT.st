@@ -11,12 +11,12 @@ renderSmalltalk: aString on: html
 	aTextArea value: aString.
         
 	< CodeMirror.fromTextArea( aTextArea, {
-                lineNumbers: false,
+                lineNumbers: true,
 		theme: 'jtalk',
                 enterMode: 'flat',
 		theme: 'neat',
   		width: '700px',
-		lineWrapping: true,
+		lineWrapping: false,
                 matchBrackets: true,
                 electricChars: false }) >
 !
@@ -27,6 +27,13 @@ renderImage: filename on: html
 		with: [	html img
 					width: '700px';
 					src: 'tit/images/', filename]
+!
+
+renderVimeo: aNumber on: html
+	html iframe 
+		width:640;
+		height:480;
+		src:'http://player.vimeo.com/video/', aNumber asString, '?title=0&amp;byline=0&amp;portrait=0'.
 ! !
 
 TITSlide subclass: #TITUnaryMessageSyntax
@@ -56,6 +63,88 @@ renderReceiver: aString message: anotherString on: html
 		html span class: 'red';	with: anotherString.
 		html span class: 'blue'; with: '.'.
 		html br;br
+! !
+
+TITSlide subclass: #TITProfStefHelp
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITProfStefHelp methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide blue3d'
+! !
+
+!TITProfStefHelp methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1: 'ProfStef tutorials'.
+	self renderImage: 'profstef.png' on: html.
+! !
+
+TITSlide subclass: #TITInstallPharoWindows
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITInstallPharoWindows methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide black'
+! !
+
+!TITInstallPharoWindows methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h3
+		class: 'center';
+		with: [html a 
+				href: 'http://www.pharocasts.com/2010/08/install-pharo-on-windows.html'; 
+				with:'Install Pharo on Windows'].
+	self renderVimeo: 14301726 on: html.
+! !
+
+TITSlide subclass: #TITVMImageSources
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITVMImageSources methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide'
+!
+
+backgroundColor
+	^ '#ddf'
+! !
+
+!TITVMImageSources methodsFor: 'rendering'!
+
+renderSlideOn: html
+	self renderImage: 'vm_image_sources.png' on: html
+! !
+
+TITSlide subclass: #TITRoadmap
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITRoadmap methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1: 'Roadmap'.
+	html ol: [
+		html 
+			li: 'Manipulating objects';
+			li: 'Write and share code';
+			li: 'Software lifecycle';
+			li: 'Understand UML';
+			li: 'Aggregation, encapsulation, polymorphism';
+			li: 'Compose GUI';
+			li: 'GUI interactions'
+	].
+!
+
+cssClass
+	^ 'slide blue3d'
 ! !
 
 TITSlide subclass: #TITPharoHelp
@@ -459,9 +548,12 @@ slideClasses
 	IAEPharocasts.
 	IAEAmber.
 	IAECara74.
+	TITRoadmap.
+	TITInstallPharoWindows.
+	TITVMImageSources.
+	TITBouncingAtomsMorphVideo.
 	TITUnaryMessageSyntax.
 	TITBinaryMessageSyntax.
-	TITBouncingAtomsMorphVideo.
 	TITBasicCodeSnippets.
 	TITPharoHelp.
 	TITProfStefHelp.
@@ -482,21 +574,34 @@ isConcrete
 	^ true
 ! !
 
-TITSlide subclass: #TITProfStefHelp
+TITSlide subclass: #TITBinaryMessageSyntax
 	instanceVariableNames: ''
 	category: 'Presentation-TIT'!
 
-!TITProfStefHelp methodsFor: 'accessing'!
+!TITBinaryMessageSyntax methodsFor: 'accessing'!
 
 cssClass
-	^ 'slide blue3d'
+	^ 'slide green3d'
 ! !
 
-!TITProfStefHelp methodsFor: 'rendering'!
+!TITBinaryMessageSyntax methodsFor: 'rendering'!
 
 renderSlideOn: html
-	html h1: 'ProfStef tutorials'.
-	self renderImage: 'profstef.png' on: html.
+	html h1: 'Binary messages'.
+	html div 
+		class: 'center big';
+		with: [ self 
+				renderReceiver: 'receiver ' message: 'message'  argument: 'argument' on: html;		
+				renderReceiver: '5' message: ' + ' argument: '2' on: html;	
+				renderReceiver: '12' message: ' > ' argument: '5' on: html].
+!
+
+renderReceiver: aReceiver message: aMessage argument: anArgument on: html
+		html span class: 'blue'; with: aReceiver.
+		html span class: 'red';	with: ' ', aMessage, ' '.
+		html span class: 'green'; with: anArgument.
+		html span class: 'blue'; with: '.'.
+		html br;br
 ! !
 
 TITSlide subclass: #TITBouncingAtomMorphsExercise
@@ -507,17 +612,19 @@ TITSlide subclass: #TITBouncingAtomMorphsExercise
 
 renderSlideOn: html
 	html ol: [
-		html li: 'Make the BouncingAtomsMorph change color at every step'.
-		html li: 'Make the BouncingAtomsMorph change color every 2 seconds (but animated at full speed)'.
-		html li: 'Every second the BouncingAtomsMorph remove an atom. When reach 0, add one every second. When reach 30, remove one every second'.
+		html
+			 li: 'Make the BouncingAtomsMorph change color at every step';
+			 li: 'Make the BouncingAtomsMorph change color every 2 seconds (but animated at full speed)';
+			 li: 'Every second the BouncingAtomsMorph remove an atom. When reach 0, add one every second. When reach 30, remove one every second'.
 	].
 
 	html with: 'Do ProfStef go then:'.
 	html ol: [
-		html li: 'Create a button in a window that opens a new BouncingAtomsMorph'.
-		html li: 'A button that pops up a window displaying the number of red AtomMorph of latest BouncingAtomsMorph instance'.
+		html
+			li: 'Create a button in a window that opens a new BouncingAtomsMorph';
+			li: 'Create a button that deletes all BouncingAtomsMorph instances';
+			li: 'A button that pops up a window displaying the number of red AtomMorph of latest BouncingAtomsMorph instance'.
 	].
-	self renderSmalltalk: '(StringMorph contents: ''Hello !!'') openInWindow.' on: html.
 ! !
 
 TITSlide subclass: #TITBasicCodeSnippets
@@ -535,7 +642,8 @@ cssClass
 snippet
 	^ 
 'Morph new 
-	setColor: Color red;
+	width: 100;
+	color: Color red;
 	openInWorld.
 
 10 atRandom.
@@ -543,6 +651,10 @@ snippet
 {''one''.  ''two''} at: 1.
 
 {Color red. Color blue. Color yellow} atRandom.
+
+(StringMorph contents: ''Hello !!'') openInWindow.
+
+BouncingAtomsMorph allInstances last delete.
 '
 ! !
 
@@ -581,39 +693,6 @@ renderSlideOn: html
 		with: [html a 
 				href: 'http://www.pharocasts.com/2012/01/manipulating-objects.html'; 
 				with:'BouncingAtomsMorph'].
-	html iframe 
-		width:640;
-		height:480;
-		src:'http://player.vimeo.com/video/34810463?title=0&amp;byline=0&amp;portrait=0'.
-! !
-
-TITSlide subclass: #TITBinaryMessageSyntax
-	instanceVariableNames: ''
-	category: 'Presentation-TIT'!
-
-!TITBinaryMessageSyntax methodsFor: 'accessing'!
-
-cssClass
-	^ 'slide green3d'
-! !
-
-!TITBinaryMessageSyntax methodsFor: 'rendering'!
-
-renderSlideOn: html
-	html h1: 'Binary messages'.
-	html div 
-		class: 'center big';
-		with: [ self 
-				renderReceiver: 'receiver ' message: 'message'  argument: 'argument' on: html;		
-				renderReceiver: '5' message: ' + ' argument: '2' on: html;	
-				renderReceiver: '12' message: ' > ' argument: '5' on: html].
-!
-
-renderReceiver: aReceiver message: aMessage argument: anArgument on: html
-		html span class: 'blue'; with: aReceiver.
-		html span class: 'red';	with: ' ', aMessage, ' '.
-		html span class: 'green'; with: anArgument.
-		html span class: 'blue'; with: '.'.
-		html br;br
+	self renderVimeo: 34810463 on: html.
 ! !
 
