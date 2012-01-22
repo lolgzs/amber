@@ -1,231 +1,4 @@
 smalltalk.addPackage('Presentation-TIT', {});
-smalltalk.addClass('TITSlide', smalltalk.Slide, [], 'Presentation-TIT');
-smalltalk.addMethod(
-unescape('_renderSmalltalk_on_'),
-smalltalk.method({
-selector: unescape('renderSmalltalk%3Aon%3A'),
-fn: function (aString, html){
-var self=this;
-var aTextArea=nil;
-(aTextArea=smalltalk.send(smalltalk.send(html, "_textarea", []), "_element", []));
-smalltalk.send(aTextArea, "_value_", [aString]);
- CodeMirror.fromTextArea( aTextArea, {
-                lineNumbers: true,
-		theme: 'jtalk',
-                enterMode: 'flat',
-		theme: 'neat',
-  		width: '700px',
-		lineWrapping: false,
-                matchBrackets: true,
-                electricChars: false }) ;
-return self;}
-}),
-smalltalk.TITSlide);
-
-smalltalk.addMethod(
-unescape('_renderImage_on_'),
-smalltalk.method({
-selector: unescape('renderImage%3Aon%3A'),
-fn: function (filename, html){
-var self=this;
-(function($rec){smalltalk.send($rec, "_class_", ["center"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_width_", ["700px"]);return smalltalk.send($rec, "_src_", [smalltalk.send(unescape("tit/images/"), "__comma", [filename])]);})(smalltalk.send(html, "_img", []));})]);})(smalltalk.send(html, "_div", []));
-return self;}
-}),
-smalltalk.TITSlide);
-
-smalltalk.addMethod(
-unescape('_renderVimeo_on_'),
-smalltalk.method({
-selector: unescape('renderVimeo%3Aon%3A'),
-fn: function (aNumber, html){
-var self=this;
-(function($rec){smalltalk.send($rec, "_width_", [(640)]);smalltalk.send($rec, "_height_", [(480)]);return smalltalk.send($rec, "_src_", [smalltalk.send(smalltalk.send(unescape("http%3A//player.vimeo.com/video/"), "__comma", [smalltalk.send(aNumber, "_asString", [])]), "__comma", [unescape("%3Ftitle%3D0%26amp%3Bbyline%3D0%26amp%3Bportrait%3D0")])]);})(smalltalk.send(html, "_iframe", []));
-return self;}
-}),
-smalltalk.TITSlide);
-
-
-
-smalltalk.addClass('TITUnaryMessageSyntax', smalltalk.TITSlide, [], 'Presentation-TIT');
-smalltalk.addMethod(
-unescape('_renderSlideOn_'),
-smalltalk.method({
-selector: unescape('renderSlideOn%3A'),
-fn: function (html){
-var self=this;
-smalltalk.send(html, "_h1_", ["Unary messages"]);
-(function($rec){smalltalk.send($rec, "_class_", ["center big"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_renderReceiver_message_on_", ["receiver ", "message", html]);smalltalk.send($rec, "_renderReceiver_message_on_", ["3 ", "squared", html]);return smalltalk.send($rec, "_renderReceiver_message_on_", [unescape("%27TETRAS%27%20"), "asLowercase", html]);})(self);})]);})(smalltalk.send(html, "_div", []));
-return self;}
-}),
-smalltalk.TITUnaryMessageSyntax);
-
-smalltalk.addMethod(
-unescape('_renderReceiver_message_on_'),
-smalltalk.method({
-selector: unescape('renderReceiver%3Amessage%3Aon%3A'),
-fn: function (aString, anotherString, html){
-var self=this;
-(function($rec){smalltalk.send($rec, "_class_", ["blue"]);return smalltalk.send($rec, "_with_", [aString]);})(smalltalk.send(html, "_span", []));
-(function($rec){smalltalk.send($rec, "_class_", ["red"]);return smalltalk.send($rec, "_with_", [anotherString]);})(smalltalk.send(html, "_span", []));
-(function($rec){smalltalk.send($rec, "_class_", ["blue"]);return smalltalk.send($rec, "_with_", ["."]);})(smalltalk.send(html, "_span", []));
-(function($rec){smalltalk.send($rec, "_br", []);return smalltalk.send($rec, "_br", []);})(html);
-return self;}
-}),
-smalltalk.TITUnaryMessageSyntax);
-
-smalltalk.addMethod(
-unescape('_cssClass'),
-smalltalk.method({
-selector: unescape('cssClass'),
-fn: function (){
-var self=this;
-return "slide blue3d";
-return self;}
-}),
-smalltalk.TITUnaryMessageSyntax);
-
-
-
-smalltalk.addClass('TITProfStefHelp', smalltalk.TITSlide, [], 'Presentation-TIT');
-smalltalk.addMethod(
-unescape('_renderSlideOn_'),
-smalltalk.method({
-selector: unescape('renderSlideOn%3A'),
-fn: function (html){
-var self=this;
-smalltalk.send(html, "_h1_", ["ProfStef tutorials"]);
-smalltalk.send(self, "_renderImage_on_", ["profstef.png", html]);
-return self;}
-}),
-smalltalk.TITProfStefHelp);
-
-smalltalk.addMethod(
-unescape('_cssClass'),
-smalltalk.method({
-selector: unescape('cssClass'),
-fn: function (){
-var self=this;
-return "slide blue3d";
-return self;}
-}),
-smalltalk.TITProfStefHelp);
-
-
-
-smalltalk.addClass('TITInstallPharoWindows', smalltalk.TITSlide, [], 'Presentation-TIT');
-smalltalk.addMethod(
-unescape('_renderSlideOn_'),
-smalltalk.method({
-selector: unescape('renderSlideOn%3A'),
-fn: function (html){
-var self=this;
-(function($rec){smalltalk.send($rec, "_class_", ["center"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_href_", [unescape("http%3A//www.pharocasts.com/2010/08/install-pharo-on-windows.html")]);return smalltalk.send($rec, "_with_", ["Install Pharo on Windows"]);})(smalltalk.send(html, "_a", []));})]);})(smalltalk.send(html, "_h3", []));
-smalltalk.send(self, "_renderVimeo_on_", [(14301726), html]);
-return self;}
-}),
-smalltalk.TITInstallPharoWindows);
-
-smalltalk.addMethod(
-unescape('_cssClass'),
-smalltalk.method({
-selector: unescape('cssClass'),
-fn: function (){
-var self=this;
-return "slide black";
-return self;}
-}),
-smalltalk.TITInstallPharoWindows);
-
-
-
-smalltalk.addClass('TITVMImageSources', smalltalk.TITSlide, [], 'Presentation-TIT');
-smalltalk.addMethod(
-unescape('_renderSlideOn_'),
-smalltalk.method({
-selector: unescape('renderSlideOn%3A'),
-fn: function (html){
-var self=this;
-smalltalk.send(self, "_renderImage_on_", ["vm_image_sources.png", html]);
-return self;}
-}),
-smalltalk.TITVMImageSources);
-
-smalltalk.addMethod(
-unescape('_cssClass'),
-smalltalk.method({
-selector: unescape('cssClass'),
-fn: function (){
-var self=this;
-return "slide";
-return self;}
-}),
-smalltalk.TITVMImageSources);
-
-smalltalk.addMethod(
-unescape('_backgroundColor'),
-smalltalk.method({
-selector: unescape('backgroundColor'),
-fn: function (){
-var self=this;
-return unescape("%23ddf");
-return self;}
-}),
-smalltalk.TITVMImageSources);
-
-
-
-smalltalk.addClass('TITRoadmap', smalltalk.TITSlide, [], 'Presentation-TIT');
-smalltalk.addMethod(
-unescape('_renderSlideOn_'),
-smalltalk.method({
-selector: unescape('renderSlideOn%3A'),
-fn: function (html){
-var self=this;
-smalltalk.send(html, "_h1_", ["Roadmap"]);
-smalltalk.send(html, "_ol_", [(function(){return (function($rec){smalltalk.send($rec, "_li_", ["Manipulating objects"]);smalltalk.send($rec, "_li_", ["Write and share code"]);smalltalk.send($rec, "_li_", ["Software lifecycle"]);smalltalk.send($rec, "_li_", ["Understand UML"]);smalltalk.send($rec, "_li_", [unescape("Aggregation%2C%20encapsulation%2C%20polymorphism")]);smalltalk.send($rec, "_li_", ["Compose GUI"]);return smalltalk.send($rec, "_li_", ["GUI interactions"]);})(html);})]);
-return self;}
-}),
-smalltalk.TITRoadmap);
-
-smalltalk.addMethod(
-unescape('_cssClass'),
-smalltalk.method({
-selector: unescape('cssClass'),
-fn: function (){
-var self=this;
-return "slide blue3d";
-return self;}
-}),
-smalltalk.TITRoadmap);
-
-
-
-smalltalk.addClass('TITPharoHelp', smalltalk.TITSlide, [], 'Presentation-TIT');
-smalltalk.addMethod(
-unescape('_cssClass'),
-smalltalk.method({
-selector: unescape('cssClass'),
-fn: function (){
-var self=this;
-return "slide black";
-return self;}
-}),
-smalltalk.TITPharoHelp);
-
-smalltalk.addMethod(
-unescape('_renderSlideOn_'),
-smalltalk.method({
-selector: unescape('renderSlideOn%3A'),
-fn: function (html){
-var self=this;
-smalltalk.send(html, "_h1_", ["Help in Pharo"]);
-smalltalk.send(self, "_renderImage_on_", ["pharo_help.png", html]);
-return self;}
-}),
-smalltalk.TITPharoHelp);
-
-
-
 smalltalk.addClass('TITPresentation', smalltalk.Presentation, [], 'Presentation-TIT');
 smalltalk.addMethod(
 unescape('_url'),
@@ -284,6 +57,53 @@ return self;}
 smalltalk.TITPresentation.klass);
 
 
+smalltalk.addClass('TITSlide', smalltalk.Slide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_renderSmalltalk_on_'),
+smalltalk.method({
+selector: unescape('renderSmalltalk%3Aon%3A'),
+fn: function (aString, html){
+var self=this;
+var aTextArea=nil;
+(aTextArea=smalltalk.send(smalltalk.send(html, "_textarea", []), "_element", []));
+smalltalk.send(aTextArea, "_value_", [aString]);
+ CodeMirror.fromTextArea( aTextArea, {
+                lineNumbers: true,
+		theme: 'jtalk',
+                enterMode: 'flat',
+		theme: 'neat',
+  		width: '700px',
+		lineWrapping: false,
+                matchBrackets: true,
+                electricChars: false }) ;
+return self;}
+}),
+smalltalk.TITSlide);
+
+smalltalk.addMethod(
+unescape('_renderImage_on_'),
+smalltalk.method({
+selector: unescape('renderImage%3Aon%3A'),
+fn: function (filename, html){
+var self=this;
+(function($rec){smalltalk.send($rec, "_class_", ["center"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_width_", ["700px"]);return smalltalk.send($rec, "_src_", [smalltalk.send(unescape("tit/images/"), "__comma", [filename])]);})(smalltalk.send(html, "_img", []));})]);})(smalltalk.send(html, "_div", []));
+return self;}
+}),
+smalltalk.TITSlide);
+
+smalltalk.addMethod(
+unescape('_renderVimeo_on_'),
+smalltalk.method({
+selector: unescape('renderVimeo%3Aon%3A'),
+fn: function (aNumber, html){
+var self=this;
+(function($rec){smalltalk.send($rec, "_width_", [(640)]);smalltalk.send($rec, "_height_", [(480)]);return smalltalk.send($rec, "_src_", [smalltalk.send(smalltalk.send(unescape("http%3A//player.vimeo.com/video/"), "__comma", [smalltalk.send(aNumber, "_asString", [])]), "__comma", [unescape("%3Ftitle%3D0%26amp%3Bbyline%3D0%26amp%3Bportrait%3D0")])]);})(smalltalk.send(html, "_iframe", []));
+return self;}
+}),
+smalltalk.TITSlide);
+
+
+
 smalltalk.addClass('TITManipulatingObjects', smalltalk.TITPresentation, [], 'Presentation-TIT');
 smalltalk.addMethod(
 unescape('_description'),
@@ -302,7 +122,7 @@ smalltalk.method({
 selector: unescape('slideClasses'),
 fn: function (){
 var self=this;
-return [(smalltalk.IAEIntroSlide || IAEIntroSlide),(smalltalk.IAEPharocasts || IAEPharocasts),(smalltalk.IAEAmber || IAEAmber),(smalltalk.IAECara74 || IAECara74),(smalltalk.TITRoadmap || TITRoadmap),(smalltalk.TITInstallPharoWindows || TITInstallPharoWindows),(smalltalk.TITVMImageSources || TITVMImageSources),(smalltalk.TITBouncingAtomsMorphVideo || TITBouncingAtomsMorphVideo),(smalltalk.TITUnaryMessageSyntax || TITUnaryMessageSyntax),(smalltalk.TITBinaryMessageSyntax || TITBinaryMessageSyntax),(smalltalk.TITBasicCodeSnippets || TITBasicCodeSnippets),(smalltalk.TITPharoHelp || TITPharoHelp),(smalltalk.TITProfStefHelp || TITProfStefHelp),(smalltalk.TITProfStef || TITProfStef),(smalltalk.IAESectionExercises || IAESectionExercises),(smalltalk.TITBouncingAtomMorphsExercise || TITBouncingAtomMorphsExercise)];
+return [(smalltalk.IAEIntroSlide || IAEIntroSlide),(smalltalk.IAEPharocasts || IAEPharocasts),(smalltalk.IAEAmber || IAEAmber),(smalltalk.IAECara74 || IAECara74),(smalltalk.TITRoadmap || TITRoadmap),(smalltalk.TITInstallPharoWindows || TITInstallPharoWindows),(smalltalk.TITVMImageSources || TITVMImageSources),(smalltalk.TITBouncingAtomsMorphVideo || TITBouncingAtomsMorphVideo),(smalltalk.TITUnaryMessageSyntax || TITUnaryMessageSyntax),(smalltalk.TITBinaryMessageSyntax || TITBinaryMessageSyntax),(smalltalk.TITKeywordsMessageSyntax || TITKeywordsMessageSyntax),(smalltalk.TITBasicCodeSnippets || TITBasicCodeSnippets),(smalltalk.TITPharoHelp || TITPharoHelp),(smalltalk.TITProfStefHelp || TITProfStefHelp),(smalltalk.TITProfStef || TITProfStef),(smalltalk.IAESectionExercises || IAESectionExercises),(smalltalk.TITBouncingAtomMorphsExercise || TITBouncingAtomMorphsExercise)];
 return self;}
 }),
 smalltalk.TITManipulatingObjects);
@@ -329,6 +149,81 @@ return unescape("TIT%20-%20Manipulating%20Objects");
 return self;}
 }),
 smalltalk.TITManipulatingObjects.klass);
+
+
+smalltalk.addClass('TITKeywordsMessageSyntax', smalltalk.TITSlide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_renderSlideOn_'),
+smalltalk.method({
+selector: unescape('renderSlideOn%3A'),
+fn: function (html){
+var self=this;
+smalltalk.send(html, "_h1_", ["Keywords messages"]);
+(function($rec){smalltalk.send($rec, "_class_", ["center big"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_renderReceiver_message_keyword_argument_on_", ["receiver ", "message", "Keyword", "argument", html]);smalltalk.send($rec, "_renderReceiver_message_keyword_argument_on_", ["guitar ", "play", "String", "4", html]);return smalltalk.send($rec, "_renderReceiver_message_keyword_argument_keyword2_argument2_on_", ["guitar ", "play", "String", "4", "onFret", "2", html]);})(self);})]);})(smalltalk.send(html, "_div", []));
+return self;}
+}),
+smalltalk.TITKeywordsMessageSyntax);
+
+smalltalk.addMethod(
+unescape('_renderReceiver_message_argument_on_'),
+smalltalk.method({
+selector: unescape('renderReceiver%3Amessage%3Aargument%3Aon%3A'),
+fn: function (aReceiver, aMessage, anArgument, html){
+var self=this;
+(function($rec){smalltalk.send($rec, "_class_", ["blue"]);return smalltalk.send($rec, "_with_", [aReceiver]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_class_", ["red"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(" ", "__comma", [aMessage]), "__comma", [" "])]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_class_", ["green"]);return smalltalk.send($rec, "_with_", [anArgument]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_class_", ["blue"]);return smalltalk.send($rec, "_with_", ["."]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_br", []);return smalltalk.send($rec, "_br", []);})(html);
+return self;}
+}),
+smalltalk.TITKeywordsMessageSyntax);
+
+smalltalk.addMethod(
+unescape('_cssClass'),
+smalltalk.method({
+selector: unescape('cssClass'),
+fn: function (){
+var self=this;
+return "slide blue3d";
+return self;}
+}),
+smalltalk.TITKeywordsMessageSyntax);
+
+smalltalk.addMethod(
+unescape('_renderReceiver_message_keyword_argument_on_'),
+smalltalk.method({
+selector: unescape('renderReceiver%3Amessage%3Akeyword%3Aargument%3Aon%3A'),
+fn: function (aReceiver, aMessage, keyword, anArgument, html){
+var self=this;
+(function($rec){smalltalk.send($rec, "_class_", ["blue"]);smalltalk.send($rec, "_style_", [unescape("font-size%3A0.8em")]);return smalltalk.send($rec, "_with_", [aReceiver]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_class_", ["red"]);smalltalk.send($rec, "_style_", [unescape("font-size%3A0.8em")]);return smalltalk.send($rec, "_with_", [smalltalk.send(" ", "__comma", [aMessage])]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_class_", ["white"]);smalltalk.send($rec, "_style_", [unescape("font-size%3A0.8em")]);return smalltalk.send($rec, "_with_", [smalltalk.send(keyword, "__comma", [": "])]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_class_", ["green"]);smalltalk.send($rec, "_style_", [unescape("font-size%3A0.8em")]);return smalltalk.send($rec, "_with_", [anArgument]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_class_", ["blue"]);smalltalk.send($rec, "_style_", [unescape("font-size%3A0.8em")]);return smalltalk.send($rec, "_with_", ["."]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_br", []);return smalltalk.send($rec, "_br", []);})(html);
+return self;}
+}),
+smalltalk.TITKeywordsMessageSyntax);
+
+smalltalk.addMethod(
+unescape('_renderReceiver_message_keyword_argument_keyword2_argument2_on_'),
+smalltalk.method({
+selector: unescape('renderReceiver%3Amessage%3Akeyword%3Aargument%3Akeyword2%3Aargument2%3Aon%3A'),
+fn: function (aReceiver, aMessage, keyword, anArgument, keyword2, anArgument2, html){
+var self=this;
+(function($rec){smalltalk.send($rec, "_class_", ["blue"]);smalltalk.send($rec, "_style_", [unescape("font-size%3A0.8em")]);return smalltalk.send($rec, "_with_", [aReceiver]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_class_", ["red"]);smalltalk.send($rec, "_style_", [unescape("font-size%3A0.8em")]);return smalltalk.send($rec, "_with_", [smalltalk.send(" ", "__comma", [aMessage])]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_class_", ["white"]);smalltalk.send($rec, "_style_", [unescape("font-size%3A0.8em")]);return smalltalk.send($rec, "_with_", [smalltalk.send(keyword, "__comma", [": "])]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_class_", ["green"]);smalltalk.send($rec, "_style_", [unescape("font-size%3A0.8em")]);return smalltalk.send($rec, "_with_", [smalltalk.send(anArgument, "__comma", [" "])]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_class_", ["white"]);smalltalk.send($rec, "_style_", [unescape("font-size%3A0.8em")]);return smalltalk.send($rec, "_with_", [smalltalk.send(keyword2, "__comma", [": "])]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_class_", ["green"]);smalltalk.send($rec, "_style_", [unescape("font-size%3A0.8em")]);return smalltalk.send($rec, "_with_", [anArgument2]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_class_", ["blue"]);smalltalk.send($rec, "_style_", [unescape("font-size%3A0.8em")]);return smalltalk.send($rec, "_with_", ["."]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_br", []);return smalltalk.send($rec, "_br", []);})(html);
+return self;}
+}),
+smalltalk.TITKeywordsMessageSyntax);
+
 
 
 smalltalk.addClass('TITBinaryMessageSyntax', smalltalk.TITSlide, [], 'Presentation-TIT');
@@ -372,19 +267,105 @@ smalltalk.TITBinaryMessageSyntax);
 
 
 
-smalltalk.addClass('TITBouncingAtomMorphsExercise', smalltalk.TITSlide, [], 'Presentation-TIT');
+smalltalk.addClass('TITProfStefHelp', smalltalk.TITSlide, [], 'Presentation-TIT');
 smalltalk.addMethod(
 unescape('_renderSlideOn_'),
 smalltalk.method({
 selector: unescape('renderSlideOn%3A'),
 fn: function (html){
 var self=this;
-smalltalk.send(html, "_ol_", [(function(){return (function($rec){smalltalk.send($rec, "_li_", ["Make the BouncingAtomsMorph change color at every step"]);smalltalk.send($rec, "_li_", [unescape("Make%20the%20BouncingAtomsMorph%20change%20color%20every%202%20seconds%20%28but%20animated%20at%20full%20speed%29")]);return smalltalk.send($rec, "_li_", [unescape("Every%20second%20the%20BouncingAtomsMorph%20remove%20an%20atom.%20When%20reach%200%2C%20add%20one%20every%20second.%20When%20reach%2030%2C%20remove%20one%20every%20second")]);})(html);})]);
-smalltalk.send(html, "_with_", ["Do ProfStef go then:"]);
-smalltalk.send(html, "_ol_", [(function(){return (function($rec){smalltalk.send($rec, "_li_", ["Create a button in a window that opens a new BouncingAtomsMorph"]);smalltalk.send($rec, "_li_", ["Create a button that deletes all BouncingAtomsMorph instances"]);return smalltalk.send($rec, "_li_", ["A button that pops up a window displaying the number of red AtomMorph of latest BouncingAtomsMorph instance"]);})(html);})]);
+smalltalk.send(html, "_h1_", ["ProfStef tutorials"]);
+smalltalk.send(self, "_renderImage_on_", ["profstef.png", html]);
 return self;}
 }),
-smalltalk.TITBouncingAtomMorphsExercise);
+smalltalk.TITProfStefHelp);
+
+smalltalk.addMethod(
+unescape('_cssClass'),
+smalltalk.method({
+selector: unescape('cssClass'),
+fn: function (){
+var self=this;
+return "slide blue3d";
+return self;}
+}),
+smalltalk.TITProfStefHelp);
+
+
+
+smalltalk.addClass('TITVMImageSources', smalltalk.TITSlide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_renderSlideOn_'),
+smalltalk.method({
+selector: unescape('renderSlideOn%3A'),
+fn: function (html){
+var self=this;
+smalltalk.send(self, "_renderImage_on_", ["vm_image_sources.png", html]);
+return self;}
+}),
+smalltalk.TITVMImageSources);
+
+smalltalk.addMethod(
+unescape('_cssClass'),
+smalltalk.method({
+selector: unescape('cssClass'),
+fn: function (){
+var self=this;
+return "slide";
+return self;}
+}),
+smalltalk.TITVMImageSources);
+
+smalltalk.addMethod(
+unescape('_backgroundColor'),
+smalltalk.method({
+selector: unescape('backgroundColor'),
+fn: function (){
+var self=this;
+return unescape("%23ddf");
+return self;}
+}),
+smalltalk.TITVMImageSources);
+
+
+
+smalltalk.addClass('TITBouncingAtomsMorphVideo', smalltalk.TITSlide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_renderSlideOn_'),
+smalltalk.method({
+selector: unescape('renderSlideOn%3A'),
+fn: function (html){
+var self=this;
+(function($rec){smalltalk.send($rec, "_class_", ["center"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_href_", [unescape("http%3A//www.pharocasts.com/2012/01/manipulating-objects.html")]);return smalltalk.send($rec, "_with_", ["BouncingAtomsMorph"]);})(smalltalk.send(html, "_a", []));})]);})(smalltalk.send(html, "_h3", []));
+smalltalk.send(self, "_renderVimeo_on_", [(34810463), html]);
+return self;}
+}),
+smalltalk.TITBouncingAtomsMorphVideo);
+
+smalltalk.addMethod(
+unescape('_cssClass'),
+smalltalk.method({
+selector: unescape('cssClass'),
+fn: function (){
+var self=this;
+return "slide black";
+return self;}
+}),
+smalltalk.TITBouncingAtomsMorphVideo);
+
+
+
+smalltalk.addClass('TITProfStef', smalltalk.TITSlide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_renderSlideOn_'),
+smalltalk.method({
+selector: unescape('renderSlideOn%3A'),
+fn: function (html){
+var self=this;
+smalltalk.send(smalltalk.send((smalltalk.TrySmalltalkWidget || TrySmalltalkWidget), "_new", []), "_renderOn_", [html]);
+return self;}
+}),
+smalltalk.TITProfStef);
 
 
 
@@ -425,32 +406,60 @@ smalltalk.TITBasicCodeSnippets);
 
 
 
-smalltalk.addClass('TITProfStef', smalltalk.TITSlide, [], 'Presentation-TIT');
+smalltalk.addClass('TITBouncingAtomMorphsExercise', smalltalk.TITSlide, [], 'Presentation-TIT');
 smalltalk.addMethod(
 unescape('_renderSlideOn_'),
 smalltalk.method({
 selector: unescape('renderSlideOn%3A'),
 fn: function (html){
 var self=this;
-smalltalk.send(smalltalk.send((smalltalk.TrySmalltalkWidget || TrySmalltalkWidget), "_new", []), "_renderOn_", [html]);
+smalltalk.send(html, "_ol_", [(function(){return (function($rec){smalltalk.send($rec, "_li_", ["Make the BouncingAtomsMorph change color at every step"]);smalltalk.send($rec, "_li_", [unescape("Make%20the%20BouncingAtomsMorph%20change%20color%20every%202%20seconds%20%28but%20animated%20at%20full%20speed%29")]);return smalltalk.send($rec, "_li_", [unescape("Every%20second%20the%20BouncingAtomsMorph%20remove%20an%20atom.%20When%20reach%200%2C%20add%20one%20every%20second.%20When%20reach%2030%2C%20remove%20one%20every%20second")]);})(html);})]);
+smalltalk.send(html, "_with_", ["Do ProfStef go then:"]);
+smalltalk.send(html, "_ol_", [(function(){return (function($rec){smalltalk.send($rec, "_li_", ["Create a button in a window that opens a new BouncingAtomsMorph"]);smalltalk.send($rec, "_li_", ["Create a button that deletes all BouncingAtomsMorph instances"]);return smalltalk.send($rec, "_li_", ["A button that pops up a window displaying the number of red AtomMorph of latest BouncingAtomsMorph instance"]);})(html);})]);
 return self;}
 }),
-smalltalk.TITProfStef);
+smalltalk.TITBouncingAtomMorphsExercise);
 
 
 
-smalltalk.addClass('TITBouncingAtomsMorphVideo', smalltalk.TITSlide, [], 'Presentation-TIT');
+smalltalk.addClass('TITRoadmap', smalltalk.TITSlide, [], 'Presentation-TIT');
 smalltalk.addMethod(
 unescape('_renderSlideOn_'),
 smalltalk.method({
 selector: unescape('renderSlideOn%3A'),
 fn: function (html){
 var self=this;
-(function($rec){smalltalk.send($rec, "_class_", ["center"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_href_", [unescape("http%3A//www.pharocasts.com/2012/01/manipulating-objects.html")]);return smalltalk.send($rec, "_with_", ["BouncingAtomsMorph"]);})(smalltalk.send(html, "_a", []));})]);})(smalltalk.send(html, "_h3", []));
-smalltalk.send(self, "_renderVimeo_on_", [(34810463), html]);
+smalltalk.send(html, "_h1_", ["Roadmap"]);
+smalltalk.send(html, "_ol_", [(function(){return (function($rec){smalltalk.send($rec, "_li_", ["Manipulating objects"]);smalltalk.send($rec, "_li_", ["Write and share code"]);smalltalk.send($rec, "_li_", ["Software lifecycle"]);smalltalk.send($rec, "_li_", ["Understand UML"]);smalltalk.send($rec, "_li_", [unescape("Aggregation%2C%20encapsulation%2C%20polymorphism")]);smalltalk.send($rec, "_li_", ["Compose GUI"]);return smalltalk.send($rec, "_li_", ["GUI interactions"]);})(html);})]);
 return self;}
 }),
-smalltalk.TITBouncingAtomsMorphVideo);
+smalltalk.TITRoadmap);
+
+smalltalk.addMethod(
+unescape('_cssClass'),
+smalltalk.method({
+selector: unescape('cssClass'),
+fn: function (){
+var self=this;
+return "slide blue3d";
+return self;}
+}),
+smalltalk.TITRoadmap);
+
+
+
+smalltalk.addClass('TITInstallPharoWindows', smalltalk.TITSlide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_renderSlideOn_'),
+smalltalk.method({
+selector: unescape('renderSlideOn%3A'),
+fn: function (html){
+var self=this;
+(function($rec){smalltalk.send($rec, "_class_", ["center"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_href_", [unescape("http%3A//www.pharocasts.com/2010/08/install-pharo-on-windows.html")]);return smalltalk.send($rec, "_with_", ["Install Pharo on Windows"]);})(smalltalk.send(html, "_a", []));})]);})(smalltalk.send(html, "_h3", []));
+smalltalk.send(self, "_renderVimeo_on_", [(14301726), html]);
+return self;}
+}),
+smalltalk.TITInstallPharoWindows);
 
 smalltalk.addMethod(
 unescape('_cssClass'),
@@ -461,7 +470,73 @@ var self=this;
 return "slide black";
 return self;}
 }),
-smalltalk.TITBouncingAtomsMorphVideo);
+smalltalk.TITInstallPharoWindows);
+
+
+
+smalltalk.addClass('TITUnaryMessageSyntax', smalltalk.TITSlide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_renderSlideOn_'),
+smalltalk.method({
+selector: unescape('renderSlideOn%3A'),
+fn: function (html){
+var self=this;
+smalltalk.send(html, "_h1_", ["Unary messages"]);
+(function($rec){smalltalk.send($rec, "_class_", ["center big"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_renderReceiver_message_on_", ["receiver ", "message", html]);smalltalk.send($rec, "_renderReceiver_message_on_", ["3 ", "squared", html]);return smalltalk.send($rec, "_renderReceiver_message_on_", [unescape("%27TETRAS%27%20"), "asLowercase", html]);})(self);})]);})(smalltalk.send(html, "_div", []));
+return self;}
+}),
+smalltalk.TITUnaryMessageSyntax);
+
+smalltalk.addMethod(
+unescape('_renderReceiver_message_on_'),
+smalltalk.method({
+selector: unescape('renderReceiver%3Amessage%3Aon%3A'),
+fn: function (aString, anotherString, html){
+var self=this;
+(function($rec){smalltalk.send($rec, "_class_", ["blue"]);return smalltalk.send($rec, "_with_", [aString]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_class_", ["red"]);return smalltalk.send($rec, "_with_", [anotherString]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_class_", ["blue"]);return smalltalk.send($rec, "_with_", ["."]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_br", []);return smalltalk.send($rec, "_br", []);})(html);
+return self;}
+}),
+smalltalk.TITUnaryMessageSyntax);
+
+smalltalk.addMethod(
+unescape('_cssClass'),
+smalltalk.method({
+selector: unescape('cssClass'),
+fn: function (){
+var self=this;
+return "slide blue3d";
+return self;}
+}),
+smalltalk.TITUnaryMessageSyntax);
+
+
+
+smalltalk.addClass('TITPharoHelp', smalltalk.TITSlide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_cssClass'),
+smalltalk.method({
+selector: unescape('cssClass'),
+fn: function (){
+var self=this;
+return "slide black";
+return self;}
+}),
+smalltalk.TITPharoHelp);
+
+smalltalk.addMethod(
+unescape('_renderSlideOn_'),
+smalltalk.method({
+selector: unescape('renderSlideOn%3A'),
+fn: function (html){
+var self=this;
+smalltalk.send(html, "_h1_", ["Help in Pharo"]);
+smalltalk.send(self, "_renderImage_on_", ["pharo_help.png", html]);
+return self;}
+}),
+smalltalk.TITPharoHelp);
 
 
 
