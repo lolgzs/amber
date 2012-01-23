@@ -3,7 +3,8 @@ start = method
 separator      = [ \t\v\f\u00A0\uFEFF\n\r\u2028\u2029]+
 comments       = (["][^"]*["])+
 ws             = (separator / comments)*
-identifier     = first:[a-z] others:[a-zA-Z0-9]* {return first + others.join("")}
+identifier     = first:[a-zA-Z] others:[a-zA-Z0-9]* {return first + others.join("")}
+varIdentifier  = first:[a-z] others:[a-zA-Z0-9]* {return first + others.join("")}
 keyword        = first:identifier last:[:] {return first + last}
 className      = first:[A-Z] others:[a-zA-Z0-9]* {return first + others.join("")}
 string         = ['] val:(("''" {return "'"} / [^'])*) ['] {
@@ -11,9 +12,11 @@ string         = ['] val:(("''" {return "'"} / [^'])*) ['] {
                	   	._value_(val.join("").replace(/\"/ig, '"'))
 	         }
 
-symbol         = "#"val:[a-zA-Z0-9]* {
-		  return smalltalk.ValueNode._new()
-               	   	._value_('smalltalk.symbolFor(val.join("").replace(/\"/ig, '"')))
+symbol         = "#"val:(
+			digits:[a-zA-Z0-9\:]+ {return digits.join("")} / 
+			node:string {return node._value()})* {
+		  		    return smalltalk.ValueNode._new()
+               	   		    	   ._value_(smalltalk.symbolFor(val.join("").replace(/\"/ig, '"')))
                	 }
 number         = n:(float / integer) {
 		  return smalltalk.ValueNode._new()
@@ -42,7 +45,7 @@ pseudoVariable = val:(
 literal        = pseudoVariable / number / literalArray / dynamicDictionary / dynamicArray / string / symbol / block
 
 
-variable       = identifier:identifier {
+variable       = identifier:varIdentifier {
 		  return smalltalk.VariableNode._new()
 			._value_(identifier)
 		  }
