@@ -697,7 +697,16 @@ renderSlideOn: html
 		class: 'center';
 		with: [html a 
 				href: 'http://www.pharocasts.com/2010/08/install-pharo-on-windows.html'; 
-				with:'Install Pharo on Windows'].
+				with:'Install Pharo on Windows'.
+			html with: ' ( '.
+			html a 
+				href: 'http://lolgzs.free.fr/tit/Pharo-CogVM-Windows.zip'; 
+				with:'Cog VM'.
+			html with: ' - '.
+			html a 
+				href: 'http://lolgzs.free.fr/tit/Pharo-1.3-Tetras.zip'; 
+				with:'Pharo 1.3'.
+			html with: ' )'.].
 	self renderVimeo: 14301726 on: html.
 ! !
 

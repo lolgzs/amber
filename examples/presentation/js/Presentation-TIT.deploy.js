@@ -455,7 +455,7 @@ smalltalk.method({
 selector: unescape('renderSlideOn%3A'),
 fn: function (html){
 var self=this;
-(function($rec){smalltalk.send($rec, "_class_", ["center"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_href_", [unescape("http%3A//www.pharocasts.com/2010/08/install-pharo-on-windows.html")]);return smalltalk.send($rec, "_with_", ["Install Pharo on Windows"]);})(smalltalk.send(html, "_a", []));})]);})(smalltalk.send(html, "_h3", []));
+(function($rec){smalltalk.send($rec, "_class_", ["center"]);return smalltalk.send($rec, "_with_", [(function(){(function($rec){smalltalk.send($rec, "_href_", [unescape("http%3A//www.pharocasts.com/2010/08/install-pharo-on-windows.html")]);return smalltalk.send($rec, "_with_", ["Install Pharo on Windows"]);})(smalltalk.send(html, "_a", []));smalltalk.send(html, "_with_", [unescape("%20%28%20")]);(function($rec){smalltalk.send($rec, "_href_", [unescape("http%3A//lolgzs.free.fr/tit/Pharo-CogVM-Windows.zip")]);return smalltalk.send($rec, "_with_", ["Cog VM"]);})(smalltalk.send(html, "_a", []));smalltalk.send(html, "_with_", [unescape("%20-%20")]);(function($rec){smalltalk.send($rec, "_href_", [unescape("http%3A//lolgzs.free.fr/tit/Pharo-1.3-Tetras.zip")]);return smalltalk.send($rec, "_with_", ["Pharo 1.3"]);})(smalltalk.send(html, "_a", []));return smalltalk.send(html, "_with_", [unescape("%20%29")]);})]);})(smalltalk.send(html, "_h3", []));
 smalltalk.send(self, "_renderVimeo_on_", [(14301726), html]);
 return self;}
 }),

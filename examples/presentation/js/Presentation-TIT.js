@@ -626,11 +626,11 @@ selector: unescape('renderSlideOn%3A'),
 category: 'rendering',
 fn: function (html){
 var self=this;
-(function($rec){smalltalk.send($rec, "_class_", ["center"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_href_", [unescape("http%3A//www.pharocasts.com/2010/08/install-pharo-on-windows.html")]);return smalltalk.send($rec, "_with_", ["Install Pharo on Windows"]);})(smalltalk.send(html, "_a", []));})]);})(smalltalk.send(html, "_h3", []));
+(function($rec){smalltalk.send($rec, "_class_", ["center"]);return smalltalk.send($rec, "_with_", [(function(){(function($rec){smalltalk.send($rec, "_href_", [unescape("http%3A//www.pharocasts.com/2010/08/install-pharo-on-windows.html")]);return smalltalk.send($rec, "_with_", ["Install Pharo on Windows"]);})(smalltalk.send(html, "_a", []));smalltalk.send(html, "_with_", [unescape("%20%28%20")]);(function($rec){smalltalk.send($rec, "_href_", [unescape("http%3A//lolgzs.free.fr/tit/Pharo-CogVM-Windows.zip")]);return smalltalk.send($rec, "_with_", ["Cog VM"]);})(smalltalk.send(html, "_a", []));smalltalk.send(html, "_with_", [unescape("%20-%20")]);(function($rec){smalltalk.send($rec, "_href_", [unescape("http%3A//lolgzs.free.fr/tit/Pharo-1.3-Tetras.zip")]);return smalltalk.send($rec, "_with_", ["Pharo 1.3"]);})(smalltalk.send(html, "_a", []));return smalltalk.send(html, "_with_", [unescape("%20%29")]);})]);})(smalltalk.send(html, "_h3", []));
 smalltalk.send(self, "_renderVimeo_on_", [(14301726), html]);
 return self;},
 args: ["html"],
-source: unescape('renderSlideOn%3A%20html%0A%09html%20h3%0A%09%09class%3A%20%27center%27%3B%0A%09%09with%3A%20%5Bhtml%20a%20%0A%09%09%09%09href%3A%20%27http%3A//www.pharocasts.com/2010/08/install-pharo-on-windows.html%27%3B%20%0A%09%09%09%09with%3A%27Install%20Pharo%20on%20Windows%27%5D.%0A%09self%20renderVimeo%3A%2014301726%20on%3A%20html.'),
+source: unescape('renderSlideOn%3A%20html%0A%09html%20h3%0A%09%09class%3A%20%27center%27%3B%0A%09%09with%3A%20%5Bhtml%20a%20%0A%09%09%09%09href%3A%20%27http%3A//www.pharocasts.com/2010/08/install-pharo-on-windows.html%27%3B%20%0A%09%09%09%09with%3A%27Install%20Pharo%20on%20Windows%27.%0A%09%09%09html%20with%3A%20%27%20%28%20%27.%0A%09%09%09html%20a%20%0A%09%09%09%09href%3A%20%27http%3A//lolgzs.free.fr/tit/Pharo-CogVM-Windows.zip%27%3B%20%0A%09%09%09%09with%3A%27Cog%20VM%27.%0A%09%09%09html%20with%3A%20%27%20-%20%27.%0A%09%09%09html%20a%20%0A%09%09%09%09href%3A%20%27http%3A//lolgzs.free.fr/tit/Pharo-1.3-Tetras.zip%27%3B%20%0A%09%09%09%09with%3A%27Pharo%201.3%27.%0A%09%09%09html%20with%3A%20%27%20%29%27.%5D.%0A%09self%20renderVimeo%3A%2014301726%20on%3A%20html.'),
 messageSends: ["class:", "with:", "href:", "a", "h3", "renderVimeo:on:"],
 referencedClasses: []
 }),
