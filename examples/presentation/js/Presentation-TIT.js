@@ -168,12 +168,12 @@ selector: unescape('slideClasses'),
 category: 'accessing',
 fn: function (){
 var self=this;
-return [(smalltalk.IAEIntroSlide || IAEIntroSlide),(smalltalk.IAEPharocasts || IAEPharocasts),(smalltalk.IAEAmber || IAEAmber),(smalltalk.IAECara74 || IAECara74),(smalltalk.TITRoadmap || TITRoadmap),(smalltalk.TITInstallPharoWindows || TITInstallPharoWindows),(smalltalk.TITVMImageSources || TITVMImageSources),(smalltalk.TITBouncingAtomsMorphVideo || TITBouncingAtomsMorphVideo),(smalltalk.TITUnaryMessageSyntax || TITUnaryMessageSyntax),(smalltalk.TITBinaryMessageSyntax || TITBinaryMessageSyntax),(smalltalk.TITKeywordsMessageSyntax || TITKeywordsMessageSyntax),(smalltalk.TITBasicCodeSnippets || TITBasicCodeSnippets),(smalltalk.TITPharoHelp || TITPharoHelp),(smalltalk.TITProfStefHelp || TITProfStefHelp),(smalltalk.TITProfStef || TITProfStef),(smalltalk.IAESectionExercises || IAESectionExercises),(smalltalk.TITBouncingAtomMorphsExercise || TITBouncingAtomMorphsExercise)];
+return [(smalltalk.IAEIntroSlide || IAEIntroSlide),(smalltalk.IAEPharocasts || IAEPharocasts),(smalltalk.IAEAmber || IAEAmber),(smalltalk.IAECara74 || IAECara74),(smalltalk.TITRoadmap || TITRoadmap),(smalltalk.TITInstallPharoWindows || TITInstallPharoWindows),(smalltalk.TITVMImageSources || TITVMImageSources),(smalltalk.TITBouncingAtomsMorphVideo || TITBouncingAtomsMorphVideo),(smalltalk.TITUnaryMessageSyntax || TITUnaryMessageSyntax),(smalltalk.TITBinaryMessageSyntax || TITBinaryMessageSyntax),(smalltalk.TITKeywordsMessageSyntax || TITKeywordsMessageSyntax),(smalltalk.TITSelfMessage || TITSelfMessage),(smalltalk.TITBasicCodeSnippets || TITBasicCodeSnippets),(smalltalk.TITPharoHelp || TITPharoHelp),(smalltalk.TITProfStefHelp || TITProfStefHelp),(smalltalk.TITProfStef || TITProfStef),(smalltalk.IAESectionExercises || IAESectionExercises),(smalltalk.TITBouncingAtomMorphsExercise || TITBouncingAtomMorphsExercise)];
 return self;},
 args: [],
-source: unescape('slideClasses%0A%09%5E%20%7B%0A%09IAEIntroSlide.%0A%09IAEPharocasts.%0A%09IAEAmber.%0A%09IAECara74.%0A%09TITRoadmap.%0A%09TITInstallPharoWindows.%0A%09TITVMImageSources.%0A%09TITBouncingAtomsMorphVideo.%0A%09TITUnaryMessageSyntax.%0A%09TITBinaryMessageSyntax.%0A%09TITKeywordsMessageSyntax.%0A%09TITBasicCodeSnippets.%0A%09TITPharoHelp.%0A%09TITProfStefHelp.%0A%09TITProfStef.%0A%09IAESectionExercises.%0A%09TITBouncingAtomMorphsExercise%7D'),
+source: unescape('slideClasses%0A%09%5E%20%7B%0A%09IAEIntroSlide.%0A%09IAEPharocasts.%0A%09IAEAmber.%0A%09IAECara74.%0A%09TITRoadmap.%0A%09TITInstallPharoWindows.%0A%09TITVMImageSources.%0A%09TITBouncingAtomsMorphVideo.%0A%09TITUnaryMessageSyntax.%0A%09TITBinaryMessageSyntax.%0A%09TITKeywordsMessageSyntax.%0A%09TITSelfMessage.%0A%09TITBasicCodeSnippets.%0A%09TITPharoHelp.%0A%09TITProfStefHelp.%0A%09TITProfStef.%0A%09IAESectionExercises.%0A%09TITBouncingAtomMorphsExercise%7D'),
 messageSends: [],
-referencedClasses: ["IAEIntroSlide", "IAEPharocasts", "IAEAmber", "IAECara74", "TITRoadmap", "TITInstallPharoWindows", "TITVMImageSources", "TITBouncingAtomsMorphVideo", "TITUnaryMessageSyntax", "TITBinaryMessageSyntax", "TITKeywordsMessageSyntax", "TITBasicCodeSnippets", "TITPharoHelp", "TITProfStefHelp", "TITProfStef", "IAESectionExercises", "TITBouncingAtomMorphsExercise"]
+referencedClasses: ["IAEIntroSlide", "IAEPharocasts", "IAEAmber", "IAECara74", "TITRoadmap", "TITInstallPharoWindows", "TITVMImageSources", "TITBouncingAtomsMorphVideo", "TITUnaryMessageSyntax", "TITBinaryMessageSyntax", "TITKeywordsMessageSyntax", "TITSelfMessage", "TITBasicCodeSnippets", "TITPharoHelp", "TITProfStefHelp", "TITProfStef", "IAESectionExercises", "TITBouncingAtomMorphsExercise"]
 }),
 smalltalk.TITManipulatingObjects);
 
@@ -742,6 +742,58 @@ messageSends: ["h1:", "renderImage:on:"],
 referencedClasses: []
 }),
 smalltalk.TITPharoHelp);
+
+
+
+smalltalk.addClass('TITSelfMessage', smalltalk.TITSlide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_renderSlideOn_'),
+smalltalk.method({
+selector: unescape('renderSlideOn%3A'),
+category: 'rendering',
+fn: function (html){
+var self=this;
+smalltalk.send(html, "_h1_", ["Self"]);
+smalltalk.send(self, "_renderImage_on_", ["self.png", html]);
+return self;},
+args: ["html"],
+source: unescape('renderSlideOn%3A%20html%0A%09html%20h1%3A%20%27Self%27.%0A%09self%20renderImage%3A%20%27self.png%27%20on%3A%20html'),
+messageSends: ["h1:", "renderImage:on:"],
+referencedClasses: []
+}),
+smalltalk.TITSelfMessage);
+
+smalltalk.addMethod(
+unescape('_cssClass'),
+smalltalk.method({
+selector: unescape('cssClass'),
+category: 'accessing',
+fn: function (){
+var self=this;
+return "slide blue3d";
+return self;},
+args: [],
+source: unescape('cssClass%0A%09%5E%20%27slide%20blue3d%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.TITSelfMessage);
+
+smalltalk.addMethod(
+unescape('_backgroundColor'),
+smalltalk.method({
+selector: unescape('backgroundColor'),
+category: 'accessing',
+fn: function (){
+var self=this;
+return unescape("%23faa");
+return self;},
+args: [],
+source: unescape('backgroundColor%0A%09%5E%20%27%23faa%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.TITSelfMessage);
 
 
 

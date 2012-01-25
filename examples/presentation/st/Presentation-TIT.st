@@ -427,6 +427,7 @@ slideClasses
 	TITUnaryMessageSyntax.
 	TITBinaryMessageSyntax.
 	TITKeywordsMessageSyntax.
+	TITSelfMessage.
 	TITBasicCodeSnippets.
 	TITPharoHelp.
 	TITProfStefHelp.
@@ -754,5 +755,26 @@ cssClass
 renderSlideOn: html
 	html h1: 'Help in Pharo'.
 	self renderImage: 'pharo_help.png' on: html.
+! !
+
+TITSlide subclass: #TITSelfMessage
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITSelfMessage methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide blue3d'
+!
+
+backgroundColor
+	^ '#faa'
+! !
+
+!TITSelfMessage methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1: 'Self'.
+	self renderImage: 'self.png' on: html
 ! !
 
