@@ -1,3 +1,4 @@
+Smalltalk current createPackage: 'Presentation' properties: #{}!
 Widget subclass: #Slide
 	instanceVariableNames: 'presentation'
 	category: 'Presentation'!
@@ -13,7 +14,7 @@ presentation: aPresentation
 !
 
 id
-	self subclassResponsibility
+	^ self class name
 !
 
 cssClass
@@ -1160,8 +1161,11 @@ nextSlide
 !
 
 reload
+	|slideIndex|
+	slideIndex := self currentPresentation currentSlideIndex.
 	self currentPresentation: self currentPresentation class new.
 	self renderCurrentPresentation.
+	self selectSlideAt: slideIndex.
 !
 
 selectSlideAt: anInteger
