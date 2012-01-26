@@ -1,4 +1,41 @@
 Smalltalk current createPackage: 'Presentation-TIT' properties: #{}!
+Slide subclass: #TITSlide
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITSlide methodsFor: 'rendering'!
+
+renderSmalltalk: aString on: html
+	|aTextArea|
+	aTextArea := html textarea element.
+	aTextArea value: aString.
+        
+	< CodeMirror.fromTextArea( aTextArea, {
+                lineNumbers: true,
+		theme: 'jtalk',
+                enterMode: 'flat',
+		theme: 'neat',
+  		width: '700px',
+		lineWrapping: false,
+                matchBrackets: true,
+                electricChars: false }) >
+!
+
+renderImage: filename on: html
+	html div 
+		class: 'center';
+		with: [	html img
+					width: '700px';
+					src: 'tit/images/', filename]
+!
+
+renderVimeo: aNumber on: html
+	html iframe 
+		width:640;
+		height:480;
+		src:'http://player.vimeo.com/video/', aNumber asString, '?title=0&amp;byline=0&amp;portrait=0'.
+! !
+
 Presentation subclass: #TITPresentation
 	instanceVariableNames: ''
 	category: 'Presentation-TIT'!
@@ -367,43 +404,6 @@ isConcrete
 	^ false
 ! !
 
-Slide subclass: #TITSlide
-	instanceVariableNames: ''
-	category: 'Presentation-TIT'!
-
-!TITSlide methodsFor: 'rendering'!
-
-renderSmalltalk: aString on: html
-	|aTextArea|
-	aTextArea := html textarea element.
-	aTextArea value: aString.
-        
-	< CodeMirror.fromTextArea( aTextArea, {
-                lineNumbers: true,
-		theme: 'jtalk',
-                enterMode: 'flat',
-		theme: 'neat',
-  		width: '700px',
-		lineWrapping: false,
-                matchBrackets: true,
-                electricChars: false }) >
-!
-
-renderImage: filename on: html
-	html div 
-		class: 'center';
-		with: [	html img
-					width: '700px';
-					src: 'tit/images/', filename]
-!
-
-renderVimeo: aNumber on: html
-	html iframe 
-		width:640;
-		height:480;
-		src:'http://player.vimeo.com/video/', aNumber asString, '?title=0&amp;byline=0&amp;portrait=0'.
-! !
-
 TITPresentation subclass: #TITManipulatingObjects
 	instanceVariableNames: ''
 	category: 'Presentation-TIT'!
@@ -427,6 +427,7 @@ slideClasses
 	TITUnaryMessageSyntax.
 	TITBinaryMessageSyntax.
 	TITKeywordsMessageSyntax.
+	TITCascadingMessagesSyntax.
 	TITSelfMessage.
 	TITBasicCodeSnippets.
 	TITPharoHelp.
@@ -776,5 +777,49 @@ backgroundColor
 renderSlideOn: html
 	html h1: 'Self'.
 	self renderImage: 'self.png' on: html
+! !
+
+TITSlide subclass: #TITCascadingMessagesSyntax
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITCascadingMessagesSyntax methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide green3d'
+! !
+
+!TITCascadingMessagesSyntax methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1: 'Cascading messages'.
+	html div 
+		class: 'center big';
+		with: [ self
+				renderCascade: 'message' onReceiver: 'receiver' on: html;
+				renderCascade: 'increase' onReceiver: 'counter' on: html].
+!
+
+renderReceiver: aReceiver message: aMessage argument: anArgument on: html
+		html span class: 'blue'; with: aReceiver.
+		html span class: 'red';	with: ' ', aMessage, ' '.
+		html span class: 'green'; with: anArgument.
+		html span class: 'blue'; with: '.'.
+		html br;br
+!
+
+renderCascade: aMessage on: html
+		html span class: 'red';	with: ' ', aMessage.
+		html span class: 'blue'; with: ';'.
+!
+
+renderCascade: aMessage onReceiver: aReceiver on: html
+		html span class: 'blue'; with: aReceiver.
+		self
+			renderCascade: aMessage on: html;
+			renderCascade: aMessage on: html.
+		html span class: 'red';	with: ' ', aMessage.
+		html span class: 'blue'; with: '.'.
+		html br; br.
 ! !
 

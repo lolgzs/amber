@@ -1,4 +1,66 @@
 smalltalk.addPackage('Presentation-TIT', {});
+smalltalk.addClass('TITSlide', smalltalk.Slide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_renderSmalltalk_on_'),
+smalltalk.method({
+selector: unescape('renderSmalltalk%3Aon%3A'),
+category: 'rendering',
+fn: function (aString, html){
+var self=this;
+var aTextArea=nil;
+(aTextArea=smalltalk.send(smalltalk.send(html, "_textarea", []), "_element", []));
+smalltalk.send(aTextArea, "_value_", [aString]);
+ CodeMirror.fromTextArea( aTextArea, {
+                lineNumbers: true,
+		theme: 'jtalk',
+                enterMode: 'flat',
+		theme: 'neat',
+  		width: '700px',
+		lineWrapping: false,
+                matchBrackets: true,
+                electricChars: false }) ;
+return self;},
+args: ["aString", "html"],
+source: unescape('renderSmalltalk%3A%20aString%20on%3A%20html%0A%09%7CaTextArea%7C%0A%09aTextArea%20%3A%3D%20html%20textarea%20element.%0A%09aTextArea%20value%3A%20aString.%0A%20%20%20%20%20%20%20%20%0A%09%3C%20CodeMirror.fromTextArea%28%20aTextArea%2C%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20lineNumbers%3A%20true%2C%0A%09%09theme%3A%20%27jtalk%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20enterMode%3A%20%27flat%27%2C%0A%09%09theme%3A%20%27neat%27%2C%0A%20%20%09%09width%3A%20%27700px%27%2C%0A%09%09lineWrapping%3A%20false%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20matchBrackets%3A%20true%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20electricChars%3A%20false%20%7D%29%20%3E'),
+messageSends: ["element", "textarea", "value:"],
+referencedClasses: []
+}),
+smalltalk.TITSlide);
+
+smalltalk.addMethod(
+unescape('_renderImage_on_'),
+smalltalk.method({
+selector: unescape('renderImage%3Aon%3A'),
+category: 'rendering',
+fn: function (filename, html){
+var self=this;
+(function($rec){smalltalk.send($rec, "_class_", ["center"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_width_", ["700px"]);return smalltalk.send($rec, "_src_", [smalltalk.send(unescape("tit/images/"), "__comma", [filename])]);})(smalltalk.send(html, "_img", []));})]);})(smalltalk.send(html, "_div", []));
+return self;},
+args: ["filename", "html"],
+source: unescape('renderImage%3A%20filename%20on%3A%20html%0A%09html%20div%20%0A%09%09class%3A%20%27center%27%3B%0A%09%09with%3A%20%5B%09html%20img%0A%09%09%09%09%09width%3A%20%27700px%27%3B%0A%09%09%09%09%09src%3A%20%27tit/images/%27%2C%20filename%5D'),
+messageSends: ["class:", "with:", "width:", "src:", unescape("%2C"), "img", "div"],
+referencedClasses: []
+}),
+smalltalk.TITSlide);
+
+smalltalk.addMethod(
+unescape('_renderVimeo_on_'),
+smalltalk.method({
+selector: unescape('renderVimeo%3Aon%3A'),
+category: 'rendering',
+fn: function (aNumber, html){
+var self=this;
+(function($rec){smalltalk.send($rec, "_width_", [(640)]);smalltalk.send($rec, "_height_", [(480)]);return smalltalk.send($rec, "_src_", [smalltalk.send(smalltalk.send(unescape("http%3A//player.vimeo.com/video/"), "__comma", [smalltalk.send(aNumber, "_asString", [])]), "__comma", [unescape("%3Ftitle%3D0%26amp%3Bbyline%3D0%26amp%3Bportrait%3D0")])]);})(smalltalk.send(html, "_iframe", []));
+return self;},
+args: ["aNumber", "html"],
+source: unescape('renderVimeo%3A%20aNumber%20on%3A%20html%0A%09html%20iframe%20%0A%09%09width%3A640%3B%0A%09%09height%3A480%3B%0A%09%09src%3A%27http%3A//player.vimeo.com/video/%27%2C%20aNumber%20asString%2C%20%27%3Ftitle%3D0%26amp%3Bbyline%3D0%26amp%3Bportrait%3D0%27.'),
+messageSends: ["width:", "height:", "src:", unescape("%2C"), "asString", "iframe"],
+referencedClasses: []
+}),
+smalltalk.TITSlide);
+
+
+
 smalltalk.addClass('TITPresentation', smalltalk.Presentation, [], 'Presentation-TIT');
 smalltalk.addMethod(
 unescape('_url'),
@@ -82,68 +144,6 @@ referencedClasses: []
 smalltalk.TITPresentation.klass);
 
 
-smalltalk.addClass('TITSlide', smalltalk.Slide, [], 'Presentation-TIT');
-smalltalk.addMethod(
-unescape('_renderSmalltalk_on_'),
-smalltalk.method({
-selector: unescape('renderSmalltalk%3Aon%3A'),
-category: 'rendering',
-fn: function (aString, html){
-var self=this;
-var aTextArea=nil;
-(aTextArea=smalltalk.send(smalltalk.send(html, "_textarea", []), "_element", []));
-smalltalk.send(aTextArea, "_value_", [aString]);
- CodeMirror.fromTextArea( aTextArea, {
-                lineNumbers: true,
-		theme: 'jtalk',
-                enterMode: 'flat',
-		theme: 'neat',
-  		width: '700px',
-		lineWrapping: false,
-                matchBrackets: true,
-                electricChars: false }) ;
-return self;},
-args: ["aString", "html"],
-source: unescape('renderSmalltalk%3A%20aString%20on%3A%20html%0A%09%7CaTextArea%7C%0A%09aTextArea%20%3A%3D%20html%20textarea%20element.%0A%09aTextArea%20value%3A%20aString.%0A%20%20%20%20%20%20%20%20%0A%09%3C%20CodeMirror.fromTextArea%28%20aTextArea%2C%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20lineNumbers%3A%20true%2C%0A%09%09theme%3A%20%27jtalk%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20enterMode%3A%20%27flat%27%2C%0A%09%09theme%3A%20%27neat%27%2C%0A%20%20%09%09width%3A%20%27700px%27%2C%0A%09%09lineWrapping%3A%20false%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20matchBrackets%3A%20true%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20electricChars%3A%20false%20%7D%29%20%3E'),
-messageSends: ["element", "textarea", "value:"],
-referencedClasses: []
-}),
-smalltalk.TITSlide);
-
-smalltalk.addMethod(
-unescape('_renderImage_on_'),
-smalltalk.method({
-selector: unescape('renderImage%3Aon%3A'),
-category: 'rendering',
-fn: function (filename, html){
-var self=this;
-(function($rec){smalltalk.send($rec, "_class_", ["center"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_width_", ["700px"]);return smalltalk.send($rec, "_src_", [smalltalk.send(unescape("tit/images/"), "__comma", [filename])]);})(smalltalk.send(html, "_img", []));})]);})(smalltalk.send(html, "_div", []));
-return self;},
-args: ["filename", "html"],
-source: unescape('renderImage%3A%20filename%20on%3A%20html%0A%09html%20div%20%0A%09%09class%3A%20%27center%27%3B%0A%09%09with%3A%20%5B%09html%20img%0A%09%09%09%09%09width%3A%20%27700px%27%3B%0A%09%09%09%09%09src%3A%20%27tit/images/%27%2C%20filename%5D'),
-messageSends: ["class:", "with:", "width:", "src:", unescape("%2C"), "img", "div"],
-referencedClasses: []
-}),
-smalltalk.TITSlide);
-
-smalltalk.addMethod(
-unescape('_renderVimeo_on_'),
-smalltalk.method({
-selector: unescape('renderVimeo%3Aon%3A'),
-category: 'rendering',
-fn: function (aNumber, html){
-var self=this;
-(function($rec){smalltalk.send($rec, "_width_", [(640)]);smalltalk.send($rec, "_height_", [(480)]);return smalltalk.send($rec, "_src_", [smalltalk.send(smalltalk.send(unescape("http%3A//player.vimeo.com/video/"), "__comma", [smalltalk.send(aNumber, "_asString", [])]), "__comma", [unescape("%3Ftitle%3D0%26amp%3Bbyline%3D0%26amp%3Bportrait%3D0")])]);})(smalltalk.send(html, "_iframe", []));
-return self;},
-args: ["aNumber", "html"],
-source: unescape('renderVimeo%3A%20aNumber%20on%3A%20html%0A%09html%20iframe%20%0A%09%09width%3A640%3B%0A%09%09height%3A480%3B%0A%09%09src%3A%27http%3A//player.vimeo.com/video/%27%2C%20aNumber%20asString%2C%20%27%3Ftitle%3D0%26amp%3Bbyline%3D0%26amp%3Bportrait%3D0%27.'),
-messageSends: ["width:", "height:", "src:", unescape("%2C"), "asString", "iframe"],
-referencedClasses: []
-}),
-smalltalk.TITSlide);
-
-
-
 smalltalk.addClass('TITManipulatingObjects', smalltalk.TITPresentation, [], 'Presentation-TIT');
 smalltalk.addMethod(
 unescape('_description'),
@@ -168,31 +168,15 @@ selector: unescape('slideClasses'),
 category: 'accessing',
 fn: function (){
 var self=this;
-return [(smalltalk.IAEIntroSlide || IAEIntroSlide),(smalltalk.IAEPharocasts || IAEPharocasts),(smalltalk.IAEAmber || IAEAmber),(smalltalk.IAECara74 || IAECara74),(smalltalk.TITRoadmap || TITRoadmap),(smalltalk.TITInstallPharoWindows || TITInstallPharoWindows),(smalltalk.TITVMImageSources || TITVMImageSources),(smalltalk.TITBouncingAtomsMorphVideo || TITBouncingAtomsMorphVideo),(smalltalk.TITUnaryMessageSyntax || TITUnaryMessageSyntax),(smalltalk.TITBinaryMessageSyntax || TITBinaryMessageSyntax),(smalltalk.TITKeywordsMessageSyntax || TITKeywordsMessageSyntax),(smalltalk.TITSelfMessage || TITSelfMessage),(smalltalk.TITBasicCodeSnippets || TITBasicCodeSnippets),(smalltalk.TITPharoHelp || TITPharoHelp),(smalltalk.TITProfStefHelp || TITProfStefHelp),(smalltalk.TITProfStef || TITProfStef),(smalltalk.IAESectionExercises || IAESectionExercises),(smalltalk.TITBouncingAtomMorphsExercise || TITBouncingAtomMorphsExercise)];
+return [(smalltalk.IAEIntroSlide || IAEIntroSlide),(smalltalk.IAEPharocasts || IAEPharocasts),(smalltalk.IAEAmber || IAEAmber),(smalltalk.IAECara74 || IAECara74),(smalltalk.TITRoadmap || TITRoadmap),(smalltalk.TITInstallPharoWindows || TITInstallPharoWindows),(smalltalk.TITVMImageSources || TITVMImageSources),(smalltalk.TITBouncingAtomsMorphVideo || TITBouncingAtomsMorphVideo),(smalltalk.TITUnaryMessageSyntax || TITUnaryMessageSyntax),(smalltalk.TITBinaryMessageSyntax || TITBinaryMessageSyntax),(smalltalk.TITKeywordsMessageSyntax || TITKeywordsMessageSyntax),(smalltalk.TITCascadingMessagesSyntax || TITCascadingMessagesSyntax),(smalltalk.TITSelfMessage || TITSelfMessage),(smalltalk.TITBasicCodeSnippets || TITBasicCodeSnippets),(smalltalk.TITPharoHelp || TITPharoHelp),(smalltalk.TITProfStefHelp || TITProfStefHelp),(smalltalk.TITProfStef || TITProfStef),(smalltalk.IAESectionExercises || IAESectionExercises),(smalltalk.TITBouncingAtomMorphsExercise || TITBouncingAtomMorphsExercise)];
 return self;},
 args: [],
-source: unescape('slideClasses%0A%09%5E%20%7B%0A%09IAEIntroSlide.%0A%09IAEPharocasts.%0A%09IAEAmber.%0A%09IAECara74.%0A%09TITRoadmap.%0A%09TITInstallPharoWindows.%0A%09TITVMImageSources.%0A%09TITBouncingAtomsMorphVideo.%0A%09TITUnaryMessageSyntax.%0A%09TITBinaryMessageSyntax.%0A%09TITKeywordsMessageSyntax.%0A%09TITSelfMessage.%0A%09TITBasicCodeSnippets.%0A%09TITPharoHelp.%0A%09TITProfStefHelp.%0A%09TITProfStef.%0A%09IAESectionExercises.%0A%09TITBouncingAtomMorphsExercise%7D'),
+source: unescape('slideClasses%0A%09%5E%20%7B%0A%09IAEIntroSlide.%0A%09IAEPharocasts.%0A%09IAEAmber.%0A%09IAECara74.%0A%09TITRoadmap.%0A%09TITInstallPharoWindows.%0A%09TITVMImageSources.%0A%09TITBouncingAtomsMorphVideo.%0A%09TITUnaryMessageSyntax.%0A%09TITBinaryMessageSyntax.%0A%09TITKeywordsMessageSyntax.%0A%09TITCascadingMessagesSyntax.%0A%09TITSelfMessage.%0A%09TITBasicCodeSnippets.%0A%09TITPharoHelp.%0A%09TITProfStefHelp.%0A%09TITProfStef.%0A%09IAESectionExercises.%0A%09TITBouncingAtomMorphsExercise%7D'),
 messageSends: [],
-referencedClasses: ["IAEIntroSlide", "IAEPharocasts", "IAEAmber", "IAECara74", "TITRoadmap", "TITInstallPharoWindows", "TITVMImageSources", "TITBouncingAtomsMorphVideo", "TITUnaryMessageSyntax", "TITBinaryMessageSyntax", "TITKeywordsMessageSyntax", "TITSelfMessage", "TITBasicCodeSnippets", "TITPharoHelp", "TITProfStefHelp", "TITProfStef", "IAESectionExercises", "TITBouncingAtomMorphsExercise"]
+referencedClasses: ["IAEIntroSlide", "IAEPharocasts", "IAEAmber", "IAECara74", "TITRoadmap", "TITInstallPharoWindows", "TITVMImageSources", "TITBouncingAtomsMorphVideo", "TITUnaryMessageSyntax", "TITBinaryMessageSyntax", "TITKeywordsMessageSyntax", "TITCascadingMessagesSyntax", "TITSelfMessage", "TITBasicCodeSnippets", "TITPharoHelp", "TITProfStefHelp", "TITProfStef", "IAESectionExercises", "TITBouncingAtomMorphsExercise"]
 }),
 smalltalk.TITManipulatingObjects);
 
-
-smalltalk.addMethod(
-unescape('_isConcrete'),
-smalltalk.method({
-selector: unescape('isConcrete'),
-category: 'testing',
-fn: function (){
-var self=this;
-return true;
-return self;},
-args: [],
-source: unescape('isConcrete%0A%09%5E%20true'),
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.TITManipulatingObjects.klass);
 
 smalltalk.addMethod(
 unescape('_title'),
@@ -210,8 +194,40 @@ referencedClasses: []
 }),
 smalltalk.TITManipulatingObjects.klass);
 
+smalltalk.addMethod(
+unescape('_isConcrete'),
+smalltalk.method({
+selector: unescape('isConcrete'),
+category: 'testing',
+fn: function (){
+var self=this;
+return true;
+return self;},
+args: [],
+source: unescape('isConcrete%0A%09%5E%20true'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.TITManipulatingObjects.klass);
+
 
 smalltalk.addClass('TITKeywordsMessageSyntax', smalltalk.TITSlide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_cssClass'),
+smalltalk.method({
+selector: unescape('cssClass'),
+category: 'accessing',
+fn: function (){
+var self=this;
+return "slide blue3d";
+return self;},
+args: [],
+source: unescape('cssClass%0A%09%5E%20%27slide%20blue3d%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.TITKeywordsMessageSyntax);
+
 smalltalk.addMethod(
 unescape('_renderSlideOn_'),
 smalltalk.method({
@@ -245,22 +261,6 @@ return self;},
 args: ["aReceiver", "aMessage", "anArgument", "html"],
 source: unescape('renderReceiver%3A%20aReceiver%20message%3A%20aMessage%20argument%3A%20anArgument%20on%3A%20html%0A%09%09html%20span%20class%3A%20%27blue%27%3B%20with%3A%20aReceiver.%0A%09%09html%20span%20class%3A%20%27red%27%3B%09with%3A%20%27%20%27%2C%20aMessage%2C%20%27%20%27.%0A%09%09html%20span%20class%3A%20%27green%27%3B%20with%3A%20anArgument.%0A%09%09html%20span%20class%3A%20%27blue%27%3B%20with%3A%20%27.%27.%0A%09%09html%20br%3Bbr'),
 messageSends: ["class:", "with:", "span", unescape("%2C"), "br"],
-referencedClasses: []
-}),
-smalltalk.TITKeywordsMessageSyntax);
-
-smalltalk.addMethod(
-unescape('_cssClass'),
-smalltalk.method({
-selector: unescape('cssClass'),
-category: 'accessing',
-fn: function (){
-var self=this;
-return "slide blue3d";
-return self;},
-args: [],
-source: unescape('cssClass%0A%09%5E%20%27slide%20blue3d%27'),
-messageSends: [],
 referencedClasses: []
 }),
 smalltalk.TITKeywordsMessageSyntax);
@@ -313,6 +313,22 @@ smalltalk.TITKeywordsMessageSyntax);
 
 smalltalk.addClass('TITBinaryMessageSyntax', smalltalk.TITSlide, [], 'Presentation-TIT');
 smalltalk.addMethod(
+unescape('_cssClass'),
+smalltalk.method({
+selector: unescape('cssClass'),
+category: 'accessing',
+fn: function (){
+var self=this;
+return "slide green3d";
+return self;},
+args: [],
+source: unescape('cssClass%0A%09%5E%20%27slide%20green3d%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.TITBinaryMessageSyntax);
+
+smalltalk.addMethod(
 unescape('_renderSlideOn_'),
 smalltalk.method({
 selector: unescape('renderSlideOn%3A'),
@@ -349,6 +365,9 @@ referencedClasses: []
 }),
 smalltalk.TITBinaryMessageSyntax);
 
+
+
+smalltalk.addClass('TITProfStefHelp', smalltalk.TITSlide, [], 'Presentation-TIT');
 smalltalk.addMethod(
 unescape('_cssClass'),
 smalltalk.method({
@@ -356,18 +375,15 @@ selector: unescape('cssClass'),
 category: 'accessing',
 fn: function (){
 var self=this;
-return "slide green3d";
+return "slide blue3d";
 return self;},
 args: [],
-source: unescape('cssClass%0A%09%5E%20%27slide%20green3d%27'),
+source: unescape('cssClass%0A%09%5E%20%27slide%20blue3d%27'),
 messageSends: [],
 referencedClasses: []
 }),
-smalltalk.TITBinaryMessageSyntax);
+smalltalk.TITProfStefHelp);
 
-
-
-smalltalk.addClass('TITProfStefHelp', smalltalk.TITSlide, [], 'Presentation-TIT');
 smalltalk.addMethod(
 unescape('_renderSlideOn_'),
 smalltalk.method({
@@ -385,41 +401,9 @@ referencedClasses: []
 }),
 smalltalk.TITProfStefHelp);
 
-smalltalk.addMethod(
-unescape('_cssClass'),
-smalltalk.method({
-selector: unescape('cssClass'),
-category: 'accessing',
-fn: function (){
-var self=this;
-return "slide blue3d";
-return self;},
-args: [],
-source: unescape('cssClass%0A%09%5E%20%27slide%20blue3d%27'),
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.TITProfStefHelp);
-
 
 
 smalltalk.addClass('TITVMImageSources', smalltalk.TITSlide, [], 'Presentation-TIT');
-smalltalk.addMethod(
-unescape('_renderSlideOn_'),
-smalltalk.method({
-selector: unescape('renderSlideOn%3A'),
-category: 'rendering',
-fn: function (html){
-var self=this;
-smalltalk.send(self, "_renderImage_on_", ["vm_image_sources.png", html]);
-return self;},
-args: ["html"],
-source: unescape('renderSlideOn%3A%20html%0A%09self%20renderImage%3A%20%27vm_image_sources.png%27%20on%3A%20html'),
-messageSends: ["renderImage:on:"],
-referencedClasses: []
-}),
-smalltalk.TITVMImageSources);
-
 smalltalk.addMethod(
 unescape('_cssClass'),
 smalltalk.method({
@@ -452,9 +436,41 @@ referencedClasses: []
 }),
 smalltalk.TITVMImageSources);
 
+smalltalk.addMethod(
+unescape('_renderSlideOn_'),
+smalltalk.method({
+selector: unescape('renderSlideOn%3A'),
+category: 'rendering',
+fn: function (html){
+var self=this;
+smalltalk.send(self, "_renderImage_on_", ["vm_image_sources.png", html]);
+return self;},
+args: ["html"],
+source: unescape('renderSlideOn%3A%20html%0A%09self%20renderImage%3A%20%27vm_image_sources.png%27%20on%3A%20html'),
+messageSends: ["renderImage:on:"],
+referencedClasses: []
+}),
+smalltalk.TITVMImageSources);
+
 
 
 smalltalk.addClass('TITBouncingAtomsMorphVideo', smalltalk.TITSlide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_cssClass'),
+smalltalk.method({
+selector: unescape('cssClass'),
+category: 'accessing',
+fn: function (){
+var self=this;
+return "slide black";
+return self;},
+args: [],
+source: unescape('cssClass%0A%09%5E%20%27slide%20black%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.TITBouncingAtomsMorphVideo);
+
 smalltalk.addMethod(
 unescape('_renderSlideOn_'),
 smalltalk.method({
@@ -468,22 +484,6 @@ return self;},
 args: ["html"],
 source: unescape('renderSlideOn%3A%20html%0A%09html%20h3%0A%09%09class%3A%20%27center%27%3B%0A%09%09with%3A%20%5Bhtml%20a%20%0A%09%09%09%09href%3A%20%27http%3A//www.pharocasts.com/2012/01/manipulating-objects.html%27%3B%20%0A%09%09%09%09with%3A%27BouncingAtomsMorph%27%5D.%0A%09self%20renderVimeo%3A%2034810463%20on%3A%20html.'),
 messageSends: ["class:", "with:", "href:", "a", "h3", "renderVimeo:on:"],
-referencedClasses: []
-}),
-smalltalk.TITBouncingAtomsMorphVideo);
-
-smalltalk.addMethod(
-unescape('_cssClass'),
-smalltalk.method({
-selector: unescape('cssClass'),
-category: 'accessing',
-fn: function (){
-var self=this;
-return "slide black";
-return self;},
-args: [],
-source: unescape('cssClass%0A%09%5E%20%27slide%20black%27'),
-messageSends: [],
 referencedClasses: []
 }),
 smalltalk.TITBouncingAtomsMorphVideo);
@@ -511,18 +511,17 @@ smalltalk.TITProfStef);
 
 smalltalk.addClass('TITBasicCodeSnippets', smalltalk.TITSlide, [], 'Presentation-TIT');
 smalltalk.addMethod(
-unescape('_renderSlideOn_'),
+unescape('_cssClass'),
 smalltalk.method({
-selector: unescape('renderSlideOn%3A'),
-category: 'rendering',
-fn: function (html){
+selector: unescape('cssClass'),
+category: 'accessing',
+fn: function (){
 var self=this;
-smalltalk.send(html, "_h1_", ["Code examples"]);
-smalltalk.send(self, "_renderSmalltalk_on_", [smalltalk.send(self, "_snippet", []), html]);
+return "slide red3d";
 return self;},
-args: ["html"],
-source: unescape('renderSlideOn%3A%20html%0A%09html%20h1%3A%20%27Code%20examples%27.%0A%09self%20renderSmalltalk%3A%20self%20snippet%20on%3A%20html'),
-messageSends: ["h1:", "renderSmalltalk:on:", "snippet"],
+args: [],
+source: unescape('cssClass%0A%09%5E%20%27slide%20red3d%27'),
+messageSends: [],
 referencedClasses: []
 }),
 smalltalk.TITBasicCodeSnippets);
@@ -544,17 +543,18 @@ referencedClasses: []
 smalltalk.TITBasicCodeSnippets);
 
 smalltalk.addMethod(
-unescape('_cssClass'),
+unescape('_renderSlideOn_'),
 smalltalk.method({
-selector: unescape('cssClass'),
-category: 'accessing',
-fn: function (){
+selector: unescape('renderSlideOn%3A'),
+category: 'rendering',
+fn: function (html){
 var self=this;
-return "slide red3d";
+smalltalk.send(html, "_h1_", ["Code examples"]);
+smalltalk.send(self, "_renderSmalltalk_on_", [smalltalk.send(self, "_snippet", []), html]);
 return self;},
-args: [],
-source: unescape('cssClass%0A%09%5E%20%27slide%20red3d%27'),
-messageSends: [],
+args: ["html"],
+source: unescape('renderSlideOn%3A%20html%0A%09html%20h1%3A%20%27Code%20examples%27.%0A%09self%20renderSmalltalk%3A%20self%20snippet%20on%3A%20html'),
+messageSends: ["h1:", "renderSmalltalk:on:", "snippet"],
 referencedClasses: []
 }),
 smalltalk.TITBasicCodeSnippets);
@@ -620,6 +620,22 @@ smalltalk.TITRoadmap);
 
 smalltalk.addClass('TITInstallPharoWindows', smalltalk.TITSlide, [], 'Presentation-TIT');
 smalltalk.addMethod(
+unescape('_cssClass'),
+smalltalk.method({
+selector: unescape('cssClass'),
+category: 'accessing',
+fn: function (){
+var self=this;
+return "slide black";
+return self;},
+args: [],
+source: unescape('cssClass%0A%09%5E%20%27slide%20black%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.TITInstallPharoWindows);
+
+smalltalk.addMethod(
 unescape('_renderSlideOn_'),
 smalltalk.method({
 selector: unescape('renderSlideOn%3A'),
@@ -636,6 +652,9 @@ referencedClasses: []
 }),
 smalltalk.TITInstallPharoWindows);
 
+
+
+smalltalk.addClass('TITUnaryMessageSyntax', smalltalk.TITSlide, [], 'Presentation-TIT');
 smalltalk.addMethod(
 unescape('_cssClass'),
 smalltalk.method({
@@ -643,18 +662,15 @@ selector: unescape('cssClass'),
 category: 'accessing',
 fn: function (){
 var self=this;
-return "slide black";
+return "slide blue3d";
 return self;},
 args: [],
-source: unescape('cssClass%0A%09%5E%20%27slide%20black%27'),
+source: unescape('cssClass%0A%09%5E%20%27slide%20blue3d%27'),
 messageSends: [],
 referencedClasses: []
 }),
-smalltalk.TITInstallPharoWindows);
+smalltalk.TITUnaryMessageSyntax);
 
-
-
-smalltalk.addClass('TITUnaryMessageSyntax', smalltalk.TITSlide, [], 'Presentation-TIT');
 smalltalk.addMethod(
 unescape('_renderSlideOn_'),
 smalltalk.method({
@@ -685,24 +701,8 @@ var self=this;
 (function($rec){smalltalk.send($rec, "_br", []);return smalltalk.send($rec, "_br", []);})(html);
 return self;},
 args: ["aString", "anotherString", "html"],
-source: unescape('renderReceiver%3A%20aString%20message%3A%20anotherString%20on%3A%20html%0A%09%09html%20span%20class%3A%20%27blue%27%3B%20with%3A%20aString.%0A%09%09html%20span%20class%3A%20%27red%27%3B%09with%3A%20anotherString.%0A%09%09html%20span%20class%3A%20%27blue%27%3B%20with%3A%20%27.%27.%0A%09%09html%20br%3Bbr%0A%09%0A%0A%09%09'),
+source: unescape('renderReceiver%3A%20aString%20message%3A%20anotherString%20on%3A%20html%0A%09%09html%20span%20class%3A%20%27blue%27%3B%20with%3A%20aString.%0A%09%09html%20span%20class%3A%20%27red%27%3B%09with%3A%20anotherString.%0A%09%09html%20span%20class%3A%20%27blue%27%3B%20with%3A%20%27.%27.%0A%09%09html%20br%3Bbr'),
 messageSends: ["class:", "with:", "span", "br"],
-referencedClasses: []
-}),
-smalltalk.TITUnaryMessageSyntax);
-
-smalltalk.addMethod(
-unescape('_cssClass'),
-smalltalk.method({
-selector: unescape('cssClass'),
-category: 'accessing',
-fn: function (){
-var self=this;
-return "slide blue3d";
-return self;},
-args: [],
-source: unescape('cssClass%0A%09%5E%20%27slide%20blue3d%27'),
-messageSends: [],
 referencedClasses: []
 }),
 smalltalk.TITUnaryMessageSyntax);
@@ -747,23 +747,6 @@ smalltalk.TITPharoHelp);
 
 smalltalk.addClass('TITSelfMessage', smalltalk.TITSlide, [], 'Presentation-TIT');
 smalltalk.addMethod(
-unescape('_renderSlideOn_'),
-smalltalk.method({
-selector: unescape('renderSlideOn%3A'),
-category: 'rendering',
-fn: function (html){
-var self=this;
-smalltalk.send(html, "_h1_", ["Self"]);
-smalltalk.send(self, "_renderImage_on_", ["self.png", html]);
-return self;},
-args: ["html"],
-source: unescape('renderSlideOn%3A%20html%0A%09html%20h1%3A%20%27Self%27.%0A%09self%20renderImage%3A%20%27self.png%27%20on%3A%20html'),
-messageSends: ["h1:", "renderImage:on:"],
-referencedClasses: []
-}),
-smalltalk.TITSelfMessage);
-
-smalltalk.addMethod(
 unescape('_cssClass'),
 smalltalk.method({
 selector: unescape('cssClass'),
@@ -794,6 +777,116 @@ messageSends: [],
 referencedClasses: []
 }),
 smalltalk.TITSelfMessage);
+
+smalltalk.addMethod(
+unescape('_renderSlideOn_'),
+smalltalk.method({
+selector: unescape('renderSlideOn%3A'),
+category: 'rendering',
+fn: function (html){
+var self=this;
+smalltalk.send(html, "_h1_", ["Self"]);
+smalltalk.send(self, "_renderImage_on_", ["self.png", html]);
+return self;},
+args: ["html"],
+source: unescape('renderSlideOn%3A%20html%0A%09html%20h1%3A%20%27Self%27.%0A%09self%20renderImage%3A%20%27self.png%27%20on%3A%20html'),
+messageSends: ["h1:", "renderImage:on:"],
+referencedClasses: []
+}),
+smalltalk.TITSelfMessage);
+
+
+
+smalltalk.addClass('TITCascadingMessagesSyntax', smalltalk.TITSlide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_cssClass'),
+smalltalk.method({
+selector: unescape('cssClass'),
+category: 'accessing',
+fn: function (){
+var self=this;
+return "slide green3d";
+return self;},
+args: [],
+source: unescape('cssClass%0A%09%5E%20%27slide%20green3d%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.TITCascadingMessagesSyntax);
+
+smalltalk.addMethod(
+unescape('_renderSlideOn_'),
+smalltalk.method({
+selector: unescape('renderSlideOn%3A'),
+category: 'rendering',
+fn: function (html){
+var self=this;
+smalltalk.send(html, "_h1_", ["Cascading messages"]);
+(function($rec){smalltalk.send($rec, "_class_", ["center big"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_renderCascade_onReceiver_on_", ["message", "receiver", html]);return smalltalk.send($rec, "_renderCascade_onReceiver_on_", ["increase", "counter", html]);})(self);})]);})(smalltalk.send(html, "_div", []));
+return self;},
+args: ["html"],
+source: unescape('renderSlideOn%3A%20html%0A%09html%20h1%3A%20%27Cascading%20messages%27.%0A%09html%20div%20%0A%09%09class%3A%20%27center%20big%27%3B%0A%09%09with%3A%20%5B%20self%0A%09%09%09%09renderCascade%3A%20%27message%27%20onReceiver%3A%20%27receiver%27%20on%3A%20html%3B%0A%09%09%09%09renderCascade%3A%20%27increase%27%20onReceiver%3A%20%27counter%27%20on%3A%20html%5D.'),
+messageSends: ["h1:", "class:", "with:", "renderCascade:onReceiver:on:", "div"],
+referencedClasses: []
+}),
+smalltalk.TITCascadingMessagesSyntax);
+
+smalltalk.addMethod(
+unescape('_renderReceiver_message_argument_on_'),
+smalltalk.method({
+selector: unescape('renderReceiver%3Amessage%3Aargument%3Aon%3A'),
+category: 'rendering',
+fn: function (aReceiver, aMessage, anArgument, html){
+var self=this;
+(function($rec){smalltalk.send($rec, "_class_", ["blue"]);return smalltalk.send($rec, "_with_", [aReceiver]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_class_", ["red"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(" ", "__comma", [aMessage]), "__comma", [" "])]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_class_", ["green"]);return smalltalk.send($rec, "_with_", [anArgument]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_class_", ["blue"]);return smalltalk.send($rec, "_with_", ["."]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_br", []);return smalltalk.send($rec, "_br", []);})(html);
+return self;},
+args: ["aReceiver", "aMessage", "anArgument", "html"],
+source: unescape('renderReceiver%3A%20aReceiver%20message%3A%20aMessage%20argument%3A%20anArgument%20on%3A%20html%0A%09%09html%20span%20class%3A%20%27blue%27%3B%20with%3A%20aReceiver.%0A%09%09html%20span%20class%3A%20%27red%27%3B%09with%3A%20%27%20%27%2C%20aMessage%2C%20%27%20%27.%0A%09%09html%20span%20class%3A%20%27green%27%3B%20with%3A%20anArgument.%0A%09%09html%20span%20class%3A%20%27blue%27%3B%20with%3A%20%27.%27.%0A%09%09html%20br%3Bbr'),
+messageSends: ["class:", "with:", "span", unescape("%2C"), "br"],
+referencedClasses: []
+}),
+smalltalk.TITCascadingMessagesSyntax);
+
+smalltalk.addMethod(
+unescape('_renderCascade_on_'),
+smalltalk.method({
+selector: unescape('renderCascade%3Aon%3A'),
+category: 'rendering',
+fn: function (aMessage, html){
+var self=this;
+(function($rec){smalltalk.send($rec, "_class_", ["red"]);return smalltalk.send($rec, "_with_", [smalltalk.send(" ", "__comma", [aMessage])]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_class_", ["blue"]);return smalltalk.send($rec, "_with_", [unescape("%3B")]);})(smalltalk.send(html, "_span", []));
+return self;},
+args: ["aMessage", "html"],
+source: unescape('renderCascade%3A%20aMessage%20on%3A%20html%0A%09%09html%20span%20class%3A%20%27red%27%3B%09with%3A%20%27%20%27%2C%20aMessage.%0A%09%09html%20span%20class%3A%20%27blue%27%3B%20with%3A%20%27%3B%27.%0A%09%09'),
+messageSends: ["class:", "with:", unescape("%2C"), "span"],
+referencedClasses: []
+}),
+smalltalk.TITCascadingMessagesSyntax);
+
+smalltalk.addMethod(
+unescape('_renderCascade_onReceiver_on_'),
+smalltalk.method({
+selector: unescape('renderCascade%3AonReceiver%3Aon%3A'),
+category: 'rendering',
+fn: function (aMessage, aReceiver, html){
+var self=this;
+(function($rec){smalltalk.send($rec, "_class_", ["blue"]);return smalltalk.send($rec, "_with_", [aReceiver]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_renderCascade_on_", [aMessage, html]);return smalltalk.send($rec, "_renderCascade_on_", [aMessage, html]);})(self);
+(function($rec){smalltalk.send($rec, "_class_", ["red"]);return smalltalk.send($rec, "_with_", [smalltalk.send(" ", "__comma", [aMessage])]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_class_", ["blue"]);return smalltalk.send($rec, "_with_", ["."]);})(smalltalk.send(html, "_span", []));
+(function($rec){smalltalk.send($rec, "_br", []);return smalltalk.send($rec, "_br", []);})(html);
+return self;},
+args: ["aMessage", "aReceiver", "html"],
+source: unescape('renderCascade%3A%20aMessage%20onReceiver%3A%20aReceiver%20on%3A%20html%0A%09%09html%20span%20class%3A%20%27blue%27%3B%20with%3A%20aReceiver.%0A%09%09self%0A%09%09%09renderCascade%3A%20aMessage%20on%3A%20html%3B%0A%09%09%09renderCascade%3A%20aMessage%20on%3A%20html.%0A%09%09html%20span%20class%3A%20%27red%27%3B%09with%3A%20%27%20%27%2C%20aMessage.%0A%09%09html%20span%20class%3A%20%27blue%27%3B%20with%3A%20%27.%27.%0A%09%09html%20br%3B%20br.'),
+messageSends: ["class:", "with:", "span", "renderCascade:on:", unescape("%2C"), "br"],
+referencedClasses: []
+}),
+smalltalk.TITCascadingMessagesSyntax);
 
 
 
