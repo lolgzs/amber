@@ -247,7 +247,7 @@ function Smalltalk(){
 	/* Create a new class wrapping a JavaScript constructor, and add it to the 
 	   global smalltalk object. Package is lazily created if it does not exist with given name. */
 
-	st.mapClassName = function(className, pkgName, fn, superclass) {
+	st.wrapClassName = function(className, pkgName, fn, superclass) {
 		var pkg = st.addPackage(pkgName);
 		st[className] = klass({
 			className:  className, 
@@ -256,6 +256,11 @@ function Smalltalk(){
 			fn:         fn
 		});
 	};
+
+    /* Create an alias for an existing class */
+    st.alias = function(klass, alias) {
+        st[alias] = klass;
+    }
 
 	/* Add a package to the smalltalk.packages object, creating a new one if needed.
 	   If pkgName is null or empty we return nil, which is an allowed package for a class.
@@ -391,6 +396,10 @@ function Smalltalk(){
 	/* Call a method of a JS object, or answer a property if it exists.
 	   Else try wrapping a JSObjectProxy around the receiver.
 
+       If the object property is a function, then call it, except if it starts with
+       an uppercase character (we probably want to answer the function itself in this 
+       case and send it #new from Amber).
+
 	   Converts keyword-based selectors by using the first
 	   keyword only, but keeping all message arguments.
 
@@ -400,14 +409,14 @@ function Smalltalk(){
 	function callJavaScriptMethod(receiver, selector, args) {
 		var jsSelector = selector._asJavaScriptSelector();
 		var jsProperty = receiver[jsSelector];
-		if(typeof jsProperty === "function") {
+		if(typeof jsProperty === "function" && !/^[A-Z]/.test(jsSelector)) {
 			return jsProperty.apply(receiver, args);
 		} else if(jsProperty !== undefined) {
 			if(args[0]) {
 				receiver[jsSelector] = args[0];
 				return nil;
 			} else {
-				return jsProperty
+				return jsProperty;
 			}
 		}
 
@@ -557,32 +566,37 @@ if(this.jQuery) {
 /****************************************************************************************/
 
 
-/* Base classes mapping. If you edit this part, do not forget to set the superclass of the
+/* Base classes wrapping. If you edit this part, do not forget to set the superclass of the
    object metaclass to Class after the definition of Object */
 
-smalltalk.mapClassName("Object", "Kernel", SmalltalkObject);
-smalltalk.mapClassName("Smalltalk", "Kernel", Smalltalk, smalltalk.Object);
-smalltalk.mapClassName("Package", "Kernel", SmalltalkPackage, smalltalk.Object);
-smalltalk.mapClassName("Behavior", "Kernel", SmalltalkBehavior, smalltalk.Object);
-smalltalk.mapClassName("Class", "Kernel", SmalltalkClass, smalltalk.Behavior);
-smalltalk.mapClassName("Metaclass", "Kernel", SmalltalkMetaclass, smalltalk.Behavior);
-smalltalk.mapClassName("CompiledMethod", "Kernel", SmalltalkMethod, smalltalk.Object);
+smalltalk.wrapClassName("Object", "Kernel", SmalltalkObject);
+smalltalk.wrapClassName("Smalltalk", "Kernel", Smalltalk, smalltalk.Object);
+smalltalk.wrapClassName("Package", "Kernel", SmalltalkPackage, smalltalk.Object);
+smalltalk.wrapClassName("Behavior", "Kernel", SmalltalkBehavior, smalltalk.Object);
+smalltalk.wrapClassName("Class", "Kernel", SmalltalkClass, smalltalk.Behavior);
+smalltalk.wrapClassName("Metaclass", "Kernel", SmalltalkMetaclass, smalltalk.Behavior);
+smalltalk.wrapClassName("CompiledMethod", "Kernel", SmalltalkMethod, smalltalk.Object);
 
 smalltalk.Object.klass.superclass = smalltalk.Class;
 
-smalltalk.mapClassName("Number", "Kernel", Number, smalltalk.Object);
-smalltalk.mapClassName("BlockClosure", "Kernel", Function, smalltalk.Object);
-smalltalk.mapClassName("Boolean", "Kernel", Boolean, smalltalk.Object);
-smalltalk.mapClassName("Date", "Kernel", Date, smalltalk.Object);
-smalltalk.mapClassName("UndefinedObject", "Kernel", SmalltalkNil, smalltalk.Object);
+smalltalk.wrapClassName("Number", "Kernel", Number, smalltalk.Object);
+smalltalk.wrapClassName("BlockClosure", "Kernel", Function, smalltalk.Object);
+smalltalk.wrapClassName("Boolean", "Kernel", Boolean, smalltalk.Object);
+smalltalk.wrapClassName("Date", "Kernel", Date, smalltalk.Object);
+smalltalk.wrapClassName("UndefinedObject", "Kernel", SmalltalkNil, smalltalk.Object);
 
-smalltalk.mapClassName("Collection", "Kernel", null, smalltalk.Object);
-smalltalk.mapClassName("SequenceableCollection", "Kernel", null, smalltalk.Collection);
-smalltalk.mapClassName("CharacterArray", "Kernel", null, smalltalk.SequenceableCollection);
-smalltalk.mapClassName("String", "Kernel", String, smalltalk.CharacterArray);
-smalltalk.mapClassName("Symbol", "Kernel", SmalltalkSymbol, smalltalk.CharacterArray);
-smalltalk.mapClassName("Array", "Kernel", Array, smalltalk.SequenceableCollection);
-smalltalk.mapClassName("RegularExpression", "Kernel", RegExp, smalltalk.String);
+smalltalk.wrapClassName("Collection", "Kernel", null, smalltalk.Object);
+smalltalk.wrapClassName("SequenceableCollection", "Kernel", null, smalltalk.Collection);
+smalltalk.wrapClassName("CharacterArray", "Kernel", null, smalltalk.SequenceableCollection);
+smalltalk.wrapClassName("String", "Kernel", String, smalltalk.CharacterArray);
+smalltalk.wrapClassName("Symbol", "Kernel", SmalltalkSymbol, smalltalk.CharacterArray);
+smalltalk.wrapClassName("Array", "Kernel", Array, smalltalk.SequenceableCollection);
+smalltalk.wrapClassName("RegularExpression", "Kernel", RegExp, smalltalk.String);
 
-smalltalk.mapClassName("Error", "Kernel", Error, smalltalk.Object);
-smalltalk.mapClassName("MethodContext", "Kernel", SmalltalkMethodContext, smalltalk.Object);
+smalltalk.wrapClassName("Error", "Kernel", Error, smalltalk.Object);
+smalltalk.wrapClassName("MethodContext", "Kernel", SmalltalkMethodContext, smalltalk.Object);
+
+/* Alias definitions */
+
+smalltalk.alias(smalltalk.Array, "OrderedCollection");
+smalltalk.alias(smalltalk.Date, "Time");
