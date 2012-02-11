@@ -1,41 +1,4 @@
 Smalltalk current createPackage: 'Presentation-TIT' properties: #{}!
-Slide subclass: #TITSlide
-	instanceVariableNames: ''
-	category: 'Presentation-TIT'!
-
-!TITSlide methodsFor: 'rendering'!
-
-renderSmalltalk: aString on: html
-	|aTextArea|
-	aTextArea := html textarea element.
-	aTextArea value: aString.
-        
-	< CodeMirror.fromTextArea( aTextArea, {
-                lineNumbers: true,
-		theme: 'jtalk',
-                enterMode: 'flat',
-		theme: 'neat',
-  		width: '700px',
-		lineWrapping: false,
-                matchBrackets: true,
-                electricChars: false }) >
-!
-
-renderImage: filename on: html
-	html div 
-		class: 'center';
-		with: [	html img
-					width: '700px';
-					src: 'tit/images/', filename]
-!
-
-renderVimeo: aNumber on: html
-	html iframe 
-		width:640;
-		height:480;
-		src:'http://player.vimeo.com/video/', aNumber asString, '?title=0&amp;byline=0&amp;portrait=0'.
-! !
-
 Presentation subclass: #TITPresentation
 	instanceVariableNames: ''
 	category: 'Presentation-TIT'!
@@ -402,6 +365,43 @@ body {
 
 isConcrete
 	^ false
+! !
+
+Slide subclass: #TITSlide
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITSlide methodsFor: 'rendering'!
+
+renderSmalltalk: aString on: html
+	|aTextArea|
+	aTextArea := html textarea element.
+	aTextArea value: aString.
+        
+	< CodeMirror.fromTextArea( aTextArea, {
+                lineNumbers: true,
+		theme: 'jtalk',
+                enterMode: 'flat',
+		theme: 'neat',
+  		width: '700px',
+		lineWrapping: false,
+                matchBrackets: true,
+                electricChars: false }) >
+!
+
+renderImage: filename on: html
+	html div 
+		class: 'center';
+		with: [	html img
+					width: '700px';
+					src: 'tit/images/', filename]
+!
+
+renderVimeo: aNumber on: html
+	html iframe 
+		width:640;
+		height:480;
+		src:'http://player.vimeo.com/video/', aNumber asString, '?title=0&amp;byline=0&amp;portrait=0'.
 ! !
 
 TITPresentation subclass: #TITManipulatingObjects
@@ -821,5 +821,84 @@ renderCascade: aMessage onReceiver: aReceiver on: html
 		html span class: 'red';	with: ' ', aMessage.
 		html span class: 'blue'; with: '.'.
 		html br; br.
+! !
+
+TITPresentation subclass: #TITWriteAndShareCode
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITWriteAndShareCode methodsFor: 'accessing'!
+
+description
+	^ 'Write Smalltalk code and share it with the world'
+!
+
+slideClasses
+	^ {
+	IAEIntroSlide.
+	TITObjectModelRules.
+	TITObjectInheritance.
+	IAESectionExercises.
+	TITBouncingAtomMorphsExercise}
+! !
+
+!TITWriteAndShareCode class methodsFor: 'accessing'!
+
+title
+	^ 'TIT - Write and Share Code'
+! !
+
+!TITWriteAndShareCode class methodsFor: 'testing'!
+
+isConcrete
+	^ true
+! !
+
+TITSlide subclass: #TITObjectModelRules
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITObjectModelRules methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide red3d'
+! !
+
+!TITObjectModelRules methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1: 'Object Model Rules'.
+	html div 
+		class: 'center big';
+		with: [ html ul with: [ 
+				self writeRule: 'Everything is an object.' on: html.
+				self writeRule: 'Every object is an instance of a class.' on: html.
+				self writeRule: 'Every class has a superclass.' on: html]]
+!
+
+writeRule: aString on: html
+	html li style:'text-align:left;'; with: aString.
+! !
+
+TITSlide subclass: #TITObjectInheritance
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITObjectInheritance methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide green3d'
+! !
+
+!TITObjectInheritance methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1: 'Object Inheritance'.
+	html div 
+		class: 'center big';
+		with:[
+			'Boolean example'.
+			html img: 'tit/images/BooleanHierarchy.png'.
+			html img: 'tit/images/BooleanHierarchyUML.png']
 ! !
 

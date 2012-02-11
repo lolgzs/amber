@@ -1,51 +1,4 @@
 smalltalk.addPackage('Presentation-TIT', {});
-smalltalk.addClass('TITSlide', smalltalk.Slide, [], 'Presentation-TIT');
-smalltalk.addMethod(
-unescape('_renderSmalltalk_on_'),
-smalltalk.method({
-selector: unescape('renderSmalltalk%3Aon%3A'),
-fn: function (aString, html){
-var self=this;
-var aTextArea=nil;
-(aTextArea=smalltalk.send(smalltalk.send(html, "_textarea", []), "_element", []));
-smalltalk.send(aTextArea, "_value_", [aString]);
- CodeMirror.fromTextArea( aTextArea, {
-                lineNumbers: true,
-		theme: 'jtalk',
-                enterMode: 'flat',
-		theme: 'neat',
-  		width: '700px',
-		lineWrapping: false,
-                matchBrackets: true,
-                electricChars: false }) ;
-return self;}
-}),
-smalltalk.TITSlide);
-
-smalltalk.addMethod(
-unescape('_renderImage_on_'),
-smalltalk.method({
-selector: unescape('renderImage%3Aon%3A'),
-fn: function (filename, html){
-var self=this;
-(function($rec){smalltalk.send($rec, "_class_", ["center"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_width_", ["700px"]);return smalltalk.send($rec, "_src_", [smalltalk.send(unescape("tit/images/"), "__comma", [filename])]);})(smalltalk.send(html, "_img", []));})]);})(smalltalk.send(html, "_div", []));
-return self;}
-}),
-smalltalk.TITSlide);
-
-smalltalk.addMethod(
-unescape('_renderVimeo_on_'),
-smalltalk.method({
-selector: unescape('renderVimeo%3Aon%3A'),
-fn: function (aNumber, html){
-var self=this;
-(function($rec){smalltalk.send($rec, "_width_", [(640)]);smalltalk.send($rec, "_height_", [(480)]);return smalltalk.send($rec, "_src_", [smalltalk.send(smalltalk.send(unescape("http%3A//player.vimeo.com/video/"), "__comma", [smalltalk.send(aNumber, "_asString", [])]), "__comma", [unescape("%3Ftitle%3D0%26amp%3Bbyline%3D0%26amp%3Bportrait%3D0")])]);})(smalltalk.send(html, "_iframe", []));
-return self;}
-}),
-smalltalk.TITSlide);
-
-
-
 smalltalk.addClass('TITPresentation', smalltalk.Presentation, [], 'Presentation-TIT');
 smalltalk.addMethod(
 unescape('_url'),
@@ -102,6 +55,53 @@ return false;
 return self;}
 }),
 smalltalk.TITPresentation.klass);
+
+
+smalltalk.addClass('TITSlide', smalltalk.Slide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_renderSmalltalk_on_'),
+smalltalk.method({
+selector: unescape('renderSmalltalk%3Aon%3A'),
+fn: function (aString, html){
+var self=this;
+var aTextArea=nil;
+(aTextArea=smalltalk.send(smalltalk.send(html, "_textarea", []), "_element", []));
+smalltalk.send(aTextArea, "_value_", [aString]);
+ CodeMirror.fromTextArea( aTextArea, {
+                lineNumbers: true,
+		theme: 'jtalk',
+                enterMode: 'flat',
+		theme: 'neat',
+  		width: '700px',
+		lineWrapping: false,
+                matchBrackets: true,
+                electricChars: false }) ;
+return self;}
+}),
+smalltalk.TITSlide);
+
+smalltalk.addMethod(
+unescape('_renderImage_on_'),
+smalltalk.method({
+selector: unescape('renderImage%3Aon%3A'),
+fn: function (filename, html){
+var self=this;
+(function($rec){smalltalk.send($rec, "_class_", ["center"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_width_", ["700px"]);return smalltalk.send($rec, "_src_", [smalltalk.send(unescape("tit/images/"), "__comma", [filename])]);})(smalltalk.send(html, "_img", []));})]);})(smalltalk.send(html, "_div", []));
+return self;}
+}),
+smalltalk.TITSlide);
+
+smalltalk.addMethod(
+unescape('_renderVimeo_on_'),
+smalltalk.method({
+selector: unescape('renderVimeo%3Aon%3A'),
+fn: function (aNumber, html){
+var self=this;
+(function($rec){smalltalk.send($rec, "_width_", [(640)]);smalltalk.send($rec, "_height_", [(480)]);return smalltalk.send($rec, "_src_", [smalltalk.send(smalltalk.send(unescape("http%3A//player.vimeo.com/video/"), "__comma", [smalltalk.send(aNumber, "_asString", [])]), "__comma", [unescape("%3Ftitle%3D0%26amp%3Bbyline%3D0%26amp%3Bportrait%3D0")])]);})(smalltalk.send(html, "_iframe", []));
+return self;}
+}),
+smalltalk.TITSlide);
+
 
 
 smalltalk.addClass('TITManipulatingObjects', smalltalk.TITPresentation, [], 'Presentation-TIT');
@@ -642,6 +642,116 @@ var self=this;
 return self;}
 }),
 smalltalk.TITCascadingMessagesSyntax);
+
+
+
+smalltalk.addClass('TITWriteAndShareCode', smalltalk.TITPresentation, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_description'),
+smalltalk.method({
+selector: unescape('description'),
+fn: function (){
+var self=this;
+return "Write Smalltalk code and share it with the world";
+return self;}
+}),
+smalltalk.TITWriteAndShareCode);
+
+smalltalk.addMethod(
+unescape('_slideClasses'),
+smalltalk.method({
+selector: unescape('slideClasses'),
+fn: function (){
+var self=this;
+return [(smalltalk.IAEIntroSlide || IAEIntroSlide),(smalltalk.TITObjectModelRules || TITObjectModelRules),(smalltalk.TITObjectInheritance || TITObjectInheritance),(smalltalk.IAESectionExercises || IAESectionExercises),(smalltalk.TITBouncingAtomMorphsExercise || TITBouncingAtomMorphsExercise)];
+return self;}
+}),
+smalltalk.TITWriteAndShareCode);
+
+
+smalltalk.addMethod(
+unescape('_title'),
+smalltalk.method({
+selector: unescape('title'),
+fn: function (){
+var self=this;
+return unescape("TIT%20-%20Write%20and%20Share%20Code");
+return self;}
+}),
+smalltalk.TITWriteAndShareCode.klass);
+
+smalltalk.addMethod(
+unescape('_isConcrete'),
+smalltalk.method({
+selector: unescape('isConcrete'),
+fn: function (){
+var self=this;
+return true;
+return self;}
+}),
+smalltalk.TITWriteAndShareCode.klass);
+
+
+smalltalk.addClass('TITObjectModelRules', smalltalk.TITSlide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_cssClass'),
+smalltalk.method({
+selector: unescape('cssClass'),
+fn: function (){
+var self=this;
+return "slide red3d";
+return self;}
+}),
+smalltalk.TITObjectModelRules);
+
+smalltalk.addMethod(
+unescape('_renderSlideOn_'),
+smalltalk.method({
+selector: unescape('renderSlideOn%3A'),
+fn: function (html){
+var self=this;
+smalltalk.send(html, "_h1_", ["Object Model Rules"]);
+(function($rec){smalltalk.send($rec, "_class_", ["center big"]);return smalltalk.send($rec, "_with_", [(function(){return smalltalk.send(smalltalk.send(html, "_ul", []), "_with_", [(function(){smalltalk.send(self, "_writeRule_on_", ["Everything is an object.", html]);smalltalk.send(self, "_writeRule_on_", ["Every object is an instance of a class.", html]);return smalltalk.send(self, "_writeRule_on_", ["Every class has a superclass.", html]);})]);})]);})(smalltalk.send(html, "_div", []));
+return self;}
+}),
+smalltalk.TITObjectModelRules);
+
+smalltalk.addMethod(
+unescape('_writeRule_on_'),
+smalltalk.method({
+selector: unescape('writeRule%3Aon%3A'),
+fn: function (aString, html){
+var self=this;
+(function($rec){smalltalk.send($rec, "_style_", [unescape("text-align%3Aleft%3B")]);return smalltalk.send($rec, "_with_", [aString]);})(smalltalk.send(html, "_li", []));
+return self;}
+}),
+smalltalk.TITObjectModelRules);
+
+
+
+smalltalk.addClass('TITObjectInheritance', smalltalk.TITSlide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_cssClass'),
+smalltalk.method({
+selector: unescape('cssClass'),
+fn: function (){
+var self=this;
+return "slide green3d";
+return self;}
+}),
+smalltalk.TITObjectInheritance);
+
+smalltalk.addMethod(
+unescape('_renderSlideOn_'),
+smalltalk.method({
+selector: unescape('renderSlideOn%3A'),
+fn: function (html){
+var self=this;
+smalltalk.send(html, "_h1_", ["Object Inheritance"]);
+(function($rec){smalltalk.send($rec, "_class_", ["center big"]);return smalltalk.send($rec, "_with_", [(function(){"Boolean example";smalltalk.send(html, "_img_", [unescape("tit/images/BooleanHierarchy.png")]);return smalltalk.send(html, "_img_", [unescape("tit/images/BooleanHierarchyUML.png")]);})]);})(smalltalk.send(html, "_div", []));
+return self;}
+}),
+smalltalk.TITObjectInheritance);
 
 
 
