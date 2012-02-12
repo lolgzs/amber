@@ -27,6 +27,10 @@ backgroundColor
 
 title
 	^ self id
+!
+
+style
+	^ ''
 ! !
 
 !Slide methodsFor: 'actions'!
@@ -35,7 +39,9 @@ show
 	self backgroundColor ifNotNil: [
 		(window jQuery: '#slides') css: 'background' color: self backgroundColor].
 	(window jQuery: '.slide') hide: self presentation slideTransition options: #() duration: 300.
-	(window jQuery: '#', self id) show: self presentation slideTransition options: #() duration: 300.
+	(window jQuery: '#', self id)
+		attr: 'style' put: self style;
+		show: self presentation slideTransition options: #() duration: 300.
 ! !
 
 !Slide methodsFor: 'rendering'!
@@ -666,6 +672,8 @@ renderSlideOn: html
 Presentation subclass: #ESUG2011Presentation
 	instanceVariableNames: ''
 	category: 'Presentation'!
+!ESUG2011Presentation commentStamp!
+Séance 1!
 
 !ESUG2011Presentation methodsFor: 'accessing'!
 
@@ -1544,6 +1552,8 @@ renderSlideOn: html
 Presentation subclass: #FOSDEM2012Presentation
 	instanceVariableNames: ''
 	category: 'Presentation'!
+!FOSDEM2012Presentation commentStamp!
+Séance 2!
 
 !FOSDEM2012Presentation methodsFor: 'accessing'!
 
