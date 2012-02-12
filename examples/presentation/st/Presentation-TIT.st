@@ -1,4 +1,41 @@
 Smalltalk current createPackage: 'Presentation-TIT' properties: #{}!
+Slide subclass: #TITSlide
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITSlide methodsFor: 'rendering'!
+
+renderSmalltalk: aString on: html
+	|aTextArea|
+	aTextArea := html textarea element.
+	aTextArea value: aString.
+        
+	< CodeMirror.fromTextArea( aTextArea, {
+                lineNumbers: true,
+		theme: 'jtalk',
+                enterMode: 'flat',
+		theme: 'neat',
+  		width: '700px',
+		lineWrapping: false,
+                matchBrackets: true,
+                electricChars: false }) >
+!
+
+renderImage: filename on: html
+	html div 
+		class: 'center';
+		with: [	html img
+					width: '700px';
+					src: 'tit/images/', filename]
+!
+
+renderVimeo: aNumber on: html
+	html iframe 
+		width:640;
+		height:480;
+		src:'http://player.vimeo.com/video/', aNumber asString, '?title=0&amp;byline=0&amp;portrait=0'.
+! !
+
 Presentation subclass: #TITPresentation
 	instanceVariableNames: ''
 	category: 'Presentation-TIT'!
@@ -96,6 +133,17 @@ body {
   background: -ms-linear-gradient(top, #cdeb8e 0%,#a5c956 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="#cdeb8e", endColorstr="#a5c956",GradientType=0 );
   background: linear-gradient(top, #cdeb8e 0%,#a5c956 100%);
+}
+
+.slide.wax3d {
+  background: #feffe8; /* Old browsers */
+  background: -moz-linear-gradient(top,  #feffe8 0%, #d6dbbf 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#feffe8), color-stop(100%,#d6dbbf)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #feffe8 0%,#d6dbbf 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #feffe8 0%,#d6dbbf 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #feffe8 0%,#d6dbbf 100%); /* IE10+ */
+  background: linear-gradient(top,  #feffe8 0%,#d6dbbf 100%); /* W3C */
+ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=''#feffe8'', endColorstr=''#d6dbbf'',GradientType=0 ); /* IE6-9 */
 }
 
 .slide.black {
@@ -367,46 +415,11 @@ isConcrete
 	^ false
 ! !
 
-Slide subclass: #TITSlide
-	instanceVariableNames: ''
-	category: 'Presentation-TIT'!
-
-!TITSlide methodsFor: 'rendering'!
-
-renderSmalltalk: aString on: html
-	|aTextArea|
-	aTextArea := html textarea element.
-	aTextArea value: aString.
-        
-	< CodeMirror.fromTextArea( aTextArea, {
-                lineNumbers: true,
-		theme: 'jtalk',
-                enterMode: 'flat',
-		theme: 'neat',
-  		width: '700px',
-		lineWrapping: false,
-                matchBrackets: true,
-                electricChars: false }) >
-!
-
-renderImage: filename on: html
-	html div 
-		class: 'center';
-		with: [	html img
-					width: '700px';
-					src: 'tit/images/', filename]
-!
-
-renderVimeo: aNumber on: html
-	html iframe 
-		width:640;
-		height:480;
-		src:'http://player.vimeo.com/video/', aNumber asString, '?title=0&amp;byline=0&amp;portrait=0'.
-! !
-
 TITPresentation subclass: #TITManipulatingObjects
 	instanceVariableNames: ''
 	category: 'Presentation-TIT'!
+!TITManipulatingObjects commentStamp!
+Séance 1!
 
 !TITManipulatingObjects methodsFor: 'accessing'!
 
@@ -646,7 +659,8 @@ renderSlideOn: html
 		html
 			 li: 'Make the BouncingAtomsMorph change color at every step';
 			 li: 'Make the BouncingAtomsMorph change color every 2 seconds (but animated at full speed)';
-			 li: 'Every second the BouncingAtomsMorph remove an atom. When reach 0, add one every second. When reach 30, remove one every second'.
+			 li: 'Every second the BouncingAtomsMorph remove an atom. When reach 0, add one every second. When reach 30, remove one every second';
+			 li: 'Draw the number on the BouncingAtomsMorph the number of submorphs'.
 	].
 
 	html with: 'Do ProfStef go then:'.
@@ -656,6 +670,14 @@ renderSlideOn: html
 			li: 'Create a button that deletes all BouncingAtomsMorph instances';
 			li: 'A button that pops up a window displaying the number of red AtomMorph of latest BouncingAtomsMorph instance'.
 	].
+!
+
+cssClass
+	^ 'slide black'
+!
+
+backgroundColor
+	^  '#aaa'
 ! !
 
 TITSlide subclass: #TITRoadmap
@@ -670,11 +692,11 @@ renderSlideOn: html
 		html 
 			li: 'Manipulating objects';
 			li: 'Write and share code';
+			li: 'Inheritance';
 			li: 'Software lifecycle';
 			li: 'Understand UML';
 			li: 'Aggregation, encapsulation, polymorphism';
-			li: 'Compose GUI';
-			li: 'GUI interactions'
+			li: 'Compose GUI'
 	].
 !
 
@@ -826,6 +848,8 @@ renderCascade: aMessage onReceiver: aReceiver on: html
 TITPresentation subclass: #TITWriteAndShareCode
 	instanceVariableNames: ''
 	category: 'Presentation-TIT'!
+!TITWriteAndShareCode commentStamp!
+Séance 2!
 
 !TITWriteAndShareCode methodsFor: 'accessing'!
 
@@ -836,10 +860,16 @@ description
 slideClasses
 	^ {
 	IAEIntroSlide.
-	TITObjectModelRules.
-	TITObjectInheritance.
+	TITRoadmap.
+	IAEPractices.
+	TITTemporaryVariable.
+	TITInstanceVariable.
+	TITBasicCodeSnippets.
+	TITBasicCodeSnippets2.
 	IAESectionExercises.
-	TITBouncingAtomMorphsExercise}
+	TITBouncingAtomMorphsExercise.
+	TITObjectModelRules.
+	TITObjectInheritance}
 ! !
 
 !TITWriteAndShareCode class methodsFor: 'accessing'!
@@ -900,5 +930,92 @@ renderSlideOn: html
 			'Boolean example'.
 			html img: 'tit/images/BooleanHierarchy.png'.
 			html img: 'tit/images/BooleanHierarchyUML.png']
+! !
+
+TITSlide subclass: #TITTemporaryVariable
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITTemporaryVariable methodsFor: 'not yet classified'!
+
+renderSlideOn: html
+	html h1: 'Temporary variables'.
+	html h2: 'Scope => method'.
+	
+	self renderSmalltalk: self snippet on: html
+!
+
+snippet
+	^
+'AtomMorph>>step
+  |size|
+  size := 20 atRandom.
+  self 
+    width: size;
+    height: size'
+!
+
+cssClass
+	^ 'slide green3d'
+! !
+
+TITSlide subclass: #TITInstanceVariable
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITInstanceVariable methodsFor: 'not yet classified'!
+
+cssClass
+	^ 'slide blue3d'
+!
+
+renderSlideOn: html
+	html h1: 'Instance variables'.
+	html h2: 'Scope => object'.
+	
+	self renderSmalltalk: self snippet on: html
+!
+
+snippet
+	^ 
+'Morph subclass: #BouncingAtomsMorph
+	instanceVariableNames: ''stepTime''
+	classVariableNames: ''''
+	poolDictionaries: ''''
+	category: ''MorphExamplesAndDemos''
+
+
+BouncingAtomsMorph>>stepTime
+  ^ stepTime
+
+BouncingAtomsMorph>>stepTime: anInteger
+  stepTime := anInteger'
+! !
+
+TITSlide subclass: #TITBasicCodeSnippets2
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITBasicCodeSnippets2 methodsFor: 'not yet classified'!
+
+cssClass
+	^ 'slide wax3d'
+!
+
+renderSlideOn: html
+	html h1: 'Code examples'.
+	self renderSmalltalk: self snippet on: html
+!
+
+snippet
+	^
+'temperature < 0
+	ifTrue: [Transcipt show: ''frozen'']
+	ifFalse: [Transcript show: ''liquid''].
+
+4 max: 2.
+
+t0 := DateAndTime now.
+(DateAndTime now - t0) asSeconds.'
 ! !
 

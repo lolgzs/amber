@@ -1,93 +1,4 @@
 Smalltalk current createPackage: 'Presentation-IAE' properties: #{}!
-Slide subclass: #IAESlide
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAESlide methodsFor: 'accessing'!
-
-id
-	^ self class name
-! !
-
-!IAESlide methodsFor: 'rendering'!
-
-renderJava: aString on: html
-	|aTextArea|
-	aTextArea := html textarea element.
-	aTextArea value: aString.
-        
-	< CodeMirror.fromTextArea( aTextArea, {
-                lineNumbers: true,
-		mode: 'text/x-java',
-                enterMode: 'classic',
-		theme: 'neat',
-                matchBrackets: true,
-                electricChars: false }) >
-! !
-
-IAESlide subclass: #IAETDDBookBeck
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAETDDBookBeck methodsFor: 'accessing'!
-
-cssClass
-	^ 'slide green3d'
-! !
-
-!IAETDDBookBeck methodsFor: 'rendering'!
-
-renderSlideOn: html
-	html h1: 'TDD By Example - Kent Beck'.
-	html div
-		class: 'center';
-		with: [ html img: 'iae/images/beck_tdd_book.jpg' ]
-! !
-
-IAESlide subclass: #IAEAgileResources
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAEAgileResources methodsFor: 'not yet classified'!
-
-renderSlideOn: html
-	html h1: 'Resources'.
-	html  ul: [
-          html li: [html a
-			href: 'http://www.crisp.se/henrik.kniberg/presentations/agile-tour-grenoble-2009-keynote-what-is-agile.pdf';
-			with: 'What is agile'].
-
-	  html li: [html a
-			href: 'http://henrik-kniberg.developpez.com/livre/scrum-xp/';
-			with: 'Scrum et XP depuis les tranchées'].
-          
-	  html li: [html a
-			href: 'http://agilemanifesto.org/iso/fr/';
-			with: 'Manifeste agile'].
-          
-         ]
-! !
-
-IAESlide subclass: #IAETDDBookThomas
-	instanceVariableNames: ''
-	category: 'Presentation-IAE'!
-
-!IAETDDBookThomas methodsFor: 'accessing'!
-
-cssClass
-	^ 'slide blue3d'
-! !
-
-!IAETDDBookThomas methodsFor: 'rendering'!
-
-renderSlideOn: html
-	html div
-		class: 'center';
-		with: [ 
-			html h1: 'Pragmatic Unit Testing - Dave Thomas'.
-                 	 html img: 'iae/images/prag_unit_test_book.jpg' ]
-! !
-
 Presentation subclass: #IAEPresentation
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
@@ -507,6 +418,95 @@ body {
 
 isConcrete
 	^ false
+! !
+
+Slide subclass: #IAESlide
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAESlide methodsFor: 'accessing'!
+
+id
+	^ self class name
+! !
+
+!IAESlide methodsFor: 'rendering'!
+
+renderJava: aString on: html
+	|aTextArea|
+	aTextArea := html textarea element.
+	aTextArea value: aString.
+        
+	< CodeMirror.fromTextArea( aTextArea, {
+                lineNumbers: true,
+		mode: 'text/x-java',
+                enterMode: 'classic',
+		theme: 'neat',
+                matchBrackets: true,
+                electricChars: false }) >
+! !
+
+IAESlide subclass: #IAETDDBookBeck
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAETDDBookBeck methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide green3d'
+! !
+
+!IAETDDBookBeck methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1: 'TDD By Example - Kent Beck'.
+	html div
+		class: 'center';
+		with: [ html img: 'iae/images/beck_tdd_book.jpg' ]
+! !
+
+IAESlide subclass: #IAEAgileResources
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAEAgileResources methodsFor: 'not yet classified'!
+
+renderSlideOn: html
+	html h1: 'Resources'.
+	html  ul: [
+          html li: [html a
+			href: 'http://www.crisp.se/henrik.kniberg/presentations/agile-tour-grenoble-2009-keynote-what-is-agile.pdf';
+			with: 'What is agile'].
+
+	  html li: [html a
+			href: 'http://henrik-kniberg.developpez.com/livre/scrum-xp/';
+			with: 'Scrum et XP depuis les tranchées'].
+          
+	  html li: [html a
+			href: 'http://agilemanifesto.org/iso/fr/';
+			with: 'Manifeste agile'].
+          
+         ]
+! !
+
+IAESlide subclass: #IAETDDBookThomas
+	instanceVariableNames: ''
+	category: 'Presentation-IAE'!
+
+!IAETDDBookThomas methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide blue3d'
+! !
+
+!IAETDDBookThomas methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html div
+		class: 'center';
+		with: [ 
+			html h1: 'Pragmatic Unit Testing - Dave Thomas'.
+                 	 html img: 'iae/images/prag_unit_test_book.jpg' ]
 ! !
 
 IAEPresentation subclass: #IAEMovieApplicationPresentation
@@ -1710,6 +1710,14 @@ renderSlideOn: html
 	html h1 
 		class: 'big';
 		with: 'Practices'.
+!
+
+style
+	^ 'background: rgb(170,170,180) url(iae/images/martialart.jpg) no-repeat center center; box-shadow: none'
+!
+
+backgroundColor
+	^ 'rgb(170,170,180)'
 ! !
 
 IAEAbstractImageSlide subclass: #IAEComboBoxSnapshot
