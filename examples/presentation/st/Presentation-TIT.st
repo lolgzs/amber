@@ -1,41 +1,4 @@
 Smalltalk current createPackage: 'Presentation-TIT' properties: #{}!
-Slide subclass: #TITSlide
-	instanceVariableNames: ''
-	category: 'Presentation-TIT'!
-
-!TITSlide methodsFor: 'rendering'!
-
-renderSmalltalk: aString on: html
-	|aTextArea|
-	aTextArea := html textarea element.
-	aTextArea value: aString.
-        
-	< CodeMirror.fromTextArea( aTextArea, {
-                lineNumbers: true,
-		theme: 'jtalk',
-                enterMode: 'flat',
-		theme: 'neat',
-  		width: '700px',
-		lineWrapping: false,
-                matchBrackets: true,
-                electricChars: false }) >
-!
-
-renderImage: filename on: html
-	html div 
-		class: 'center';
-		with: [	html img
-					width: '700px';
-					src: 'tit/images/', filename]
-!
-
-renderVimeo: aNumber on: html
-	html iframe 
-		width:640;
-		height:480;
-		src:'http://player.vimeo.com/video/', aNumber asString, '?title=0&amp;byline=0&amp;portrait=0'.
-! !
-
 Presentation subclass: #TITPresentation
 	instanceVariableNames: ''
 	category: 'Presentation-TIT'!
@@ -413,6 +376,43 @@ body {
 
 isConcrete
 	^ false
+! !
+
+Slide subclass: #TITSlide
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITSlide methodsFor: 'rendering'!
+
+renderSmalltalk: aString on: html
+	|aTextArea|
+	aTextArea := html textarea element.
+	aTextArea value: aString.
+        
+	< CodeMirror.fromTextArea( aTextArea, {
+                lineNumbers: true,
+		theme: 'jtalk',
+                enterMode: 'flat',
+		theme: 'neat',
+  		width: '700px',
+		lineWrapping: false,
+                matchBrackets: true,
+                electricChars: false }) >
+!
+
+renderImage: filename on: html
+	html div 
+		class: 'center';
+		with: [	html img
+					width: '700px';
+					src: 'tit/images/', filename]
+!
+
+renderVimeo: aNumber on: html
+	html iframe 
+		width:640;
+		height:480;
+		src:'http://player.vimeo.com/video/', aNumber asString, '?title=0&amp;byline=0&amp;portrait=0'.
 ! !
 
 TITPresentation subclass: #TITManipulatingObjects
@@ -870,7 +870,8 @@ slideClasses
 	TITBouncingAtomMorphsExercise.
 	TITObjectModelRules.
 	TITObjectInheritance.
-	TITBlocks}
+	TITBlocks.
+	TITVersionControl}
 ! !
 
 !TITWriteAndShareCode class methodsFor: 'accessing'!
@@ -1066,5 +1067,23 @@ c := [:x | | y |
         y := 1.
         x + y    ].
 c value: 4.'
+! !
+
+TITSlide subclass: #TITVersionControl
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITVersionControl methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1: 'Version Control System'.
+	html div 
+		class: 'center big';
+		with:[
+			html img: 'tit/images/vcs.png']
+!
+
+cssClass
+	^ 'slide blue3d'
 ! !
 
