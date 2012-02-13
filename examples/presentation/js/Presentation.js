@@ -105,11 +105,11 @@ fn: function (){
 var self=this;
 (($receiver = smalltalk.send(self, "_backgroundColor", [])) != nil && $receiver != undefined) ? (function(){return smalltalk.send(smalltalk.send((typeof window == 'undefined' ? nil : window), "_jQuery_", [unescape("%23slides")]), "_css_color_", ["background", smalltalk.send(self, "_backgroundColor", [])]);})() : nil;
 smalltalk.send(smalltalk.send((typeof window == 'undefined' ? nil : window), "_jQuery_", [".slide"]), "_hide_options_duration_", [smalltalk.send(smalltalk.send(self, "_presentation", []), "_slideTransition", []), [], (300)]);
-smalltalk.send(smalltalk.send((typeof window == 'undefined' ? nil : window), "_jQuery_", [smalltalk.send(unescape("%23"), "__comma", [smalltalk.send(self, "_id", [])])]), "_show_options_duration_", [smalltalk.send(smalltalk.send(self, "_presentation", []), "_slideTransition", []), [], (300)]);
+(function($rec){smalltalk.send($rec, "_attr_put_", ["style", smalltalk.send(self, "_style", [])]);return smalltalk.send($rec, "_show_options_duration_", [smalltalk.send(smalltalk.send(self, "_presentation", []), "_slideTransition", []), [], (300)]);})(smalltalk.send((typeof window == 'undefined' ? nil : window), "_jQuery_", [smalltalk.send(unescape("%23"), "__comma", [smalltalk.send(self, "_id", [])])]));
 return self;},
 args: [],
-source: unescape('show%0A%09self%20backgroundColor%20ifNotNil%3A%20%5B%0A%09%09%28window%20jQuery%3A%20%27%23slides%27%29%20css%3A%20%27background%27%20color%3A%20self%20backgroundColor%5D.%0A%09%28window%20jQuery%3A%20%27.slide%27%29%20hide%3A%20self%20presentation%20slideTransition%20options%3A%20%23%28%29%20duration%3A%20300.%0A%09%28window%20jQuery%3A%20%27%23%27%2C%20self%20id%29%20show%3A%20self%20presentation%20slideTransition%20options%3A%20%23%28%29%20duration%3A%20300.'),
-messageSends: ["ifNotNil:", "backgroundColor", "css:color:", "jQuery:", "hide:options:duration:", "slideTransition", "presentation", "show:options:duration:", unescape("%2C"), "id"],
+source: unescape('show%0A%09self%20backgroundColor%20ifNotNil%3A%20%5B%0A%09%09%28window%20jQuery%3A%20%27%23slides%27%29%20css%3A%20%27background%27%20color%3A%20self%20backgroundColor%5D.%0A%09%28window%20jQuery%3A%20%27.slide%27%29%20hide%3A%20self%20presentation%20slideTransition%20options%3A%20%23%28%29%20duration%3A%20300.%0A%09%28window%20jQuery%3A%20%27%23%27%2C%20self%20id%29%0A%09%09attr%3A%20%27style%27%20put%3A%20self%20style%3B%0A%09%09show%3A%20self%20presentation%20slideTransition%20options%3A%20%23%28%29%20duration%3A%20300.'),
+messageSends: ["ifNotNil:", "backgroundColor", "css:color:", "jQuery:", "hide:options:duration:", "slideTransition", "presentation", "attr:put:", "style", "show:options:duration:", unescape("%2C"), "id"],
 referencedClasses: []
 }),
 smalltalk.Slide);
@@ -158,6 +158,22 @@ return self;},
 args: ["html"],
 source: unescape('renderMetaOn%3A%20html%0A%09html%20div%20%0A%09%09id%3A%20%27meta%27%3B%0A%09%09with%3A%20%5B%0A%09%09%09html%20p%20class%3A%20%27title%27%3B%20with%3A%20self%20presentation%20title.%0A%09%09%09html%20p%20class%3A%20%27description%27%3B%20with%3A%20self%20presentation%20description.%0A%09%09%09html%20a%20class%3A%20%27author%27%3B%20with%3A%20self%20presentation%20author%3B%20href%3A%20%27mailto%3A%27%2C%20self%20presentation%20email.%0A%09%09%09html%20a%20class%3A%20%27url%27%3B%20with%3A%20self%20presentation%20url%3B%20href%3A%20self%20presentation%20url%5D'),
 messageSends: ["id:", "with:", "class:", "title", "presentation", "p", "description", "author", "href:", unescape("%2C"), "email", "a", "url", "div"],
+referencedClasses: []
+}),
+smalltalk.Slide);
+
+smalltalk.addMethod(
+unescape('_style'),
+smalltalk.method({
+selector: unescape('style'),
+category: 'accessing',
+fn: function (){
+var self=this;
+return "";
+return self;},
+args: [],
+source: unescape('style%0A%09%5E%20%27%27'),
+messageSends: [],
 referencedClasses: []
 }),
 smalltalk.Slide);
@@ -1350,6 +1366,7 @@ smalltalk.FOSDEMIntroSlide);
 
 
 smalltalk.addClass('ESUG2011Presentation', smalltalk.Presentation, [], 'Presentation');
+smalltalk.ESUG2011Presentation.comment=unescape('S%E9ance%201')
 smalltalk.addMethod(
 unescape('_description'),
 smalltalk.method({
@@ -2421,6 +2438,7 @@ smalltalk.JtalkAndEnyo);
 
 
 smalltalk.addClass('FOSDEM2012Presentation', smalltalk.Presentation, [], 'Presentation');
+smalltalk.FOSDEM2012Presentation.comment=unescape('S%E9ance%202')
 smalltalk.addMethod(
 unescape('_description'),
 smalltalk.method({
@@ -2553,6 +2571,38 @@ smalltalk.FOSDEM2012Presentation.klass);
 
 smalltalk.addClass('FOSDEMTwitter', smalltalk.FOSDEMSlide, ['twitterDiv'], 'Presentation');
 smalltalk.addMethod(
+unescape('_cssClass'),
+smalltalk.method({
+selector: unescape('cssClass'),
+category: 'accessing',
+fn: function (){
+var self=this;
+return "slide black";
+return self;},
+args: [],
+source: unescape('cssClass%0A%09%5E%20%27slide%20black%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.FOSDEMTwitter);
+
+smalltalk.addMethod(
+unescape('_loadTweets'),
+smalltalk.method({
+selector: unescape('loadTweets'),
+category: 'callback',
+fn: function (){
+var self=this;
+smalltalk.send((typeof jQuery == 'undefined' ? nil : jQuery), "_ajax_options_", [unescape("http%3A//search.twitter.com/search.json%3Frpp%3D3%26q%3D%2540AmberSmalltalk"), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["GET"]),smalltalk.send("success", "__minus_gt", [(function(json){return smalltalk.send(self, "_renderTweets_", [smalltalk.send(json, "_results", [])]);})]),smalltalk.send("dataType", "__minus_gt", ["jsonp"])])]);
+return self;},
+args: [],
+source: unescape('loadTweets%0A%09jQuery%20%0A%09%09ajax%3A%20%27http%3A//search.twitter.com/search.json%3Frpp%3D3%26q%3D%2540AmberSmalltalk%27%0A%09%09options%3A%20%23%7B%0A%09%09%09%09%27type%27%20-%3E%20%27GET%27.%0A%09%09%09%09%27success%27%20-%3E%20%5B%20%3Ajson%20%7C%20self%20renderTweets%3A%20%28json%20results%29%5D.%0A%09%09%09%09%27dataType%27%20-%3E%20%27jsonp%27%0A%09%09%09%7D.'),
+messageSends: ["ajax:options:", unescape("-%3E"), "renderTweets:", "results"],
+referencedClasses: []
+}),
+smalltalk.FOSDEMTwitter);
+
+smalltalk.addMethod(
 unescape('_renderSlideOn_'),
 smalltalk.method({
 selector: unescape('renderSlideOn%3A'),
@@ -2597,38 +2647,6 @@ return self;},
 args: ["tweet", "html"],
 source: unescape('renderTweet%3A%20tweet%20on%3A%20html%0A%09html%20div%20%0A%09%09class%3A%20%27tweet%27%3B%0A%09%09with%3A%20%5B%0A%09%09%09html%20%0A%09%09%09%09span%3A%20%28tweet%20at%3A%20%27created_at%27%29%3B%0A%09%09%09%09img%3A%20%28tweet%20at%3A%20%27profile_image_url%27%29%3B%0A%09%09%09%09span%3A%20%28tweet%20at%3A%20%27from_user%27%29%3B%0A%09%09%09%09div%3A%20%28tweet%20at%3A%20%27text%27%29.%20%0A%09%09%5D'),
 messageSends: ["class:", "with:", "span:", "at:", "img:", "div:", "div"],
-referencedClasses: []
-}),
-smalltalk.FOSDEMTwitter);
-
-smalltalk.addMethod(
-unescape('_cssClass'),
-smalltalk.method({
-selector: unescape('cssClass'),
-category: 'accessing',
-fn: function (){
-var self=this;
-return "slide black";
-return self;},
-args: [],
-source: unescape('cssClass%0A%09%5E%20%27slide%20black%27'),
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.FOSDEMTwitter);
-
-smalltalk.addMethod(
-unescape('_loadTweets'),
-smalltalk.method({
-selector: unescape('loadTweets'),
-category: 'callback',
-fn: function (){
-var self=this;
-smalltalk.send((typeof jQuery == 'undefined' ? nil : jQuery), "_ajax_options_", [unescape("http%3A//search.twitter.com/search.json%3Frpp%3D3%26q%3D%2540AmberSmalltalk"), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["GET"]),smalltalk.send("success", "__minus_gt", [(function(json){return smalltalk.send(self, "_renderTweets_", [smalltalk.send(json, "_results", [])]);})]),smalltalk.send("dataType", "__minus_gt", ["jsonp"])])]);
-return self;},
-args: [],
-source: unescape('loadTweets%0A%09jQuery%20%0A%09%09ajax%3A%20%27http%3A//search.twitter.com/search.json%3Frpp%3D3%26q%3D%2540AmberSmalltalk%27%0A%09%09options%3A%20%23%7B%0A%09%09%09%09%27type%27%20-%3E%20%27GET%27.%0A%09%09%09%09%27success%27%20-%3E%20%5B%20%3Ajson%20%7C%20self%20renderTweets%3A%20%28json%20results%29%5D.%0A%09%09%09%09%27dataType%27%20-%3E%20%27jsonp%27%0A%09%09%09%7D.'),
-messageSends: ["ajax:options:", unescape("-%3E"), "renderTweets:", "results"],
 referencedClasses: []
 }),
 smalltalk.FOSDEMTwitter);

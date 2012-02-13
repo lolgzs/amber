@@ -74,7 +74,7 @@ fn: function (){
 var self=this;
 (($receiver = smalltalk.send(self, "_backgroundColor", [])) != nil && $receiver != undefined) ? (function(){return smalltalk.send(smalltalk.send((typeof window == 'undefined' ? nil : window), "_jQuery_", [unescape("%23slides")]), "_css_color_", ["background", smalltalk.send(self, "_backgroundColor", [])]);})() : nil;
 smalltalk.send(smalltalk.send((typeof window == 'undefined' ? nil : window), "_jQuery_", [".slide"]), "_hide_options_duration_", [smalltalk.send(smalltalk.send(self, "_presentation", []), "_slideTransition", []), [], (300)]);
-smalltalk.send(smalltalk.send((typeof window == 'undefined' ? nil : window), "_jQuery_", [smalltalk.send(unescape("%23"), "__comma", [smalltalk.send(self, "_id", [])])]), "_show_options_duration_", [smalltalk.send(smalltalk.send(self, "_presentation", []), "_slideTransition", []), [], (300)]);
+(function($rec){smalltalk.send($rec, "_attr_put_", ["style", smalltalk.send(self, "_style", [])]);return smalltalk.send($rec, "_show_options_duration_", [smalltalk.send(smalltalk.send(self, "_presentation", []), "_slideTransition", []), [], (300)]);})(smalltalk.send((typeof window == 'undefined' ? nil : window), "_jQuery_", [smalltalk.send(unescape("%23"), "__comma", [smalltalk.send(self, "_id", [])])]));
 return self;}
 }),
 smalltalk.Slide);
@@ -108,6 +108,17 @@ selector: unescape('renderMetaOn%3A'),
 fn: function (html){
 var self=this;
 (function($rec){smalltalk.send($rec, "_id_", ["meta"]);return smalltalk.send($rec, "_with_", [(function(){(function($rec){smalltalk.send($rec, "_class_", ["title"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(self, "_presentation", []), "_title", [])]);})(smalltalk.send(html, "_p", []));(function($rec){smalltalk.send($rec, "_class_", ["description"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(self, "_presentation", []), "_description", [])]);})(smalltalk.send(html, "_p", []));(function($rec){smalltalk.send($rec, "_class_", ["author"]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(self, "_presentation", []), "_author", [])]);return smalltalk.send($rec, "_href_", [smalltalk.send("mailto:", "__comma", [smalltalk.send(smalltalk.send(self, "_presentation", []), "_email", [])])]);})(smalltalk.send(html, "_a", []));return (function($rec){smalltalk.send($rec, "_class_", ["url"]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(self, "_presentation", []), "_url", [])]);return smalltalk.send($rec, "_href_", [smalltalk.send(smalltalk.send(self, "_presentation", []), "_url", [])]);})(smalltalk.send(html, "_a", []));})]);})(smalltalk.send(html, "_div", []));
+return self;}
+}),
+smalltalk.Slide);
+
+smalltalk.addMethod(
+unescape('_style'),
+smalltalk.method({
+selector: unescape('style'),
+fn: function (){
+var self=this;
+return "";
 return self;}
 }),
 smalltalk.Slide);
@@ -1808,6 +1819,28 @@ smalltalk.FOSDEM2012Presentation.klass);
 
 smalltalk.addClass('FOSDEMTwitter', smalltalk.FOSDEMSlide, ['twitterDiv'], 'Presentation');
 smalltalk.addMethod(
+unescape('_cssClass'),
+smalltalk.method({
+selector: unescape('cssClass'),
+fn: function (){
+var self=this;
+return "slide black";
+return self;}
+}),
+smalltalk.FOSDEMTwitter);
+
+smalltalk.addMethod(
+unescape('_loadTweets'),
+smalltalk.method({
+selector: unescape('loadTweets'),
+fn: function (){
+var self=this;
+smalltalk.send((typeof jQuery == 'undefined' ? nil : jQuery), "_ajax_options_", [unescape("http%3A//search.twitter.com/search.json%3Frpp%3D3%26q%3D%2540AmberSmalltalk"), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["GET"]),smalltalk.send("success", "__minus_gt", [(function(json){return smalltalk.send(self, "_renderTweets_", [smalltalk.send(json, "_results", [])]);})]),smalltalk.send("dataType", "__minus_gt", ["jsonp"])])]);
+return self;}
+}),
+smalltalk.FOSDEMTwitter);
+
+smalltalk.addMethod(
 unescape('_renderSlideOn_'),
 smalltalk.method({
 selector: unescape('renderSlideOn%3A'),
@@ -1837,28 +1870,6 @@ selector: unescape('renderTweet%3Aon%3A'),
 fn: function (tweet, html){
 var self=this;
 (function($rec){smalltalk.send($rec, "_class_", ["tweet"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_span_", [smalltalk.send(tweet, "_at_", ["created_at"])]);smalltalk.send($rec, "_img_", [smalltalk.send(tweet, "_at_", ["profile_image_url"])]);smalltalk.send($rec, "_span_", [smalltalk.send(tweet, "_at_", ["from_user"])]);return smalltalk.send($rec, "_div_", [smalltalk.send(tweet, "_at_", ["text"])]);})(html);})]);})(smalltalk.send(html, "_div", []));
-return self;}
-}),
-smalltalk.FOSDEMTwitter);
-
-smalltalk.addMethod(
-unescape('_cssClass'),
-smalltalk.method({
-selector: unescape('cssClass'),
-fn: function (){
-var self=this;
-return "slide black";
-return self;}
-}),
-smalltalk.FOSDEMTwitter);
-
-smalltalk.addMethod(
-unescape('_loadTweets'),
-smalltalk.method({
-selector: unescape('loadTweets'),
-fn: function (){
-var self=this;
-smalltalk.send((typeof jQuery == 'undefined' ? nil : jQuery), "_ajax_options_", [unescape("http%3A//search.twitter.com/search.json%3Frpp%3D3%26q%3D%2540AmberSmalltalk"), smalltalk.HashedCollection._fromPairs_([smalltalk.send("type", "__minus_gt", ["GET"]),smalltalk.send("success", "__minus_gt", [(function(json){return smalltalk.send(self, "_renderTweets_", [smalltalk.send(json, "_results", [])]);})]),smalltalk.send("dataType", "__minus_gt", ["jsonp"])])]);
 return self;}
 }),
 smalltalk.FOSDEMTwitter);
