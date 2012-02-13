@@ -1,4 +1,38 @@
 smalltalk.addPackage('Presentation-IAE', {});
+smalltalk.addClass('IAESlide', smalltalk.Slide, [], 'Presentation-IAE');
+smalltalk.addMethod(
+unescape('_id'),
+smalltalk.method({
+selector: unescape('id'),
+fn: function (){
+var self=this;
+return smalltalk.send(smalltalk.send(self, "_class", []), "_name", []);
+return self;}
+}),
+smalltalk.IAESlide);
+
+smalltalk.addMethod(
+unescape('_renderJava_on_'),
+smalltalk.method({
+selector: unescape('renderJava%3Aon%3A'),
+fn: function (aString, html){
+var self=this;
+var aTextArea=nil;
+(aTextArea=smalltalk.send(smalltalk.send(html, "_textarea", []), "_element", []));
+smalltalk.send(aTextArea, "_value_", [aString]);
+ CodeMirror.fromTextArea( aTextArea, {
+                lineNumbers: true,
+		mode: 'text/x-java',
+                enterMode: 'classic',
+		theme: 'neat',
+                matchBrackets: true,
+                electricChars: false }) ;
+return self;}
+}),
+smalltalk.IAESlide);
+
+
+
 smalltalk.addClass('IAEPresentation', smalltalk.Presentation, [], 'Presentation-IAE');
 smalltalk.addMethod(
 unescape('_author'),
@@ -55,40 +89,6 @@ return false;
 return self;}
 }),
 smalltalk.IAEPresentation.klass);
-
-
-smalltalk.addClass('IAESlide', smalltalk.Slide, [], 'Presentation-IAE');
-smalltalk.addMethod(
-unescape('_id'),
-smalltalk.method({
-selector: unescape('id'),
-fn: function (){
-var self=this;
-return smalltalk.send(smalltalk.send(self, "_class", []), "_name", []);
-return self;}
-}),
-smalltalk.IAESlide);
-
-smalltalk.addMethod(
-unescape('_renderJava_on_'),
-smalltalk.method({
-selector: unescape('renderJava%3Aon%3A'),
-fn: function (aString, html){
-var self=this;
-var aTextArea=nil;
-aTextArea=smalltalk.send(smalltalk.send(html, "_textarea", []), "_element", []);
-smalltalk.send(aTextArea, "_value_", [aString]);
- CodeMirror.fromTextArea( aTextArea, {
-                lineNumbers: true,
-		mode: 'text/x-java',
-                enterMode: 'classic',
-		theme: 'neat',
-                matchBrackets: true,
-                electricChars: false }) ;
-return self;}
-}),
-smalltalk.IAESlide);
-
 
 
 smalltalk.addClass('IAETDDBookBeck', smalltalk.IAESlide, [], 'Presentation-IAE');
@@ -1859,23 +1859,23 @@ smalltalk.IAEMocks);
 
 
 smalltalk.addMethod(
-unescape('_isConcrete'),
-smalltalk.method({
-selector: unescape('isConcrete'),
-fn: function (){
-var self=this;
-return true;
-return self;}
-}),
-smalltalk.IAEMocks.klass);
-
-smalltalk.addMethod(
 unescape('_title'),
 smalltalk.method({
 selector: unescape('title'),
 fn: function (){
 var self=this;
 return unescape("IAE%20-%20Mocks");
+return self;}
+}),
+smalltalk.IAEMocks.klass);
+
+smalltalk.addMethod(
+unescape('_isConcrete'),
+smalltalk.method({
+selector: unescape('isConcrete'),
+fn: function (){
+var self=this;
+return true;
 return self;}
 }),
 smalltalk.IAEMocks.klass);
@@ -2178,7 +2178,7 @@ smalltalk.method({
 selector: unescape('imageFile%3A'),
 fn: function (aString){
 var self=this;
-self['@imageFile']=aString;
+(self['@imageFile']=aString);
 return self;}
 }),
 smalltalk.IAECustomImageSlide);
@@ -2211,7 +2211,7 @@ smalltalk.method({
 selector: unescape('title%3A'),
 fn: function (aString){
 var self=this;
-self['@title']=aString;
+(self['@title']=aString);
 return self;}
 }),
 smalltalk.IAECustomImageSlide);
@@ -2258,7 +2258,7 @@ smalltalk.method({
 selector: unescape('initSlides'),
 fn: function (){
 var self=this;
-self['@slides']=smalltalk.send(["title", "interruptions", "25mn", "break", "4_pomodoro_break", "unbreakable_pomodoro", "brain", "inventory", "daily_activities", "keep_small_tasks", "daily_activities_done", "inventory_done", "urgent", "manage_interruptions", "new_inventory", "symbols", "report", "retrospective"], "_collect_", [(function(name){return (function($rec){smalltalk.send($rec, "_title_", [name]);return smalltalk.send($rec, "_imageFile_", [smalltalk.send(smalltalk.send(unescape("pomodoro/pt_"), "__comma", [name]), "__comma", [".JPG"])]);})(smalltalk.send((smalltalk.IAECustomImageSlide || IAECustomImageSlide), "_on_", [self]));})]);
+(self['@slides']=smalltalk.send(["title", "interruptions", "25mn", "break", "4_pomodoro_break", "unbreakable_pomodoro", "brain", "inventory", "daily_activities", "keep_small_tasks", "daily_activities_done", "inventory_done", "urgent", "manage_interruptions", "new_inventory", "symbols", "report", "retrospective"], "_collect_", [(function(name){return (function($rec){smalltalk.send($rec, "_title_", [name]);return smalltalk.send($rec, "_imageFile_", [smalltalk.send(smalltalk.send(unescape("pomodoro/pt_"), "__comma", [name]), "__comma", [".JPG"])]);})(smalltalk.send((smalltalk.IAECustomImageSlide || IAECustomImageSlide), "_on_", [self]));})]));
 smalltalk.send(self['@slides'], "_addAll_", [smalltalk.send(["pomodoro_technique", "pomodoro_illustrated", "pragmatic_thinking", unescape("your-brain-at-work")], "_collect_", [(function(name){return (function($rec){smalltalk.send($rec, "_title_", [name]);return smalltalk.send($rec, "_imageFile_", [smalltalk.send(smalltalk.send(unescape("pomodoro/"), "__comma", [name]), "__comma", [".jpg"])]);})(smalltalk.send((smalltalk.IAECustomImageSlide || IAECustomImageSlide), "_on_", [self]));})])]);
 return self;}
 }),

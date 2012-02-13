@@ -1,4 +1,48 @@
 smalltalk.addPackage('Presentation-IAE', {});
+smalltalk.addClass('IAESlide', smalltalk.Slide, [], 'Presentation-IAE');
+smalltalk.addMethod(
+unescape('_id'),
+smalltalk.method({
+selector: unescape('id'),
+category: 'accessing',
+fn: function (){
+var self=this;
+return smalltalk.send(smalltalk.send(self, "_class", []), "_name", []);
+return self;},
+args: [],
+source: unescape('id%0A%09%5E%20self%20class%20name'),
+messageSends: ["name", "class"],
+referencedClasses: []
+}),
+smalltalk.IAESlide);
+
+smalltalk.addMethod(
+unescape('_renderJava_on_'),
+smalltalk.method({
+selector: unescape('renderJava%3Aon%3A'),
+category: 'rendering',
+fn: function (aString, html){
+var self=this;
+var aTextArea=nil;
+(aTextArea=smalltalk.send(smalltalk.send(html, "_textarea", []), "_element", []));
+smalltalk.send(aTextArea, "_value_", [aString]);
+ CodeMirror.fromTextArea( aTextArea, {
+                lineNumbers: true,
+		mode: 'text/x-java',
+                enterMode: 'classic',
+		theme: 'neat',
+                matchBrackets: true,
+                electricChars: false }) ;
+return self;},
+args: ["aString", "html"],
+source: unescape('renderJava%3A%20aString%20on%3A%20html%0A%09%7CaTextArea%7C%0A%09aTextArea%20%3A%3D%20html%20textarea%20element.%0A%09aTextArea%20value%3A%20aString.%0A%20%20%20%20%20%20%20%20%0A%09%3C%20CodeMirror.fromTextArea%28%20aTextArea%2C%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20lineNumbers%3A%20true%2C%0A%09%09mode%3A%20%27text/x-java%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20enterMode%3A%20%27classic%27%2C%0A%09%09theme%3A%20%27neat%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20matchBrackets%3A%20true%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20electricChars%3A%20false%20%7D%29%20%3E'),
+messageSends: ["element", "textarea", "value:"],
+referencedClasses: []
+}),
+smalltalk.IAESlide);
+
+
+
 smalltalk.addClass('IAEPresentation', smalltalk.Presentation, [], 'Presentation-IAE');
 smalltalk.addMethod(
 unescape('_author'),
@@ -80,50 +124,6 @@ messageSends: [],
 referencedClasses: []
 }),
 smalltalk.IAEPresentation.klass);
-
-
-smalltalk.addClass('IAESlide', smalltalk.Slide, [], 'Presentation-IAE');
-smalltalk.addMethod(
-unescape('_id'),
-smalltalk.method({
-selector: unescape('id'),
-category: 'accessing',
-fn: function (){
-var self=this;
-return smalltalk.send(smalltalk.send(self, "_class", []), "_name", []);
-return self;},
-args: [],
-source: unescape('id%0A%09%5E%20self%20class%20name'),
-messageSends: ["name", "class"],
-referencedClasses: []
-}),
-smalltalk.IAESlide);
-
-smalltalk.addMethod(
-unescape('_renderJava_on_'),
-smalltalk.method({
-selector: unescape('renderJava%3Aon%3A'),
-category: 'rendering',
-fn: function (aString, html){
-var self=this;
-var aTextArea=nil;
-aTextArea=smalltalk.send(smalltalk.send(html, "_textarea", []), "_element", []);
-smalltalk.send(aTextArea, "_value_", [aString]);
- CodeMirror.fromTextArea( aTextArea, {
-                lineNumbers: true,
-		mode: 'text/x-java',
-                enterMode: 'classic',
-		theme: 'neat',
-                matchBrackets: true,
-                electricChars: false }) ;
-return self;},
-args: ["aString", "html"],
-source: unescape('renderJava%3A%20aString%20on%3A%20html%0A%09%7CaTextArea%7C%0A%09aTextArea%20%3A%3D%20html%20textarea%20element.%0A%09aTextArea%20value%3A%20aString.%0A%20%20%20%20%20%20%20%20%0A%09%3C%20CodeMirror.fromTextArea%28%20aTextArea%2C%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20lineNumbers%3A%20true%2C%0A%09%09mode%3A%20%27text/x-java%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20enterMode%3A%20%27classic%27%2C%0A%09%09theme%3A%20%27neat%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20matchBrackets%3A%20true%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20electricChars%3A%20false%20%7D%29%20%3E'),
-messageSends: ["element", "textarea", "value:"],
-referencedClasses: []
-}),
-smalltalk.IAESlide);
-
 
 
 smalltalk.addClass('IAETDDBookBeck', smalltalk.IAESlide, [], 'Presentation-IAE');
@@ -2594,22 +2594,6 @@ smalltalk.IAEMocks);
 
 
 smalltalk.addMethod(
-unescape('_isConcrete'),
-smalltalk.method({
-selector: unescape('isConcrete'),
-category: 'testing',
-fn: function (){
-var self=this;
-return true;
-return self;},
-args: [],
-source: unescape('isConcrete%0A%09%5E%20true'),
-messageSends: [],
-referencedClasses: []
-}),
-smalltalk.IAEMocks.klass);
-
-smalltalk.addMethod(
 unescape('_title'),
 smalltalk.method({
 selector: unescape('title'),
@@ -2620,6 +2604,22 @@ return unescape("IAE%20-%20Mocks");
 return self;},
 args: [],
 source: unescape('title%0A%09%5E%20%27IAE%20-%20Mocks%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.IAEMocks.klass);
+
+smalltalk.addMethod(
+unescape('_isConcrete'),
+smalltalk.method({
+selector: unescape('isConcrete'),
+category: 'testing',
+fn: function (){
+var self=this;
+return true;
+return self;},
+args: [],
+source: unescape('isConcrete%0A%09%5E%20true'),
 messageSends: [],
 referencedClasses: []
 }),
@@ -3039,7 +3039,7 @@ selector: unescape('imageFile%3A'),
 category: 'not yet classified',
 fn: function (aString){
 var self=this;
-self['@imageFile']=aString;
+(self['@imageFile']=aString);
 return self;},
 args: ["aString"],
 source: unescape('imageFile%3A%20aString%0A%09imageFile%20%3A%3D%20aString'),
@@ -3087,7 +3087,7 @@ selector: unescape('title%3A'),
 category: 'not yet classified',
 fn: function (aString){
 var self=this;
-self['@title']=aString;
+(self['@title']=aString);
 return self;},
 args: ["aString"],
 source: unescape('title%3A%20aString%0A%09title%20%3A%3D%20aString'),
@@ -3154,7 +3154,7 @@ selector: unescape('initSlides'),
 category: 'not yet classified',
 fn: function (){
 var self=this;
-self['@slides']=smalltalk.send(["title", "interruptions", "25mn", "break", "4_pomodoro_break", "unbreakable_pomodoro", "brain", "inventory", "daily_activities", "keep_small_tasks", "daily_activities_done", "inventory_done", "urgent", "manage_interruptions", "new_inventory", "symbols", "report", "retrospective"], "_collect_", [(function(name){return (function($rec){smalltalk.send($rec, "_title_", [name]);return smalltalk.send($rec, "_imageFile_", [smalltalk.send(smalltalk.send(unescape("pomodoro/pt_"), "__comma", [name]), "__comma", [".JPG"])]);})(smalltalk.send((smalltalk.IAECustomImageSlide || IAECustomImageSlide), "_on_", [self]));})]);
+(self['@slides']=smalltalk.send(["title", "interruptions", "25mn", "break", "4_pomodoro_break", "unbreakable_pomodoro", "brain", "inventory", "daily_activities", "keep_small_tasks", "daily_activities_done", "inventory_done", "urgent", "manage_interruptions", "new_inventory", "symbols", "report", "retrospective"], "_collect_", [(function(name){return (function($rec){smalltalk.send($rec, "_title_", [name]);return smalltalk.send($rec, "_imageFile_", [smalltalk.send(smalltalk.send(unescape("pomodoro/pt_"), "__comma", [name]), "__comma", [".JPG"])]);})(smalltalk.send((smalltalk.IAECustomImageSlide || IAECustomImageSlide), "_on_", [self]));})]));
 smalltalk.send(self['@slides'], "_addAll_", [smalltalk.send(["pomodoro_technique", "pomodoro_illustrated", "pragmatic_thinking", unescape("your-brain-at-work")], "_collect_", [(function(name){return (function($rec){smalltalk.send($rec, "_title_", [name]);return smalltalk.send($rec, "_imageFile_", [smalltalk.send(smalltalk.send(unescape("pomodoro/"), "__comma", [name]), "__comma", [".jpg"])]);})(smalltalk.send((smalltalk.IAECustomImageSlide || IAECustomImageSlide), "_on_", [self]));})])]);
 return self;},
 args: [],
