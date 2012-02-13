@@ -1,51 +1,4 @@
 smalltalk.addPackage('Presentation-TIT', {});
-smalltalk.addClass('TITSlide', smalltalk.Slide, [], 'Presentation-TIT');
-smalltalk.addMethod(
-unescape('_renderSmalltalk_on_'),
-smalltalk.method({
-selector: unescape('renderSmalltalk%3Aon%3A'),
-fn: function (aString, html){
-var self=this;
-var aTextArea=nil;
-(aTextArea=smalltalk.send(smalltalk.send(html, "_textarea", []), "_element", []));
-smalltalk.send(aTextArea, "_value_", [aString]);
- CodeMirror.fromTextArea( aTextArea, {
-                lineNumbers: true,
-		theme: 'jtalk',
-                enterMode: 'flat',
-		theme: 'neat',
-  		width: '700px',
-		lineWrapping: false,
-                matchBrackets: true,
-                electricChars: false }) ;
-return self;}
-}),
-smalltalk.TITSlide);
-
-smalltalk.addMethod(
-unescape('_renderImage_on_'),
-smalltalk.method({
-selector: unescape('renderImage%3Aon%3A'),
-fn: function (filename, html){
-var self=this;
-(function($rec){smalltalk.send($rec, "_class_", ["center"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_width_", ["700px"]);return smalltalk.send($rec, "_src_", [smalltalk.send(unescape("tit/images/"), "__comma", [filename])]);})(smalltalk.send(html, "_img", []));})]);})(smalltalk.send(html, "_div", []));
-return self;}
-}),
-smalltalk.TITSlide);
-
-smalltalk.addMethod(
-unescape('_renderVimeo_on_'),
-smalltalk.method({
-selector: unescape('renderVimeo%3Aon%3A'),
-fn: function (aNumber, html){
-var self=this;
-(function($rec){smalltalk.send($rec, "_width_", [(640)]);smalltalk.send($rec, "_height_", [(480)]);return smalltalk.send($rec, "_src_", [smalltalk.send(smalltalk.send(unescape("http%3A//player.vimeo.com/video/"), "__comma", [smalltalk.send(aNumber, "_asString", [])]), "__comma", [unescape("%3Ftitle%3D0%26amp%3Bbyline%3D0%26amp%3Bportrait%3D0")])]);})(smalltalk.send(html, "_iframe", []));
-return self;}
-}),
-smalltalk.TITSlide);
-
-
-
 smalltalk.addClass('TITPresentation', smalltalk.Presentation, [], 'Presentation-TIT');
 smalltalk.addMethod(
 unescape('_url'),
@@ -102,6 +55,53 @@ return false;
 return self;}
 }),
 smalltalk.TITPresentation.klass);
+
+
+smalltalk.addClass('TITSlide', smalltalk.Slide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_renderSmalltalk_on_'),
+smalltalk.method({
+selector: unescape('renderSmalltalk%3Aon%3A'),
+fn: function (aString, html){
+var self=this;
+var aTextArea=nil;
+(aTextArea=smalltalk.send(smalltalk.send(html, "_textarea", []), "_element", []));
+smalltalk.send(aTextArea, "_value_", [aString]);
+ CodeMirror.fromTextArea( aTextArea, {
+                lineNumbers: true,
+		theme: 'jtalk',
+                enterMode: 'flat',
+		theme: 'neat',
+  		width: '700px',
+		lineWrapping: false,
+                matchBrackets: true,
+                electricChars: false }) ;
+return self;}
+}),
+smalltalk.TITSlide);
+
+smalltalk.addMethod(
+unescape('_renderImage_on_'),
+smalltalk.method({
+selector: unescape('renderImage%3Aon%3A'),
+fn: function (filename, html){
+var self=this;
+(function($rec){smalltalk.send($rec, "_class_", ["center"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_width_", ["700px"]);return smalltalk.send($rec, "_src_", [smalltalk.send(unescape("tit/images/"), "__comma", [filename])]);})(smalltalk.send(html, "_img", []));})]);})(smalltalk.send(html, "_div", []));
+return self;}
+}),
+smalltalk.TITSlide);
+
+smalltalk.addMethod(
+unescape('_renderVimeo_on_'),
+smalltalk.method({
+selector: unescape('renderVimeo%3Aon%3A'),
+fn: function (aNumber, html){
+var self=this;
+(function($rec){smalltalk.send($rec, "_width_", [(640)]);smalltalk.send($rec, "_height_", [(480)]);return smalltalk.send($rec, "_src_", [smalltalk.send(smalltalk.send(unescape("http%3A//player.vimeo.com/video/"), "__comma", [smalltalk.send(aNumber, "_asString", [])]), "__comma", [unescape("%3Ftitle%3D0%26amp%3Bbyline%3D0%26amp%3Bportrait%3D0")])]);})(smalltalk.send(html, "_iframe", []));
+return self;}
+}),
+smalltalk.TITSlide);
+
 
 
 smalltalk.addClass('TITManipulatingObjects', smalltalk.TITPresentation, [], 'Presentation-TIT');
@@ -685,7 +685,7 @@ smalltalk.method({
 selector: unescape('slideClasses'),
 fn: function (){
 var self=this;
-return [(smalltalk.IAEIntroSlide || IAEIntroSlide),(smalltalk.TITRoadmap || TITRoadmap),(smalltalk.IAEPractices || IAEPractices),(smalltalk.TITTemporaryVariable || TITTemporaryVariable),(smalltalk.TITInstanceVariable || TITInstanceVariable),(smalltalk.TITBasicCodeSnippets || TITBasicCodeSnippets),(smalltalk.TITBasicCodeSnippets2 || TITBasicCodeSnippets2),(smalltalk.IAESectionExercises || IAESectionExercises),(smalltalk.TITBouncingAtomMorphsExercise || TITBouncingAtomMorphsExercise),(smalltalk.TITObjectModelRules || TITObjectModelRules),(smalltalk.TITObjectInheritance || TITObjectInheritance)];
+return [(smalltalk.IAEIntroSlide || IAEIntroSlide),(smalltalk.TITRoadmap || TITRoadmap),(smalltalk.IAEPractices || IAEPractices),(smalltalk.TITTemporaryVariable || TITTemporaryVariable),(smalltalk.TITInstanceVariable || TITInstanceVariable),(smalltalk.TITBasicCodeSnippets || TITBasicCodeSnippets),(smalltalk.TITBasicCodeSnippets2 || TITBasicCodeSnippets2),(smalltalk.IAESectionExercises || IAESectionExercises),(smalltalk.TITBouncingAtomMorphsExercise || TITBouncingAtomMorphsExercise),(smalltalk.TITObjectModelRules || TITObjectModelRules),(smalltalk.TITObjectInheritance || TITObjectInheritance),(smalltalk.TITBlocks || TITBlocks)];
 return self;}
 }),
 smalltalk.TITWriteAndShareCode);
@@ -887,6 +887,44 @@ return unescape("temperature%20%3C%200%0A%09ifTrue%3A%20%5BTranscipt%20show%3A%2
 return self;}
 }),
 smalltalk.TITBasicCodeSnippets2);
+
+
+
+smalltalk.addClass('TITBlocks', smalltalk.TITSlide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_cssClass'),
+smalltalk.method({
+selector: unescape('cssClass'),
+fn: function (){
+var self=this;
+return "slide green3d";
+return self;}
+}),
+smalltalk.TITBlocks);
+
+smalltalk.addMethod(
+unescape('_renderSlideOn_'),
+smalltalk.method({
+selector: unescape('renderSlideOn%3A'),
+fn: function (html){
+var self=this;
+smalltalk.send(html, "_h1_", ["Blocks syntax"]);
+(function($rec){smalltalk.send($rec, "_class_", ["big"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_style_", [unescape("font-weight%3Abold")]);return smalltalk.send($rec, "_with_", [(function(){(function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Ared%3B")]);return smalltalk.send($rec, "_with_", [unescape("%5B")]);})(smalltalk.send(html, "_span", []));(function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Ablue%3B")]);return smalltalk.send($rec, "_with_", [" :param"]);})(smalltalk.send(html, "_span", []));(function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Agreen%3B")]);return smalltalk.send($rec, "_with_", [unescape("%20%7C%20%7C")]);})(smalltalk.send(html, "_span", []));(function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Ablue%3B")]);return smalltalk.send($rec, "_with_", [" tempVar"]);})(smalltalk.send(html, "_span", []));(function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Agreen%3B")]);return smalltalk.send($rec, "_with_", [unescape("%20%7C")]);})(smalltalk.send(html, "_span", []));smalltalk.send(html, "_br", []);(function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Ablue%3B")]);return smalltalk.send($rec, "_with_", ["    tempVar"]);})(smalltalk.send(html, "_span", []));(function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Ared%3B")]);return smalltalk.send($rec, "_with_", [unescape("%20%3A%3D")]);})(smalltalk.send(html, "_span", []));smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [" value"]);(function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Ared%3B")]);return smalltalk.send($rec, "_with_", ["."]);})(smalltalk.send(html, "_span", []));smalltalk.send(html, "_br", []);(function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Ablue%3B")]);return smalltalk.send($rec, "_with_", ["    param"]);})(smalltalk.send(html, "_span", []));(function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Ared%3B")]);return smalltalk.send($rec, "_with_", [" message"]);})(smalltalk.send(html, "_span", []));(function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Ablue%3B")]);return smalltalk.send($rec, "_with_", [" tempVar"]);})(smalltalk.send(html, "_span", []));return (function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Ared%3B")]);return smalltalk.send($rec, "_with_", [unescape("%5D")]);})(smalltalk.send(html, "_span", []));})]);})(smalltalk.send(html, "_pre", []));})]);})(smalltalk.send(html, "_div", []));
+smalltalk.send(self, "_renderSmalltalk_on_", [smalltalk.send(self, "_snippet", []), html]);
+return self;}
+}),
+smalltalk.TITBlocks);
+
+smalltalk.addMethod(
+unescape('_snippet'),
+smalltalk.method({
+selector: unescape('snippet'),
+fn: function (){
+var self=this;
+return unescape("%5B%201%20+%202%20%5D%0A%5B%3Ax%20%7C%20x%20+%201%5D%0A%5B%3Ax%20%7C%20y%20%7C%0A%20%20y%20%3A%3D%201.%0A%20%20x%20+%20y%5D");
+return self;}
+}),
+smalltalk.TITBlocks);
 
 
 

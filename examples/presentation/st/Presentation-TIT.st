@@ -1,41 +1,4 @@
 Smalltalk current createPackage: 'Presentation-TIT' properties: #{}!
-Slide subclass: #TITSlide
-	instanceVariableNames: ''
-	category: 'Presentation-TIT'!
-
-!TITSlide methodsFor: 'rendering'!
-
-renderSmalltalk: aString on: html
-	|aTextArea|
-	aTextArea := html textarea element.
-	aTextArea value: aString.
-        
-	< CodeMirror.fromTextArea( aTextArea, {
-                lineNumbers: true,
-		theme: 'jtalk',
-                enterMode: 'flat',
-		theme: 'neat',
-  		width: '700px',
-		lineWrapping: false,
-                matchBrackets: true,
-                electricChars: false }) >
-!
-
-renderImage: filename on: html
-	html div 
-		class: 'center';
-		with: [	html img
-					width: '700px';
-					src: 'tit/images/', filename]
-!
-
-renderVimeo: aNumber on: html
-	html iframe 
-		width:640;
-		height:480;
-		src:'http://player.vimeo.com/video/', aNumber asString, '?title=0&amp;byline=0&amp;portrait=0'.
-! !
-
 Presentation subclass: #TITPresentation
 	instanceVariableNames: ''
 	category: 'Presentation-TIT'!
@@ -413,6 +376,43 @@ body {
 
 isConcrete
 	^ false
+! !
+
+Slide subclass: #TITSlide
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITSlide methodsFor: 'rendering'!
+
+renderSmalltalk: aString on: html
+	|aTextArea|
+	aTextArea := html textarea element.
+	aTextArea value: aString.
+        
+	< CodeMirror.fromTextArea( aTextArea, {
+                lineNumbers: true,
+		theme: 'jtalk',
+                enterMode: 'flat',
+		theme: 'neat',
+  		width: '700px',
+		lineWrapping: false,
+                matchBrackets: true,
+                electricChars: false }) >
+!
+
+renderImage: filename on: html
+	html div 
+		class: 'center';
+		with: [	html img
+					width: '700px';
+					src: 'tit/images/', filename]
+!
+
+renderVimeo: aNumber on: html
+	html iframe 
+		width:640;
+		height:480;
+		src:'http://player.vimeo.com/video/', aNumber asString, '?title=0&amp;byline=0&amp;portrait=0'.
 ! !
 
 TITPresentation subclass: #TITManipulatingObjects
@@ -869,7 +869,8 @@ slideClasses
 	IAESectionExercises.
 	TITBouncingAtomMorphsExercise.
 	TITObjectModelRules.
-	TITObjectInheritance}
+	TITObjectInheritance.
+	TITBlocks}
 ! !
 
 !TITWriteAndShareCode class methodsFor: 'accessing'!
@@ -1017,5 +1018,48 @@ snippet
 
 t0 := DateAndTime now.
 (DateAndTime now - t0) asSeconds.'
+! !
+
+TITSlide subclass: #TITBlocks
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITBlocks methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide green3d'
+! !
+
+!TITBlocks methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1: 'Blocks syntax'.
+	html div 
+		class: 'big';
+		with: [ html pre style:'font-weight:bold'; with: [
+				html span style:'color:red;'; with:'['.
+				html span style:'color:blue;'; with:' :param'.
+				html span style:'color:green;'; with:' | |'.
+				html span style:'color:blue;'; with:' tempVar'.
+				html span style:'color:green;'; with:' |'.
+				html br.
+				html span style:'color:blue;'; with:'    tempVar'.
+				html span style:'color:red;'; with:' :='.
+				html span with:' value'.
+				html span style:'color:red;'; with:'.'.
+				html br.
+				html span style:'color:blue;'; with:'    param'.
+				html span style:'color:red;'; with:' message'.
+				html span style:'color:blue;'; with:' tempVar'.
+				html span style:'color:red;'; with:']']].
+	self renderSmalltalk: self snippet on: html
+!
+
+snippet
+	^ '[ 1 + 2 ]
+[:x | x + 1]
+[:x | y |
+  y := 1.
+  x + y]'
 ! !
 
