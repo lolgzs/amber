@@ -1,4 +1,41 @@
 Smalltalk current createPackage: 'Presentation-TIT' properties: #{}!
+Slide subclass: #TITSlide
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITSlide methodsFor: 'rendering'!
+
+renderSmalltalk: aString on: html
+	|aTextArea|
+	aTextArea := html textarea element.
+	aTextArea value: aString.
+        
+	< CodeMirror.fromTextArea( aTextArea, {
+                lineNumbers: true,
+		theme: 'jtalk',
+                enterMode: 'flat',
+		theme: 'neat',
+  		width: '700px',
+		lineWrapping: false,
+                matchBrackets: true,
+                electricChars: false }) >
+!
+
+renderImage: filename on: html
+	html div 
+		class: 'center';
+		with: [	html img
+					width: '700px';
+					src: 'tit/images/', filename]
+!
+
+renderVimeo: aNumber on: html
+	html iframe 
+		width:640;
+		height:480;
+		src:'http://player.vimeo.com/video/', aNumber asString, '?title=0&amp;byline=0&amp;portrait=0'.
+! !
+
 Presentation subclass: #TITPresentation
 	instanceVariableNames: ''
 	category: 'Presentation-TIT'!
@@ -378,43 +415,6 @@ isConcrete
 	^ false
 ! !
 
-Slide subclass: #TITSlide
-	instanceVariableNames: ''
-	category: 'Presentation-TIT'!
-
-!TITSlide methodsFor: 'rendering'!
-
-renderSmalltalk: aString on: html
-	|aTextArea|
-	aTextArea := html textarea element.
-	aTextArea value: aString.
-        
-	< CodeMirror.fromTextArea( aTextArea, {
-                lineNumbers: true,
-		theme: 'jtalk',
-                enterMode: 'flat',
-		theme: 'neat',
-  		width: '700px',
-		lineWrapping: false,
-                matchBrackets: true,
-                electricChars: false }) >
-!
-
-renderImage: filename on: html
-	html div 
-		class: 'center';
-		with: [	html img
-					width: '700px';
-					src: 'tit/images/', filename]
-!
-
-renderVimeo: aNumber on: html
-	html iframe 
-		width:640;
-		height:480;
-		src:'http://player.vimeo.com/video/', aNumber asString, '?title=0&amp;byline=0&amp;portrait=0'.
-! !
-
 TITPresentation subclass: #TITManipulatingObjects
 	instanceVariableNames: ''
 	category: 'Presentation-TIT'!
@@ -660,7 +660,7 @@ renderSlideOn: html
 			 li: 'Make the BouncingAtomsMorph change color at every step';
 			 li: 'Make the BouncingAtomsMorph change color every 2 seconds (but animated at full speed)';
 			 li: 'Every second the BouncingAtomsMorph remove an atom. When reach 0, add one every second. When reach 30, remove one every second';
-			 li: 'Draw the number on the BouncingAtomsMorph the number of submorphs'.
+			 li: 'Draw on the BouncingAtomsMorph the number of its submorphs'.
 	].
 
 	html with: 'Do ProfStef go then:'.
@@ -1033,7 +1033,7 @@ cssClass
 !TITBlocks methodsFor: 'rendering'!
 
 renderSlideOn: html
-	html h1: 'Blocks syntax'.
+	html h1: 'Block syntax'.
 	html div 
 		class: 'big';
 		with: [ html pre style:'font-weight:bold'; with: [
@@ -1056,10 +1056,15 @@ renderSlideOn: html
 !
 
 snippet
-	^ '[ 1 + 2 ]
-[:x | x + 1]
-[:x | y |
-  y := 1.
-  x + y]'
+	^ 'a := [ 1 + 2 ].
+a value.
+
+b:= [:x | x + 1].
+b value: 4.
+
+c := [:x | | y |
+        y := 1.
+        x + y    ].
+c value: 4.'
 ! !
 

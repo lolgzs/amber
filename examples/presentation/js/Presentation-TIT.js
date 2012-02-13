@@ -1,4 +1,66 @@
 smalltalk.addPackage('Presentation-TIT', {});
+smalltalk.addClass('TITSlide', smalltalk.Slide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_renderSmalltalk_on_'),
+smalltalk.method({
+selector: unescape('renderSmalltalk%3Aon%3A'),
+category: 'rendering',
+fn: function (aString, html){
+var self=this;
+var aTextArea=nil;
+(aTextArea=smalltalk.send(smalltalk.send(html, "_textarea", []), "_element", []));
+smalltalk.send(aTextArea, "_value_", [aString]);
+ CodeMirror.fromTextArea( aTextArea, {
+                lineNumbers: true,
+		theme: 'jtalk',
+                enterMode: 'flat',
+		theme: 'neat',
+  		width: '700px',
+		lineWrapping: false,
+                matchBrackets: true,
+                electricChars: false }) ;
+return self;},
+args: ["aString", "html"],
+source: unescape('renderSmalltalk%3A%20aString%20on%3A%20html%0A%09%7CaTextArea%7C%0A%09aTextArea%20%3A%3D%20html%20textarea%20element.%0A%09aTextArea%20value%3A%20aString.%0A%20%20%20%20%20%20%20%20%0A%09%3C%20CodeMirror.fromTextArea%28%20aTextArea%2C%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20lineNumbers%3A%20true%2C%0A%09%09theme%3A%20%27jtalk%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20enterMode%3A%20%27flat%27%2C%0A%09%09theme%3A%20%27neat%27%2C%0A%20%20%09%09width%3A%20%27700px%27%2C%0A%09%09lineWrapping%3A%20false%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20matchBrackets%3A%20true%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20electricChars%3A%20false%20%7D%29%20%3E'),
+messageSends: ["element", "textarea", "value:"],
+referencedClasses: []
+}),
+smalltalk.TITSlide);
+
+smalltalk.addMethod(
+unescape('_renderImage_on_'),
+smalltalk.method({
+selector: unescape('renderImage%3Aon%3A'),
+category: 'rendering',
+fn: function (filename, html){
+var self=this;
+(function($rec){smalltalk.send($rec, "_class_", ["center"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_width_", ["700px"]);return smalltalk.send($rec, "_src_", [smalltalk.send(unescape("tit/images/"), "__comma", [filename])]);})(smalltalk.send(html, "_img", []));})]);})(smalltalk.send(html, "_div", []));
+return self;},
+args: ["filename", "html"],
+source: unescape('renderImage%3A%20filename%20on%3A%20html%0A%09html%20div%20%0A%09%09class%3A%20%27center%27%3B%0A%09%09with%3A%20%5B%09html%20img%0A%09%09%09%09%09width%3A%20%27700px%27%3B%0A%09%09%09%09%09src%3A%20%27tit/images/%27%2C%20filename%5D'),
+messageSends: ["class:", "with:", "width:", "src:", unescape("%2C"), "img", "div"],
+referencedClasses: []
+}),
+smalltalk.TITSlide);
+
+smalltalk.addMethod(
+unescape('_renderVimeo_on_'),
+smalltalk.method({
+selector: unescape('renderVimeo%3Aon%3A'),
+category: 'rendering',
+fn: function (aNumber, html){
+var self=this;
+(function($rec){smalltalk.send($rec, "_width_", [(640)]);smalltalk.send($rec, "_height_", [(480)]);return smalltalk.send($rec, "_src_", [smalltalk.send(smalltalk.send(unescape("http%3A//player.vimeo.com/video/"), "__comma", [smalltalk.send(aNumber, "_asString", [])]), "__comma", [unescape("%3Ftitle%3D0%26amp%3Bbyline%3D0%26amp%3Bportrait%3D0")])]);})(smalltalk.send(html, "_iframe", []));
+return self;},
+args: ["aNumber", "html"],
+source: unescape('renderVimeo%3A%20aNumber%20on%3A%20html%0A%09html%20iframe%20%0A%09%09width%3A640%3B%0A%09%09height%3A480%3B%0A%09%09src%3A%27http%3A//player.vimeo.com/video/%27%2C%20aNumber%20asString%2C%20%27%3Ftitle%3D0%26amp%3Bbyline%3D0%26amp%3Bportrait%3D0%27.'),
+messageSends: ["width:", "height:", "src:", unescape("%2C"), "asString", "iframe"],
+referencedClasses: []
+}),
+smalltalk.TITSlide);
+
+
+
 smalltalk.addClass('TITPresentation', smalltalk.Presentation, [], 'Presentation-TIT');
 smalltalk.addMethod(
 unescape('_url'),
@@ -80,68 +142,6 @@ messageSends: [],
 referencedClasses: []
 }),
 smalltalk.TITPresentation.klass);
-
-
-smalltalk.addClass('TITSlide', smalltalk.Slide, [], 'Presentation-TIT');
-smalltalk.addMethod(
-unescape('_renderSmalltalk_on_'),
-smalltalk.method({
-selector: unescape('renderSmalltalk%3Aon%3A'),
-category: 'rendering',
-fn: function (aString, html){
-var self=this;
-var aTextArea=nil;
-(aTextArea=smalltalk.send(smalltalk.send(html, "_textarea", []), "_element", []));
-smalltalk.send(aTextArea, "_value_", [aString]);
- CodeMirror.fromTextArea( aTextArea, {
-                lineNumbers: true,
-		theme: 'jtalk',
-                enterMode: 'flat',
-		theme: 'neat',
-  		width: '700px',
-		lineWrapping: false,
-                matchBrackets: true,
-                electricChars: false }) ;
-return self;},
-args: ["aString", "html"],
-source: unescape('renderSmalltalk%3A%20aString%20on%3A%20html%0A%09%7CaTextArea%7C%0A%09aTextArea%20%3A%3D%20html%20textarea%20element.%0A%09aTextArea%20value%3A%20aString.%0A%20%20%20%20%20%20%20%20%0A%09%3C%20CodeMirror.fromTextArea%28%20aTextArea%2C%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20lineNumbers%3A%20true%2C%0A%09%09theme%3A%20%27jtalk%27%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20enterMode%3A%20%27flat%27%2C%0A%09%09theme%3A%20%27neat%27%2C%0A%20%20%09%09width%3A%20%27700px%27%2C%0A%09%09lineWrapping%3A%20false%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20matchBrackets%3A%20true%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20electricChars%3A%20false%20%7D%29%20%3E'),
-messageSends: ["element", "textarea", "value:"],
-referencedClasses: []
-}),
-smalltalk.TITSlide);
-
-smalltalk.addMethod(
-unescape('_renderImage_on_'),
-smalltalk.method({
-selector: unescape('renderImage%3Aon%3A'),
-category: 'rendering',
-fn: function (filename, html){
-var self=this;
-(function($rec){smalltalk.send($rec, "_class_", ["center"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_width_", ["700px"]);return smalltalk.send($rec, "_src_", [smalltalk.send(unescape("tit/images/"), "__comma", [filename])]);})(smalltalk.send(html, "_img", []));})]);})(smalltalk.send(html, "_div", []));
-return self;},
-args: ["filename", "html"],
-source: unescape('renderImage%3A%20filename%20on%3A%20html%0A%09html%20div%20%0A%09%09class%3A%20%27center%27%3B%0A%09%09with%3A%20%5B%09html%20img%0A%09%09%09%09%09width%3A%20%27700px%27%3B%0A%09%09%09%09%09src%3A%20%27tit/images/%27%2C%20filename%5D'),
-messageSends: ["class:", "with:", "width:", "src:", unescape("%2C"), "img", "div"],
-referencedClasses: []
-}),
-smalltalk.TITSlide);
-
-smalltalk.addMethod(
-unescape('_renderVimeo_on_'),
-smalltalk.method({
-selector: unescape('renderVimeo%3Aon%3A'),
-category: 'rendering',
-fn: function (aNumber, html){
-var self=this;
-(function($rec){smalltalk.send($rec, "_width_", [(640)]);smalltalk.send($rec, "_height_", [(480)]);return smalltalk.send($rec, "_src_", [smalltalk.send(smalltalk.send(unescape("http%3A//player.vimeo.com/video/"), "__comma", [smalltalk.send(aNumber, "_asString", [])]), "__comma", [unescape("%3Ftitle%3D0%26amp%3Bbyline%3D0%26amp%3Bportrait%3D0")])]);})(smalltalk.send(html, "_iframe", []));
-return self;},
-args: ["aNumber", "html"],
-source: unescape('renderVimeo%3A%20aNumber%20on%3A%20html%0A%09html%20iframe%20%0A%09%09width%3A640%3B%0A%09%09height%3A480%3B%0A%09%09src%3A%27http%3A//player.vimeo.com/video/%27%2C%20aNumber%20asString%2C%20%27%3Ftitle%3D0%26amp%3Bbyline%3D0%26amp%3Bportrait%3D0%27.'),
-messageSends: ["width:", "height:", "src:", unescape("%2C"), "asString", "iframe"],
-referencedClasses: []
-}),
-smalltalk.TITSlide);
-
 
 
 smalltalk.addClass('TITManipulatingObjects', smalltalk.TITPresentation, [], 'Presentation-TIT');
@@ -570,12 +570,12 @@ selector: unescape('renderSlideOn%3A'),
 category: 'rendering',
 fn: function (html){
 var self=this;
-smalltalk.send(html, "_ol_", [(function(){return (function($rec){smalltalk.send($rec, "_li_", ["Make the BouncingAtomsMorph change color at every step"]);smalltalk.send($rec, "_li_", [unescape("Make%20the%20BouncingAtomsMorph%20change%20color%20every%202%20seconds%20%28but%20animated%20at%20full%20speed%29")]);smalltalk.send($rec, "_li_", [unescape("Every%20second%20the%20BouncingAtomsMorph%20remove%20an%20atom.%20When%20reach%200%2C%20add%20one%20every%20second.%20When%20reach%2030%2C%20remove%20one%20every%20second")]);return smalltalk.send($rec, "_li_", ["Draw the number on the BouncingAtomsMorph the number of submorphs"]);})(html);})]);
+smalltalk.send(html, "_ol_", [(function(){return (function($rec){smalltalk.send($rec, "_li_", ["Make the BouncingAtomsMorph change color at every step"]);smalltalk.send($rec, "_li_", [unescape("Make%20the%20BouncingAtomsMorph%20change%20color%20every%202%20seconds%20%28but%20animated%20at%20full%20speed%29")]);smalltalk.send($rec, "_li_", [unescape("Every%20second%20the%20BouncingAtomsMorph%20remove%20an%20atom.%20When%20reach%200%2C%20add%20one%20every%20second.%20When%20reach%2030%2C%20remove%20one%20every%20second")]);return smalltalk.send($rec, "_li_", ["Draw on the BouncingAtomsMorph the number of its submorphs"]);})(html);})]);
 smalltalk.send(html, "_with_", ["Do ProfStef go then:"]);
 smalltalk.send(html, "_ol_", [(function(){return (function($rec){smalltalk.send($rec, "_li_", ["Create a button in a window that opens a new BouncingAtomsMorph"]);smalltalk.send($rec, "_li_", ["Create a button that deletes all BouncingAtomsMorph instances"]);return smalltalk.send($rec, "_li_", ["A button that pops up a window displaying the number of red AtomMorph of latest BouncingAtomsMorph instance"]);})(html);})]);
 return self;},
 args: ["html"],
-source: unescape('renderSlideOn%3A%20html%0A%09html%20ol%3A%20%5B%0A%09%09html%0A%09%09%09%20li%3A%20%27Make%20the%20BouncingAtomsMorph%20change%20color%20at%20every%20step%27%3B%0A%09%09%09%20li%3A%20%27Make%20the%20BouncingAtomsMorph%20change%20color%20every%202%20seconds%20%28but%20animated%20at%20full%20speed%29%27%3B%0A%09%09%09%20li%3A%20%27Every%20second%20the%20BouncingAtomsMorph%20remove%20an%20atom.%20When%20reach%200%2C%20add%20one%20every%20second.%20When%20reach%2030%2C%20remove%20one%20every%20second%27%3B%0A%09%09%09%20li%3A%20%27Draw%20the%20number%20on%20the%20BouncingAtomsMorph%20the%20number%20of%20submorphs%27.%0A%09%5D.%0A%0A%09html%20with%3A%20%27Do%20ProfStef%20go%20then%3A%27.%0A%09html%20ol%3A%20%5B%0A%09%09html%0A%09%09%09li%3A%20%27Create%20a%20button%20in%20a%20window%20that%20opens%20a%20new%20BouncingAtomsMorph%27%3B%0A%09%09%09li%3A%20%27Create%20a%20button%20that%20deletes%20all%20BouncingAtomsMorph%20instances%27%3B%0A%09%09%09li%3A%20%27A%20button%20that%20pops%20up%20a%20window%20displaying%20the%20number%20of%20red%20AtomMorph%20of%20latest%20BouncingAtomsMorph%20instance%27.%0A%09%5D.'),
+source: unescape('renderSlideOn%3A%20html%0A%09html%20ol%3A%20%5B%0A%09%09html%0A%09%09%09%20li%3A%20%27Make%20the%20BouncingAtomsMorph%20change%20color%20at%20every%20step%27%3B%0A%09%09%09%20li%3A%20%27Make%20the%20BouncingAtomsMorph%20change%20color%20every%202%20seconds%20%28but%20animated%20at%20full%20speed%29%27%3B%0A%09%09%09%20li%3A%20%27Every%20second%20the%20BouncingAtomsMorph%20remove%20an%20atom.%20When%20reach%200%2C%20add%20one%20every%20second.%20When%20reach%2030%2C%20remove%20one%20every%20second%27%3B%0A%09%09%09%20li%3A%20%27Draw%20on%20the%20BouncingAtomsMorph%20the%20number%20of%20its%20submorphs%27.%0A%09%5D.%0A%0A%09html%20with%3A%20%27Do%20ProfStef%20go%20then%3A%27.%0A%09html%20ol%3A%20%5B%0A%09%09html%0A%09%09%09li%3A%20%27Create%20a%20button%20in%20a%20window%20that%20opens%20a%20new%20BouncingAtomsMorph%27%3B%0A%09%09%09li%3A%20%27Create%20a%20button%20that%20deletes%20all%20BouncingAtomsMorph%20instances%27%3B%0A%09%09%09li%3A%20%27A%20button%20that%20pops%20up%20a%20window%20displaying%20the%20number%20of%20red%20AtomMorph%20of%20latest%20BouncingAtomsMorph%20instance%27.%0A%09%5D.'),
 messageSends: ["ol:", "li:", "with:"],
 referencedClasses: []
 }),
@@ -1261,12 +1261,12 @@ selector: unescape('renderSlideOn%3A'),
 category: 'rendering',
 fn: function (html){
 var self=this;
-smalltalk.send(html, "_h1_", ["Blocks syntax"]);
+smalltalk.send(html, "_h1_", ["Block syntax"]);
 (function($rec){smalltalk.send($rec, "_class_", ["big"]);return smalltalk.send($rec, "_with_", [(function(){return (function($rec){smalltalk.send($rec, "_style_", [unescape("font-weight%3Abold")]);return smalltalk.send($rec, "_with_", [(function(){(function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Ared%3B")]);return smalltalk.send($rec, "_with_", [unescape("%5B")]);})(smalltalk.send(html, "_span", []));(function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Ablue%3B")]);return smalltalk.send($rec, "_with_", [" :param"]);})(smalltalk.send(html, "_span", []));(function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Agreen%3B")]);return smalltalk.send($rec, "_with_", [unescape("%20%7C%20%7C")]);})(smalltalk.send(html, "_span", []));(function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Ablue%3B")]);return smalltalk.send($rec, "_with_", [" tempVar"]);})(smalltalk.send(html, "_span", []));(function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Agreen%3B")]);return smalltalk.send($rec, "_with_", [unescape("%20%7C")]);})(smalltalk.send(html, "_span", []));smalltalk.send(html, "_br", []);(function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Ablue%3B")]);return smalltalk.send($rec, "_with_", ["    tempVar"]);})(smalltalk.send(html, "_span", []));(function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Ared%3B")]);return smalltalk.send($rec, "_with_", [unescape("%20%3A%3D")]);})(smalltalk.send(html, "_span", []));smalltalk.send(smalltalk.send(html, "_span", []), "_with_", [" value"]);(function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Ared%3B")]);return smalltalk.send($rec, "_with_", ["."]);})(smalltalk.send(html, "_span", []));smalltalk.send(html, "_br", []);(function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Ablue%3B")]);return smalltalk.send($rec, "_with_", ["    param"]);})(smalltalk.send(html, "_span", []));(function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Ared%3B")]);return smalltalk.send($rec, "_with_", [" message"]);})(smalltalk.send(html, "_span", []));(function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Ablue%3B")]);return smalltalk.send($rec, "_with_", [" tempVar"]);})(smalltalk.send(html, "_span", []));return (function($rec){smalltalk.send($rec, "_style_", [unescape("color%3Ared%3B")]);return smalltalk.send($rec, "_with_", [unescape("%5D")]);})(smalltalk.send(html, "_span", []));})]);})(smalltalk.send(html, "_pre", []));})]);})(smalltalk.send(html, "_div", []));
 smalltalk.send(self, "_renderSmalltalk_on_", [smalltalk.send(self, "_snippet", []), html]);
 return self;},
 args: ["html"],
-source: unescape('renderSlideOn%3A%20html%0A%09html%20h1%3A%20%27Blocks%20syntax%27.%0A%09html%20div%20%0A%09%09class%3A%20%27big%27%3B%0A%09%09with%3A%20%5B%20html%20pre%20style%3A%27font-weight%3Abold%27%3B%20with%3A%20%5B%0A%09%09%09%09html%20span%20style%3A%27color%3Ared%3B%27%3B%20with%3A%27%5B%27.%0A%09%09%09%09html%20span%20style%3A%27color%3Ablue%3B%27%3B%20with%3A%27%20%3Aparam%27.%0A%09%09%09%09html%20span%20style%3A%27color%3Agreen%3B%27%3B%20with%3A%27%20%7C%20%7C%27.%0A%09%09%09%09html%20span%20style%3A%27color%3Ablue%3B%27%3B%20with%3A%27%20tempVar%27.%0A%09%09%09%09html%20span%20style%3A%27color%3Agreen%3B%27%3B%20with%3A%27%20%7C%27.%0A%09%09%09%09html%20br.%0A%09%09%09%09html%20span%20style%3A%27color%3Ablue%3B%27%3B%20with%3A%27%20%20%20%20tempVar%27.%0A%09%09%09%09html%20span%20style%3A%27color%3Ared%3B%27%3B%20with%3A%27%20%3A%3D%27.%0A%09%09%09%09html%20span%20with%3A%27%20value%27.%0A%09%09%09%09html%20span%20style%3A%27color%3Ared%3B%27%3B%20with%3A%27.%27.%0A%09%09%09%09html%20br.%0A%09%09%09%09html%20span%20style%3A%27color%3Ablue%3B%27%3B%20with%3A%27%20%20%20%20param%27.%0A%09%09%09%09html%20span%20style%3A%27color%3Ared%3B%27%3B%20with%3A%27%20message%27.%0A%09%09%09%09html%20span%20style%3A%27color%3Ablue%3B%27%3B%20with%3A%27%20tempVar%27.%0A%09%09%09%09html%20span%20style%3A%27color%3Ared%3B%27%3B%20with%3A%27%5D%27%5D%5D.%0A%09self%20renderSmalltalk%3A%20self%20snippet%20on%3A%20html'),
+source: unescape('renderSlideOn%3A%20html%0A%09html%20h1%3A%20%27Block%20syntax%27.%0A%09html%20div%20%0A%09%09class%3A%20%27big%27%3B%0A%09%09with%3A%20%5B%20html%20pre%20style%3A%27font-weight%3Abold%27%3B%20with%3A%20%5B%0A%09%09%09%09html%20span%20style%3A%27color%3Ared%3B%27%3B%20with%3A%27%5B%27.%0A%09%09%09%09html%20span%20style%3A%27color%3Ablue%3B%27%3B%20with%3A%27%20%3Aparam%27.%0A%09%09%09%09html%20span%20style%3A%27color%3Agreen%3B%27%3B%20with%3A%27%20%7C%20%7C%27.%0A%09%09%09%09html%20span%20style%3A%27color%3Ablue%3B%27%3B%20with%3A%27%20tempVar%27.%0A%09%09%09%09html%20span%20style%3A%27color%3Agreen%3B%27%3B%20with%3A%27%20%7C%27.%0A%09%09%09%09html%20br.%0A%09%09%09%09html%20span%20style%3A%27color%3Ablue%3B%27%3B%20with%3A%27%20%20%20%20tempVar%27.%0A%09%09%09%09html%20span%20style%3A%27color%3Ared%3B%27%3B%20with%3A%27%20%3A%3D%27.%0A%09%09%09%09html%20span%20with%3A%27%20value%27.%0A%09%09%09%09html%20span%20style%3A%27color%3Ared%3B%27%3B%20with%3A%27.%27.%0A%09%09%09%09html%20br.%0A%09%09%09%09html%20span%20style%3A%27color%3Ablue%3B%27%3B%20with%3A%27%20%20%20%20param%27.%0A%09%09%09%09html%20span%20style%3A%27color%3Ared%3B%27%3B%20with%3A%27%20message%27.%0A%09%09%09%09html%20span%20style%3A%27color%3Ablue%3B%27%3B%20with%3A%27%20tempVar%27.%0A%09%09%09%09html%20span%20style%3A%27color%3Ared%3B%27%3B%20with%3A%27%5D%27%5D%5D.%0A%09self%20renderSmalltalk%3A%20self%20snippet%20on%3A%20html'),
 messageSends: ["h1:", "class:", "with:", "style:", "span", "br", "pre", "div", "renderSmalltalk:on:", "snippet"],
 referencedClasses: []
 }),
@@ -1279,10 +1279,10 @@ selector: unescape('snippet'),
 category: 'rendering',
 fn: function (){
 var self=this;
-return unescape("%5B%201%20+%202%20%5D%0A%5B%3Ax%20%7C%20x%20+%201%5D%0A%5B%3Ax%20%7C%20y%20%7C%0A%20%20y%20%3A%3D%201.%0A%20%20x%20+%20y%5D");
+return unescape("a%20%3A%3D%20%5B%201%20+%202%20%5D.%0Aa%20value.%0A%0Ab%3A%3D%20%5B%3Ax%20%7C%20x%20+%201%5D.%0Ab%20value%3A%204.%0A%0Ac%20%3A%3D%20%5B%3Ax%20%7C%20%7C%20y%20%7C%0A%20%20%20%20%20%20%20%20y%20%3A%3D%201.%0A%20%20%20%20%20%20%20%20x%20+%20y%20%20%20%20%5D.%0Ac%20value%3A%204.");
 return self;},
 args: [],
-source: unescape('snippet%0A%09%5E%20%27%5B%201%20+%202%20%5D%0A%5B%3Ax%20%7C%20x%20+%201%5D%0A%5B%3Ax%20%7C%20y%20%7C%0A%20%20y%20%3A%3D%201.%0A%20%20x%20+%20y%5D%27'),
+source: unescape('snippet%0A%09%5E%20%27a%20%3A%3D%20%5B%201%20+%202%20%5D.%0Aa%20value.%0A%0Ab%3A%3D%20%5B%3Ax%20%7C%20x%20+%201%5D.%0Ab%20value%3A%204.%0A%0Ac%20%3A%3D%20%5B%3Ax%20%7C%20%7C%20y%20%7C%0A%20%20%20%20%20%20%20%20y%20%3A%3D%201.%0A%20%20%20%20%20%20%20%20x%20+%20y%20%20%20%20%5D.%0Ac%20value%3A%204.%27'),
 messageSends: [],
 referencedClasses: []
 }),
