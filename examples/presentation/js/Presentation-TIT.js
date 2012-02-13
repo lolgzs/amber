@@ -948,12 +948,12 @@ selector: unescape('slideClasses'),
 category: 'accessing',
 fn: function (){
 var self=this;
-return [(smalltalk.IAEIntroSlide || IAEIntroSlide),(smalltalk.TITRoadmap || TITRoadmap),(smalltalk.IAEPractices || IAEPractices),(smalltalk.TITTemporaryVariable || TITTemporaryVariable),(smalltalk.TITInstanceVariable || TITInstanceVariable),(smalltalk.TITBasicCodeSnippets || TITBasicCodeSnippets),(smalltalk.TITBasicCodeSnippets2 || TITBasicCodeSnippets2),(smalltalk.IAESectionExercises || IAESectionExercises),(smalltalk.TITBouncingAtomMorphsExercise || TITBouncingAtomMorphsExercise),(smalltalk.TITObjectModelRules || TITObjectModelRules),(smalltalk.TITObjectInheritance || TITObjectInheritance),(smalltalk.TITBlocks || TITBlocks)];
+return [(smalltalk.IAEIntroSlide || IAEIntroSlide),(smalltalk.TITRoadmap || TITRoadmap),(smalltalk.IAEPractices || IAEPractices),(smalltalk.TITTemporaryVariable || TITTemporaryVariable),(smalltalk.TITInstanceVariable || TITInstanceVariable),(smalltalk.TITBasicCodeSnippets || TITBasicCodeSnippets),(smalltalk.TITBasicCodeSnippets2 || TITBasicCodeSnippets2),(smalltalk.IAESectionExercises || IAESectionExercises),(smalltalk.TITBouncingAtomMorphsExercise || TITBouncingAtomMorphsExercise),(smalltalk.TITObjectModelRules || TITObjectModelRules),(smalltalk.TITObjectInheritance || TITObjectInheritance),(smalltalk.TITBlocks || TITBlocks),(smalltalk.IAESectionExercises || IAESectionExercises),(smalltalk.TITBouncingInheritanceExercise || TITBouncingInheritanceExercise)];
 return self;},
 args: [],
-source: unescape('slideClasses%0A%09%5E%20%7B%0A%09IAEIntroSlide.%0A%09TITRoadmap.%0A%09IAEPractices.%0A%09TITTemporaryVariable.%0A%09TITInstanceVariable.%0A%09TITBasicCodeSnippets.%0A%09TITBasicCodeSnippets2.%0A%09IAESectionExercises.%0A%09TITBouncingAtomMorphsExercise.%0A%09TITObjectModelRules.%0A%09TITObjectInheritance.%0A%09TITBlocks%7D'),
+source: unescape('slideClasses%0A%09%5E%20%7B%0A%09IAEIntroSlide.%0A%09TITRoadmap.%0A%09IAEPractices.%0A%09TITTemporaryVariable.%0A%09TITInstanceVariable.%0A%09TITBasicCodeSnippets.%0A%09TITBasicCodeSnippets2.%0A%09IAESectionExercises.%0A%09TITBouncingAtomMorphsExercise.%0A%09TITObjectModelRules.%0A%09TITObjectInheritance.%0A%09TITBlocks.%0A%09IAESectionExercises.%0A%09TITBouncingInheritanceExercise%7D'),
 messageSends: [],
-referencedClasses: ["IAEIntroSlide", "TITRoadmap", "IAEPractices", "TITTemporaryVariable", "TITInstanceVariable", "TITBasicCodeSnippets", "TITBasicCodeSnippets2", "IAESectionExercises", "TITBouncingAtomMorphsExercise", "TITObjectModelRules", "TITObjectInheritance", "TITBlocks"]
+referencedClasses: ["IAEIntroSlide", "TITRoadmap", "IAEPractices", "TITTemporaryVariable", "TITInstanceVariable", "TITBasicCodeSnippets", "TITBasicCodeSnippets2", "IAESectionExercises", "TITBouncingAtomMorphsExercise", "TITObjectModelRules", "TITObjectInheritance", "TITBlocks", "TITBouncingInheritanceExercise"]
 }),
 smalltalk.TITWriteAndShareCode);
 
@@ -1287,6 +1287,41 @@ messageSends: [],
 referencedClasses: []
 }),
 smalltalk.TITBlocks);
+
+
+
+smalltalk.addClass('TITBouncingInheritanceExercise', smalltalk.TITSlide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_renderSlideOn_'),
+smalltalk.method({
+selector: unescape('renderSlideOn%3A'),
+category: 'not yet classified',
+fn: function (html){
+var self=this;
+smalltalk.send(html, "_ol_", [(function(){return (function($rec){smalltalk.send($rec, "_li_", ["Implement CrossMorph in category MorphExamplesAndDemo"]);smalltalk.send($rec, "_li_", [unescape("Push%20MorphExamplesAndDemos%20package%20to%20repository%20http%3A//ss3.gemstone.com/ss/TetrasTIT")]);return smalltalk.send($rec, "_li_", [unescape("Make%20CrossMorph%20a%20subclass%20of%20AtomMorph%20and%20adapt%20BouncingAtomsMorph%3E%3Estep")]);})(html);})]);
+return self;},
+args: ["html"],
+source: unescape('renderSlideOn%3A%20html%0A%09html%20ol%3A%20%5B%0A%09%09html%0A%09%09%09li%3A%20%27Implement%20CrossMorph%20in%20category%20MorphExamplesAndDemo%27%3B%0A%09%09%09li%3A%20%27Push%20MorphExamplesAndDemos%20package%20to%20repository%20http%3A//ss3.gemstone.com/ss/TetrasTIT%27%3B%0A%09%09%09li%3A%20%27Make%20CrossMorph%20a%20subclass%20of%20AtomMorph%20and%20adapt%20BouncingAtomsMorph%3E%3Estep%27%0A%09%09%09%0A%09%5D'),
+messageSends: ["ol:", "li:"],
+referencedClasses: []
+}),
+smalltalk.TITBouncingInheritanceExercise);
+
+smalltalk.addMethod(
+unescape('_cssClass'),
+smalltalk.method({
+selector: unescape('cssClass'),
+category: 'not yet classified',
+fn: function (){
+var self=this;
+return "slide black";
+return self;},
+args: [],
+source: unescape('cssClass%0A%09%5E%20%27slide%20black%27'),
+messageSends: [],
+referencedClasses: []
+}),
+smalltalk.TITBouncingInheritanceExercise);
 
 
 

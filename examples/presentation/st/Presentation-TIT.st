@@ -870,7 +870,9 @@ slideClasses
 	TITBouncingAtomMorphsExercise.
 	TITObjectModelRules.
 	TITObjectInheritance.
-	TITBlocks}
+	TITBlocks.
+	IAESectionExercises.
+	TITBouncingInheritanceExercise}
 ! !
 
 !TITWriteAndShareCode class methodsFor: 'accessing'!
@@ -1066,5 +1068,25 @@ c := [:x | | y |
         y := 1.
         x + y    ].
 c value: 4.'
+! !
+
+TITSlide subclass: #TITBouncingInheritanceExercise
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITBouncingInheritanceExercise methodsFor: 'not yet classified'!
+
+renderSlideOn: html
+	html ol: [
+		html
+			li: 'Implement CrossMorph in category MorphExamplesAndDemo';
+			li: 'Push MorphExamplesAndDemos package to repository http://ss3.gemstone.com/ss/TetrasTIT';
+			li: 'Make CrossMorph a subclass of AtomMorph and adapt BouncingAtomsMorph>>step'
+			
+	]
+!
+
+cssClass
+	^ 'slide black'
 ! !
 
