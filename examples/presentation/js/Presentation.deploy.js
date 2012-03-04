@@ -67,6 +67,17 @@ return self;}
 smalltalk.Slide);
 
 smalltalk.addMethod(
+unescape('_style'),
+smalltalk.method({
+selector: unescape('style'),
+fn: function (){
+var self=this;
+return "";
+return self;}
+}),
+smalltalk.Slide);
+
+smalltalk.addMethod(
 unescape('_show'),
 smalltalk.method({
 selector: unescape('show'),
@@ -108,17 +119,6 @@ selector: unescape('renderMetaOn%3A'),
 fn: function (html){
 var self=this;
 (function($rec){smalltalk.send($rec, "_id_", ["meta"]);return smalltalk.send($rec, "_with_", [(function(){(function($rec){smalltalk.send($rec, "_class_", ["title"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(self, "_presentation", []), "_title", [])]);})(smalltalk.send(html, "_p", []));(function($rec){smalltalk.send($rec, "_class_", ["description"]);return smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(self, "_presentation", []), "_description", [])]);})(smalltalk.send(html, "_p", []));(function($rec){smalltalk.send($rec, "_class_", ["author"]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(self, "_presentation", []), "_author", [])]);return smalltalk.send($rec, "_href_", [smalltalk.send("mailto:", "__comma", [smalltalk.send(smalltalk.send(self, "_presentation", []), "_email", [])])]);})(smalltalk.send(html, "_a", []));return (function($rec){smalltalk.send($rec, "_class_", ["url"]);smalltalk.send($rec, "_with_", [smalltalk.send(smalltalk.send(self, "_presentation", []), "_url", [])]);return smalltalk.send($rec, "_href_", [smalltalk.send(smalltalk.send(self, "_presentation", []), "_url", [])]);})(smalltalk.send(html, "_a", []));})]);})(smalltalk.send(html, "_div", []));
-return self;}
-}),
-smalltalk.Slide);
-
-smalltalk.addMethod(
-unescape('_style'),
-smalltalk.method({
-selector: unescape('style'),
-fn: function (){
-var self=this;
-return "";
 return self;}
 }),
 smalltalk.Slide);

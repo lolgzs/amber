@@ -1,4 +1,41 @@
 Smalltalk current createPackage: 'Presentation-TIT' properties: #{}!
+Slide subclass: #TITSlide
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITSlide methodsFor: 'rendering'!
+
+renderSmalltalk: aString on: html
+	|aTextArea|
+	aTextArea := html textarea element.
+	aTextArea value: aString.
+        
+	< CodeMirror.fromTextArea( aTextArea, {
+                lineNumbers: true,
+		theme: 'jtalk',
+                enterMode: 'flat',
+		theme: 'neat',
+  		width: '700px',
+		lineWrapping: false,
+                matchBrackets: true,
+                electricChars: false }) >
+!
+
+renderImage: filename on: html
+	html div 
+		class: 'center';
+		with: [	html img
+					width: '700px';
+					src: 'tit/images/', filename]
+!
+
+renderVimeo: aNumber on: html
+	html iframe 
+		width:640;
+		height:480;
+		src:'http://player.vimeo.com/video/', aNumber asString, '?title=0&amp;byline=0&amp;portrait=0'.
+! !
+
 Presentation subclass: #TITPresentation
 	instanceVariableNames: ''
 	category: 'Presentation-TIT'!
@@ -378,43 +415,6 @@ isConcrete
 	^ false
 ! !
 
-Slide subclass: #TITSlide
-	instanceVariableNames: ''
-	category: 'Presentation-TIT'!
-
-!TITSlide methodsFor: 'rendering'!
-
-renderSmalltalk: aString on: html
-	|aTextArea|
-	aTextArea := html textarea element.
-	aTextArea value: aString.
-        
-	< CodeMirror.fromTextArea( aTextArea, {
-                lineNumbers: true,
-		theme: 'jtalk',
-                enterMode: 'flat',
-		theme: 'neat',
-  		width: '700px',
-		lineWrapping: false,
-                matchBrackets: true,
-                electricChars: false }) >
-!
-
-renderImage: filename on: html
-	html div 
-		class: 'center';
-		with: [	html img
-					width: '700px';
-					src: 'tit/images/', filename]
-!
-
-renderVimeo: aNumber on: html
-	html iframe 
-		width:640;
-		height:480;
-		src:'http://player.vimeo.com/video/', aNumber asString, '?title=0&amp;byline=0&amp;portrait=0'.
-! !
-
 TITPresentation subclass: #TITManipulatingObjects
 	instanceVariableNames: ''
 	category: 'Presentation-TIT'!
@@ -692,10 +692,10 @@ renderSlideOn: html
 		html 
 			li: 'Manipulating objects';
 			li: 'Write and share code';
-			li: 'Inheritance';
+			li: 'Basic classes';
+			li: 'Inheritance and polymorphism';
 			li: 'Software lifecycle';
-			li: 'Understand UML';
-			li: 'Aggregation, encapsulation, polymorphism';
+			li: 'Test Driven Development';
 			li: 'Compose GUI'
 	].
 !
@@ -868,10 +868,15 @@ slideClasses
 	TITBasicCodeSnippets2.
 	IAESectionExercises.
 	TITBouncingAtomMorphsExercise.
+	TITVersionControl.
+	TITBlocks.
 	TITObjectModelRules.
 	TITObjectInheritance.
-	TITBlocks.
-	TITVersionControl.
+	TITUMLBoolean.
+	TITUMLCrossMorph.
+	"
+	isKindOf / isMemberOf
+	TP"
 	IAESectionExercises.
 	TITBouncingInheritanceExercise}
 ! !
@@ -895,7 +900,7 @@ TITSlide subclass: #TITObjectModelRules
 !TITObjectModelRules methodsFor: 'accessing'!
 
 cssClass
-	^ 'slide red3d'
+	^ 'slide blue3d'
 ! !
 
 !TITObjectModelRules methodsFor: 'rendering'!
@@ -1107,5 +1112,39 @@ renderSlideOn: html
 
 cssClass
 	^ 'slide blue3d'
+! !
+
+TITSlide subclass: #TITUMLCrossMorph
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITUMLCrossMorph methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide wax3d'
+! !
+
+!TITUMLCrossMorph methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1: 'UML'.
+	self renderImage: 'crossmorph.png' on: html
+! !
+
+TITSlide subclass: #TITUMLBoolean
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITUMLBoolean methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide blue3d'
+! !
+
+!TITUMLBoolean methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1: 'Boolean'.
+	self renderImage: 'boolean.png' on: html
 ! !
 
