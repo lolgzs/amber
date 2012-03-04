@@ -872,11 +872,9 @@ slideClasses
 	TITBlocks.
 	TITObjectModelRules.
 	TITObjectInheritance.
-	TITUMLBoolean.
 	TITUMLCrossMorph.
-	"
-	isKindOf / isMemberOf
-	TP"
+	TITPolymorphism.
+	TITMemberOfKindOf.
 	IAESectionExercises.
 	TITBouncingInheritanceExercise}
 ! !
@@ -1131,20 +1129,47 @@ renderSlideOn: html
 	self renderImage: 'crossmorph.png' on: html
 ! !
 
-TITSlide subclass: #TITUMLBoolean
+TITSlide subclass: #TITPolymorphism
 	instanceVariableNames: ''
 	category: 'Presentation-TIT'!
 
-!TITUMLBoolean methodsFor: 'accessing'!
+!TITPolymorphism methodsFor: 'accessing'!
 
 cssClass
 	^ 'slide blue3d'
 ! !
 
-!TITUMLBoolean methodsFor: 'rendering'!
+!TITPolymorphism methodsFor: 'rendering'!
 
 renderSlideOn: html
-	html h1: 'Boolean'.
+	html h1: 'Polymorphism'.
 	self renderImage: 'boolean.png' on: html
+! !
+
+TITSlide subclass: #TITMemberOfKindOf
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITMemberOfKindOf methodsFor: 'accessing'!
+
+cssClass
+	^ 'slide green3d'
+!
+
+snippet
+ ^'|a|
+a := AtomMorph new.
+a isMemberOf: AtomMorph "=> true".
+a isKindOf: AtomMorph "=> true".
+
+a isMemberOf: Morph "=> false".
+a isKindOf: Morph "=> true".'
+! !
+
+!TITMemberOfKindOf methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html h1: 'Testing object membership'.
+	self renderSmalltalk: self snippet on: html
 ! !
 

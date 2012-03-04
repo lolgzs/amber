@@ -685,7 +685,7 @@ smalltalk.method({
 selector: unescape('slideClasses'),
 fn: function (){
 var self=this;
-return [(smalltalk.IAEIntroSlide || IAEIntroSlide),(smalltalk.TITRoadmap || TITRoadmap),(smalltalk.IAEPractices || IAEPractices),(smalltalk.TITTemporaryVariable || TITTemporaryVariable),(smalltalk.TITInstanceVariable || TITInstanceVariable),(smalltalk.TITBasicCodeSnippets || TITBasicCodeSnippets),(smalltalk.TITBasicCodeSnippets2 || TITBasicCodeSnippets2),(smalltalk.IAESectionExercises || IAESectionExercises),(smalltalk.TITBouncingAtomMorphsExercise || TITBouncingAtomMorphsExercise),(smalltalk.TITVersionControl || TITVersionControl),(smalltalk.TITBlocks || TITBlocks),(smalltalk.TITObjectModelRules || TITObjectModelRules),(smalltalk.TITObjectInheritance || TITObjectInheritance),(smalltalk.TITUMLBoolean || TITUMLBoolean),(smalltalk.TITUMLCrossMorph || TITUMLCrossMorph),(smalltalk.IAESectionExercises || IAESectionExercises),(smalltalk.TITBouncingInheritanceExercise || TITBouncingInheritanceExercise)];
+return [(smalltalk.IAEIntroSlide || IAEIntroSlide),(smalltalk.TITRoadmap || TITRoadmap),(smalltalk.IAEPractices || IAEPractices),(smalltalk.TITTemporaryVariable || TITTemporaryVariable),(smalltalk.TITInstanceVariable || TITInstanceVariable),(smalltalk.TITBasicCodeSnippets || TITBasicCodeSnippets),(smalltalk.TITBasicCodeSnippets2 || TITBasicCodeSnippets2),(smalltalk.IAESectionExercises || IAESectionExercises),(smalltalk.TITBouncingAtomMorphsExercise || TITBouncingAtomMorphsExercise),(smalltalk.TITVersionControl || TITVersionControl),(smalltalk.TITBlocks || TITBlocks),(smalltalk.TITObjectModelRules || TITObjectModelRules),(smalltalk.TITObjectInheritance || TITObjectInheritance),(smalltalk.TITUMLCrossMorph || TITUMLCrossMorph),(smalltalk.TITPolymorphism || TITPolymorphism),(smalltalk.TITMemberOfKindOf || TITMemberOfKindOf),(smalltalk.IAESectionExercises || IAESectionExercises),(smalltalk.TITBouncingInheritanceExercise || TITBouncingInheritanceExercise)];
 return self;}
 }),
 smalltalk.TITWriteAndShareCode);
@@ -1005,18 +1005,18 @@ smalltalk.TITUMLCrossMorph);
 
 
 
-smalltalk.addClass('TITUMLBoolean', smalltalk.TITSlide, [], 'Presentation-TIT');
+smalltalk.addClass('TITPolymorphism', smalltalk.TITSlide, [], 'Presentation-TIT');
 smalltalk.addMethod(
 unescape('_renderSlideOn_'),
 smalltalk.method({
 selector: unescape('renderSlideOn%3A'),
 fn: function (html){
 var self=this;
-smalltalk.send(html, "_h1_", ["Boolean"]);
+smalltalk.send(html, "_h1_", ["Polymorphism"]);
 smalltalk.send(self, "_renderImage_on_", ["boolean.png", html]);
 return self;}
 }),
-smalltalk.TITUMLBoolean);
+smalltalk.TITPolymorphism);
 
 smalltalk.addMethod(
 unescape('_cssClass'),
@@ -1027,7 +1027,44 @@ var self=this;
 return "slide blue3d";
 return self;}
 }),
-smalltalk.TITUMLBoolean);
+smalltalk.TITPolymorphism);
+
+
+
+smalltalk.addClass('TITMemberOfKindOf', smalltalk.TITSlide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_renderSlideOn_'),
+smalltalk.method({
+selector: unescape('renderSlideOn%3A'),
+fn: function (html){
+var self=this;
+smalltalk.send(html, "_h1_", ["Testing object membership"]);
+smalltalk.send(self, "_renderSmalltalk_on_", [smalltalk.send(self, "_snippet", []), html]);
+return self;}
+}),
+smalltalk.TITMemberOfKindOf);
+
+smalltalk.addMethod(
+unescape('_cssClass'),
+smalltalk.method({
+selector: unescape('cssClass'),
+fn: function (){
+var self=this;
+return "slide green3d";
+return self;}
+}),
+smalltalk.TITMemberOfKindOf);
+
+smalltalk.addMethod(
+unescape('_snippet'),
+smalltalk.method({
+selector: unescape('snippet'),
+fn: function (){
+var self=this;
+return unescape("%7Ca%7C%0Aa%20%3A%3D%20AtomMorph%20new.%0Aa%20isMemberOf%3A%20AtomMorph%20%22%3D%3E%20true%22.%0Aa%20isKindOf%3A%20AtomMorph%20%22%3D%3E%20true%22.%0A%0Aa%20isMemberOf%3A%20Morph%20%22%3D%3E%20false%22.%0Aa%20isKindOf%3A%20Morph%20%22%3D%3E%20true%22.");
+return self;}
+}),
+smalltalk.TITMemberOfKindOf);
 
 
 
