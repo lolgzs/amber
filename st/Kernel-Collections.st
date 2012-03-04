@@ -505,6 +505,13 @@ indexOf: anObject startingAt: start
 
 atRandom
 	^ self at: self size atRandom
+!
+
+first: n
+	"Answer the first n elements of the receiver.
+	Raise an error if there are not enough elements."
+
+	^ self copyFrom: 1 to: n
 ! !
 
 !SequenceableCollection methodsFor: 'adding'!
@@ -1158,7 +1165,7 @@ with: anObject with: anObject2 with: anObject3
 withAll: aCollection
 	| instance |
 	instance := self new: aCollection size.
-	aCollection withIndexDo: [:index :each |
+	aCollection withIndexDo: [:each :index  |
 		instance at: index put: each].
 	^instance
 ! !
@@ -1275,7 +1282,7 @@ with: anObject with: anObject2 with: anObject3
 withAll: aCollection
 	| instance |
 	instance := self new: aCollection size.
-	aCollection withIndexDo: [:index :each |
+	aCollection withIndexDo: [:each :index  |
 		instance at: index put: each].
 	^instance
 ! !

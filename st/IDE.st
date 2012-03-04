@@ -1098,7 +1098,7 @@ ajaxPutAt: anURL data: aString
 	jQuery 
 		ajax: anURL	options: #{	'type' -> 'PUT'.
 								'data' -> aString.
-								'contentType' -> 'text/plain'.
+								'contentType' -> 'text/plain;charset=UTF-8'.
 								'error' -> [window alert: 'PUT request failed at:  ', anURL] }
 ! !
 
@@ -1289,12 +1289,13 @@ updateSourceAndButtons
 					class: 'important';
 					with: 'New...'.
 				self protocols do: [:each |
-					html option with: each]].
+					option := html option with: each.
+					selectedProtocol = each ifTrue: [ option at: 'selected' put: 'selected' ] ]].
 		selectedMethod isNil ifFalse: [
 			referencesSelect := html select.
                         referencesSelect
 				onChange: [self searchReferencesOf: referencesSelect asJQuery val];
-				with: [
+				with: [ |option|
 					html option
 						with: 'References';
 						at: 'disabled' put: 'disabled'.
