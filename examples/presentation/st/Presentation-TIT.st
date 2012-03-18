@@ -1173,3 +1173,40 @@ renderSlideOn: html
 	self renderSmalltalk: self snippet on: html
 ! !
 
+TITPresentation subclass: #TITSoftwareLifeCycle
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITSoftwareLifeCycle methodsFor: 'accessing'!
+
+description
+	^ 'Modern software development process'
+!
+
+slideClasses
+	^ {
+	IAEIntroSlide.
+	TITRoadmap.
+	IAEWhatIsSoftwareDevelopment.
+	IAETools.
+	IAEToolMisused.
+	IAETracker.
+	TITVersionControl.
+	IAETDDCycle.
+	IAEContinuousIntegration.
+	IAEContinuousDelivery
+}
+! !
+
+!TITSoftwareLifeCycle class methodsFor: 'accessing'!
+
+title
+	^ 'TIT - Software lifecycle'
+! !
+
+!TITSoftwareLifeCycle class methodsFor: 'testing'!
+
+isConcrete
+	^ true
+! !
+

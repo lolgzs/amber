@@ -372,15 +372,6 @@ body {
 }
 
 
-#IAEContinuousIntegration {
-	font-size: 2em;
-	background: rgb(216,216,216) url(iae/images/ci.png) no-repeat center center;
-}
-
-#IAETracker {
-	background: rgb(235,239,249);
-}
-
 #IAEScrum {
 	background: white url(iae/images/scrum.png) no-repeat center center;
 }
@@ -932,6 +923,12 @@ IAESlide subclass: #IAEContinuousIntegration
 
 backgroundColor
 	^ 'rgb(21, 42, 14)'
+!
+
+style
+	^ '
+	font-size: 2em;
+	background: rgb(216,216,216) url(iae/images/ci.png) no-repeat center center;'
 ! !
 
 !IAEContinuousIntegration methodsFor: 'rendering'!
@@ -978,7 +975,13 @@ IAESlide subclass: #IAETracker
 	instanceVariableNames: ''
 	category: 'Presentation-IAE'!
 
-!IAETracker methodsFor: 'not yet classified'!
+!IAETracker methodsFor: 'accessing'!
+
+style
+	^ 'background: rgb(235,239,249);'
+! !
+
+!IAETracker methodsFor: 'rendering'!
 
 renderSlideOn: html
 	html	 h1: 'Issue tracker'.
