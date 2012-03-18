@@ -1166,7 +1166,7 @@ selector: unescape('slideClasses'),
 fn: function () {
     var self = this;
     return [smalltalk.IAEIntroSlide || IAEIntroSlide, smalltalk.TITRoadmap || TITRoadmap, smalltalk.IAEWhatIsSoftwareDevelopment ||
-        IAEWhatIsSoftwareDevelopment, smalltalk.IAETools || IAETools, smalltalk.IAEToolMisused || IAEToolMisused, smalltalk.IAETracker || IAETracker, smalltalk.TITVersionControl || TITVersionControl, smalltalk.IAETDDCycle || IAETDDCycle, smalltalk.IAEContinuousIntegration || IAEContinuousIntegration, smalltalk.IAEContinuousDelivery || IAEContinuousDelivery];
+        IAEWhatIsSoftwareDevelopment, smalltalk.IAETools || IAETools, smalltalk.IAEToolMisused || IAEToolMisused, smalltalk.IAETracker || IAETracker, smalltalk.TITVersionControl || TITVersionControl, smalltalk.IAETDDCycle || IAETDDCycle, smalltalk.IAEContinuousIntegration || IAEContinuousIntegration, smalltalk.IAEContinuousDelivery || IAEContinuousDelivery, smalltalk.IAESectionExercises || IAESectionExercises, smalltalk.TITOperationExercice1 || TITOperationExercice1];
     return self;
 }
 }),
@@ -1196,5 +1196,32 @@ fn: function () {
 }
 }),
 smalltalk.TITSoftwareLifeCycle.klass);
+
+
+smalltalk.addClass('TITOperationExercice1', smalltalk.TITSlide, [], 'Presentation-TIT');
+smalltalk.addMethod(
+unescape('_renderSlideOn_'),
+smalltalk.method({
+selector: unescape('renderSlideOn%3A'),
+fn: function (html) {
+    var self = this;
+    smalltalk.send(html, "_pre_", [unescape("Cr%E9ez%20la%20cat%E9gorie%20ExercicesTIT%20dans%20le%20browser.%20%0AToutes%20les%20classes%20d%E9velopp%E9es%20par%20la%20suite%20devront%20se%20trouver%20dans%20cette%20cat%E9gorie.%20%0AImpl%E9mentez%20la%20classe%20Operation%20qui%20doit%20fonctionner%20comme%20suit%20%28%E9valuez%20ce%20code%20dans%20un%20Workspace%29%3A%0A%0A%20%20%20%20a%20%3A%3D%20Operation%20new.%0A%20%20%20%20a%20result.%0A%0ADoit%20retourner%200%20%28qui%20est%20la%20valeur%20initiale%20de%20l%27op%E9ration%29.%0A%0A%20%20%20%20b%20%3A%3D%20Operation%20new.%0A%20%20%20%20b%20add%3A%202.%0A%20%20%20%20b%20add%3A%203.%0A%20%20%20%20b%20result.%0A%0ADoit%20retourner%205%20%280%20+%202%20+%203%29.%0A%0A%20%20%20%20Operation%20new%0A%20%20%20%20%20%20add%3A%202%3B%0A%20%20%20%20%20%20add%3A%204%3B%0A%20%20%20%20%20%20divideBy%3A%202%3B%0A%20%20%20%20%20%20result.%0A%0A%20%20%20%20Doit%20retourner%203.%20%0A%0ALes%20messages%3A%0A%0A%20%20%20%20%23add%3A%20ajoute%20la%20valeur%20pass%E9e%20en%20param%E8tre%20%E0%20la%20valeur%20courante.%0A%20%20%20%20%23substract%3A%20soustraction%0A%20%20%20%20%23divideBy%3A%20division%0A%20%20%20%20%23multiplyBy%3A%20multiplication")]);
+    return self;
+}
+}),
+smalltalk.TITOperationExercice1);
+
+smalltalk.addMethod(
+unescape('_style'),
+smalltalk.method({
+selector: unescape('style'),
+fn: function () {
+    var self = this;
+    return unescape("%0A%09position%3A%20fixed%3B%0A%09top%3A%200px%3B%0A%09left%3A%200px%3B%0A%09margin%3A%200px%3B%0A%09padding%3A%205px%3B%0A%09width%3A%20100%25%3B%0A%09height%3A%20100%25%3B%0A%09line-height%3A%20inherit%3B%0A%09overflow%3A%20auto");
+    return self;
+}
+}),
+smalltalk.TITOperationExercice1);
+
 
 

@@ -1194,7 +1194,9 @@ slideClasses
 	TITVersionControl.
 	IAETDDCycle.
 	IAEContinuousIntegration.
-	IAEContinuousDelivery
+	IAEContinuousDelivery.
+	IAESectionExercises.
+	TITOperationExercice1
 }
 ! !
 
@@ -1208,5 +1210,57 @@ title
 
 isConcrete
 	^ true
+! !
+
+TITSlide subclass: #TITOperationExercice1
+	instanceVariableNames: ''
+	category: 'Presentation-TIT'!
+
+!TITOperationExercice1 methodsFor: 'rendering'!
+
+renderSlideOn: html
+	html pre: 'Créez la catégorie ExercicesTIT dans le browser. 
+Toutes les classes développées par la suite devront se trouver dans cette catégorie. 
+Implémentez la classe Operation qui doit fonctionner comme suit (évaluez ce code dans un Workspace):
+
+    a := Operation new.
+    a result.
+
+Doit retourner 0 (qui est la valeur initiale de l''opération).
+
+    b := Operation new.
+    b add: 2.
+    b add: 3.
+    b result.
+
+Doit retourner 5 (0 + 2 + 3).
+
+    Operation new
+      add: 2;
+      add: 4;
+      divideBy: 2;
+      result.
+
+    Doit retourner 3. 
+
+Les messages:
+
+    #add: ajoute la valeur passée en paramètre à la valeur courante.
+    #substract: soustraction
+    #divideBy: division
+    #multiplyBy: multiplication'
+!
+
+style
+	^ '
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	margin: 0px;
+	padding: 5px;
+	width: 100%;
+	height: 100%;
+	line-height: inherit;
+	overflow: auto'
 ! !
 
