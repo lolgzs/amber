@@ -1,4 +1,53 @@
 Smalltalk current createPackage: 'Kernel-Collections' properties: #{}!
+Object subclass: #Association
+	instanceVariableNames: 'key value'
+	category: 'Kernel-Collections'!
+
+!Association methodsFor: 'accessing'!
+
+key: aKey
+	key := aKey
+!
+
+key
+	^key
+!
+
+value: aValue
+	value := aValue
+!
+
+value
+	^value
+! !
+
+!Association methodsFor: 'comparing'!
+
+= anAssociation
+	^self class = anAssociation class and: [
+	    self key = anAssociation key and: [
+		self value = anAssociation value]]
+!
+
+storeOn: aStream
+	"Store in the format (key->value)"
+
+	"aStream nextPutAll: '('."
+	key storeOn: aStream.
+	aStream nextPutAll: '->'.
+	value storeOn: aStream.
+	"aStream nextPutAll: ')'"
+! !
+
+!Association class methodsFor: 'instance creation'!
+
+key: aKey value: aValue
+	    ^self new
+		key: aKey;
+		value: aValue;
+		yourself
+! !
+
 Object subclass: #Stream
 	instanceVariableNames: 'collection position streamSize'
 	category: 'Kernel-Collections'!
@@ -132,55 +181,6 @@ on: aCollection
 		yourself
 ! !
 
-Object subclass: #Association
-	instanceVariableNames: 'key value'
-	category: 'Kernel-Collections'!
-
-!Association methodsFor: 'accessing'!
-
-key: aKey
-	key := aKey
-!
-
-key
-	^key
-!
-
-value: aValue
-	value := aValue
-!
-
-value
-	^value
-! !
-
-!Association methodsFor: 'comparing'!
-
-= anAssociation
-	^self class = anAssociation class and: [
-	    self key = anAssociation key and: [
-		self value = anAssociation value]]
-!
-
-storeOn: aStream
-	"Store in the format (key->value)"
-
-	"aStream nextPutAll: '('."
-	key storeOn: aStream.
-	aStream nextPutAll: '->'.
-	value storeOn: aStream.
-	"aStream nextPutAll: ')'"
-! !
-
-!Association class methodsFor: 'instance creation'!
-
-key: aKey value: aValue
-	    ^self new
-		key: aKey;
-		value: aValue;
-		yourself
-! !
-
 Object subclass: #RegularExpression
 	instanceVariableNames: ''
 	category: 'Kernel-Collections'!
@@ -265,12 +265,12 @@ asSet
 	^Set withAll: self
 !
 
-asJSONString
-	^JSON stringify: (self collect: [:each | each asJSONString])
-!
-
 asOrderedCollection
 	^self asArray
+!
+
+asJSON
+	^self asArray collect: [:each | each asJSON]
 ! !
 
 !Collection methodsFor: 'copying'!
@@ -385,7 +385,11 @@ ifNotEmpty: aBlock
 !
 
 ifEmpty: aBlock
-	self isEmpty ifTrue: aBlock.
+	"Evaluate the given block with the receiver as argument, answering its value if the receiver is empty, otherwise answer the receiver. Note that the fact that this method returns its argument in case the receiver is not empty allows one to write expressions like the following ones: self classifyMethodAs: 
+		(myProtocol ifEmpty: ['As yet unclassified'])"
+	^ self isEmpty 
+		ifTrue: [ aBlock value ]
+		ifFalse: [ self ]
 ! !
 
 !Collection class methodsFor: 'accessing'!
@@ -758,12 +762,12 @@ asJavaScriptSelector
 	^(self asSelector replace: '^_' with: '') replace: '_.*' with: ''.
 !
 
-asJSONString
-	^self
-!
-
 asSymbol
 	^Symbol lookup: self
+!
+
+asJSON
+	^self
 ! !
 
 !String methodsFor: 'copying'!
@@ -1013,6 +1017,10 @@ asJavascript
 
 asSelector
 	^self asString asSelector
+!
+
+asJSON
+	^self asString asJSON
 ! !
 
 !Symbol methodsFor: 'copying'!
@@ -1511,6 +1519,14 @@ removeKey: aKey ifAbsent: aBlock
 
 asDictionary
 	^Dictionary fromPairs: self associations
+!
+
+asJSON
+	| c |
+	c := self class new.
+	self keysAndValuesDo: [:key :value |
+		c at: key put: value asJSON].
+	^c
 ! !
 
 !HashedCollection methodsFor: 'copying'!
@@ -1681,8 +1697,8 @@ asHashedCollection
 	^HashedCollection fromPairs: self associations
 !
 
-asJSONString
-	^self asHashedCollection asJSONString
+asJSON
+	^self asHashedCollection asJSON
 ! !
 
 !Dictionary methodsFor: 'initialization'!

@@ -12,7 +12,6 @@ amber = (function() {
 	var scripts = document.getElementsByTagName("script");
 	var src     = scripts[ scripts.length - 1 ].src;
 	var home    = src.split("/").slice(0, -2).join("/") + "/";
-	var nocache = '?' + (new Date()).getTime();
 
 	var debug;
 	var deploy;
@@ -20,6 +19,7 @@ amber = (function() {
 	var spec;
 	var jsToLoad = [];
 	var loadJS;
+    var nocache = '';
 
 	that.toggleIDE = function() {
 		if ($('#jtalk').length == 0) {
@@ -205,7 +205,12 @@ amber = (function() {
 	};
 
 	function loadJSViaJQuery(url, callback) {
-		$.getScript(jsToLoad[0], callback);
+		$.ajax({
+			dataType: "script",
+			url: jsToLoad[0],
+			cache: deploy,
+			success: callback
+		});
 	};
 
 	function writeScriptTag(src) {
