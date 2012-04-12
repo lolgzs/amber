@@ -1,0 +1,92 @@
+{"album": 
+ {	"id":1, 
+		"titre":"L'agent Z", 
+		"description":"La planète blanche, rouge, bleue. Ecrit par Mario Laffont le 12/04/2012",
+		"width": 600,
+		"height": 424,
+		"download_url": "agentZ.pdf",
+		"ressources":[ 
+      {	"id":1,
+        "titre": "Agent Z. La planète blanche, rouge, bleue",
+				"foliono": "",
+        "description":"" ,
+        "thumbnail":"images/agentZ/pages/page1.jpeg",
+        "navigator_thumbnail":"images/agentZ/thumbnails/page1.jpeg",
+        "original":"images/agentZ/hd/page1.jpeg"},
+
+      {	"id":2,
+        "titre": "",
+				"foliono": "2",
+        "description":"1. Un arbre magique ? Bon, voyons voir si c'est vrai.<br/>2. 2h plus tard... Ouf arrivé<br/>3. Un bandit dans la zone 06. Alors c'est vrai ?<br/>4. OK, Patron<br/>5. Bizarre. C'est tout blanc tout à coup.<br/>6. C'est quoi ça?" ,
+        "thumbnail":"images/agentZ/pages/page2.jpeg",
+        "navigator_thumbnail":"images/agentZ/thumbnails/page2.jpeg",
+        "original":"images/agentZ/hd/page2.jpeg"},
+
+      {	"id":3,
+        "titre": "",
+				"foliono": "3",
+        "description":"8. AH! AH! AH! J'ai tué Agent Z<br/>9. Je n'en suis pas si sûr que ça<br/>10. Et voilà le travail. Des traces !<br/>12. Bizarre." ,
+        "thumbnail":"images/agentZ/pages/page3.jpeg",
+        "navigator_thumbnail":"images/agentZ/thumbnails/page3.jpeg",
+        "original":"images/agentZ/hd/page3.jpeg"},
+
+      {	"id":4,
+        "titre": "",
+				"foliono": "4",
+        "description":"13. Encore une couleur (Rouge)<br/>14. Les images !<br/>16. Zut, fermé<br/>17. Avant blanc<br/>18. Après rouge. Gloups !" ,
+        "thumbnail":"images/agentZ/pages/page4.jpeg",
+        "navigator_thumbnail":"images/agentZ/thumbnails/page4.jpeg",
+        "original":"images/agentZ/hd/page4.jpeg"},
+
+      {	"id":5,
+        "titre": "",
+				"foliono": "5",
+        "description":"19. Aïe!<br/>20. Tiphon!<br/>22. La clé" ,
+        "thumbnail":"images/agentZ/pages/page5.jpeg",
+        "navigator_thumbnail":"images/agentZ/thumbnails/page5.jpeg",
+        "original":"images/agentZ/hd/page5.jpeg"},
+
+      {	"id":6,
+        "titre": "Dans le tunnel",
+				"foliono": "6",
+        "description":"24. Dans le tunnel (bleu)" ,
+        "thumbnail":"images/agentZ/pages/page6.jpeg",
+        "navigator_thumbnail":"images/agentZ/thumbnails/page6.jpeg",
+        "original":"images/agentZ/hd/page6.jpeg"},
+
+
+      {	"id":7,
+        "titre": "",
+				"foliono": "7",
+        "description":"25. Une porte ? Sans Boss" ,
+        "thumbnail":"images/agentZ/pages/page7.jpeg",
+        "navigator_thumbnail":"images/agentZ/thumbnails/page7.jpeg",
+        "original":"images/agentZ/hd/page7.jpeg"},
+
+
+      {	"id":8,
+        "titre": "",
+				"foliono": "8",
+        "description":"26. Et paf !<br>27. Et voilà<br/>28. Une entrée<br/>29. Ouf",
+        "thumbnail":"images/agentZ/pages/page8.jpeg",
+        "navigator_thumbnail":"images/agentZ/thumbnails/page8.jpeg",
+        "original":"images/agentZ/hd/page8.jpeg"},
+
+      {	"id":9,
+        "titre": "",
+				"foliono": "9",
+        "description":"32. Echangement!<br/>33. Yessss !<br/>36. Les bonnes couleurs",
+        "thumbnail":"images/agentZ/pages/page9.jpeg",
+        "navigator_thumbnail":"images/agentZ/thumbnails/page9.jpeg",
+        "original":"images/agentZ/hd/page9.jpeg"},
+
+      {	"id":10,
+        "titre": "",
+				"foliono": "",
+        "description":"" ,
+        "thumbnail":"images/agentZ/pages/page10.jpeg",
+        "navigator_thumbnail":"images/agentZ/thumbnails/page10.jpeg",
+        "original":"images/agentZ/hd/page10.jpeg"}
+    ]
+ }
+}
