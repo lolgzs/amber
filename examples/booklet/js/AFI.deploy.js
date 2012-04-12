@@ -494,7 +494,7 @@ selector: unescape('loadBookFromJSONOnSuccess%3A'),
 fn: function (aBlock){
 var self=this;
 (function($rec){smalltalk.send($rec, "_onSuccessDo_", [(function(data){var book=nil;
-book=smalltalk.send(self, "_buildBookFromJSon_", [data]);return smalltalk.send(aBlock, "_value_", [book]);})]);return smalltalk.send($rec, "_send", []);})(smalltalk.send(self, "_ajax", []));
+(book=smalltalk.send(self, "_buildBookFromJSon_", [smalltalk.send(smalltalk.send((typeof window == 'undefined' ? nil : window), "_JSON", []), "_parse_", [data])]));return smalltalk.send(aBlock, "_value_", [book]);})]);return smalltalk.send($rec, "_send", []);})(smalltalk.send(self, "_ajax", []));
 return self;}
 }),
 smalltalk.BibNumLoader);

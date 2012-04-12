@@ -700,11 +700,11 @@ category: 'loading',
 fn: function (aBlock){
 var self=this;
 (function($rec){smalltalk.send($rec, "_onSuccessDo_", [(function(data){var book=nil;
-book=smalltalk.send(self, "_buildBookFromJSon_", [data]);return smalltalk.send(aBlock, "_value_", [book]);})]);return smalltalk.send($rec, "_send", []);})(smalltalk.send(self, "_ajax", []));
+(book=smalltalk.send(self, "_buildBookFromJSon_", [smalltalk.send(smalltalk.send((typeof window == 'undefined' ? nil : window), "_JSON", []), "_parse_", [data])]));return smalltalk.send(aBlock, "_value_", [book]);})]);return smalltalk.send($rec, "_send", []);})(smalltalk.send(self, "_ajax", []));
 return self;},
 args: ["aBlock"],
-source: unescape('loadBookFromJSONOnSuccess%3A%20aBlock%0A%09self%20ajax%0A%09%09onSuccessDo%3A%20%5B%3Adata%7C%20%7Cbook%7C%0A%09%09%09%09%09%09%09book%20%3A%3D%20self%20buildBookFromJSon%3A%20data.%0A%09%09%09%09%09%09%09aBlock%20value%3A%20book%5D%3B%0A%09%09send.'),
-messageSends: ["onSuccessDo:", "buildBookFromJSon:", "value:", "send", "ajax"],
+source: unescape('loadBookFromJSONOnSuccess%3A%20aBlock%0A%09self%20ajax%0A%09%09onSuccessDo%3A%20%5B%3Adata%7C%20%7Cbook%7C%0A%09%09%09%09%09%09%09book%20%3A%3D%20self%20buildBookFromJSon%3A%20%28window%20JSON%A0parse%3A%20data%29.%0A%09%09%09%09%09%09%09aBlock%20value%3A%20book%5D%3B%0A%09%09send.'),
+messageSends: ["onSuccessDo:", "buildBookFromJSon:", "parse:", "JSON", "value:", "send", "ajax"],
 referencedClasses: []
 }),
 smalltalk.BibNumLoader);

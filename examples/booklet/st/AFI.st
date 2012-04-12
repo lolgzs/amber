@@ -469,7 +469,7 @@ buildBookFromJSon: aJSONObject
 loadBookFromJSONOnSuccess: aBlock
 	self ajax
 		onSuccessDo: [:data| |book|
-							book := self buildBookFromJSon: data.
+							book := self buildBookFromJSon: (window JSON parse: data).
 							aBlock value: book];
 		send.
 ! !
