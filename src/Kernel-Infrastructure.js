@@ -3329,7 +3329,7 @@ var self=this;
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
 return $core.withContext(function($ctx1) { 
 //>>excludeEnd("ctx");
-return (new Function('return this'))();;
+return (function(){return this;})();;
 return self;
 //>>excludeStart("ctx", pragmas.excludeDebugContexts);
 }, function($ctx1) {$ctx1.fill(self,"globals",{},$globals.PlatformInterface.klass)});
@@ -3337,7 +3337,7 @@ return self;
 },
 //>>excludeStart("ide", pragmas.excludeIdeData);
 args: [],
-source: "globals\x0a\x09<return (new Function('return this'))();>",
+source: "globals\x0a\x09<return (function(){return this;})();>",
 referencedClasses: [],
 //>>excludeEnd("ide");
 messageSends: []

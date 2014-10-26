@@ -823,7 +823,7 @@ PlatformInterface class instanceVariableNames: 'worker'!
 !PlatformInterface class methodsFor: 'accessing'!
 
 globals
-	<return (new Function('return this'))();>
+	<return (function(){return this;})();>
 !
 
 setWorker: anObject

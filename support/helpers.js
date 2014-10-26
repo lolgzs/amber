@@ -35,7 +35,7 @@ define("amber/helpers", ["amber/boot", "require"], function (boot, require) {
 
     function settingsInLocalStorage() {
         //jshint evil:true
-        var global = new Function('return this')(),
+        var global = (function() {return this;})(),
             storage = 'localStorage' in global && global.localStorage;
 
         if (storage) {
